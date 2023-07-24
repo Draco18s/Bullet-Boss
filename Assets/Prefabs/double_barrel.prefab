@@ -127,7 +127,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7542492161603475136}
   - component: {fileID: 8485148381094716328}
-  - component: {fileID: 2669451363158104739}
   m_Layer: 0
   m_Name: double_barrel
   m_TagString: Untagged
@@ -168,6 +167,7 @@ MonoBehaviour:
     Lifetime: 10
     StartAngle: 0
     TimeOffset: 0
+    isEditable: 0
     dataValues:
       keys: 0000000001000000020000000300000004000000
       values:
@@ -181,24 +181,45 @@ MonoBehaviour:
       data:
         keys: 
         values: []
-  muzzles: []
-  bulletTexture: {fileID: 21300000, guid: 7cd6cfe2f02dd8244b8239f21aa47df7, type: 3}
-  bulletPrefab: {fileID: 5986200609076484592, guid: ef8f1cae4506d0744be3b7183e2cec3a, type: 3}
+    childPattern:
+      rid: 1000
+  muzzles:
+  - {fileID: 3654250833646586005}
+  - {fileID: 7528576311755812390}
+  gunBaseModifiers:
+    keys: 02000000
+    values:
+    - 1
   timeAlive: 0
   minFireDelay: 0.25
---- !u!65 &2669451363158104739
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7134596687949941138}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
+    - rid: 1000
+      type: {class: PatternData, ns: Assets.draco18s, asm: Assembly-CSharp}
+      data:
+        ReloadType: 0
+        Lifetime: 10
+        StartAngle: 0
+        TimeOffset: 0
+        isEditable: 0
+        dataValues:
+          keys: 0000000001000000020000000300000004000000
+          values:
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+        timeline:
+          duration: 0
+          data:
+            keys: 
+            values: []
+        childPattern:
+          rid: -2
 --- !u!1 &7472189429871917685
 GameObject:
   m_ObjectHideFlags: 0

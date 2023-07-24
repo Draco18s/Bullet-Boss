@@ -14,9 +14,11 @@ namespace Assets.draco18s
 		public float Lifetime = 10;
 		public float StartAngle;
 		public float TimeOffset;
+		public bool isEditable;
 
 		public SerializableDictionary<PatternDataKey, float> dataValues = PopulateDict();
 		public Timeline timeline = new Timeline();
+		[SerializeReference]
 		public PatternData childPattern;
 
 		private static SerializableDictionary<PatternDataKey, float> PopulateDict()
@@ -30,7 +32,7 @@ namespace Assets.draco18s
 			return d;
 		}
 
-		public void CopyFrom(PatternData other)
+		public void CopyFrom(PatternData other, bool includeChildPatterns=true)
 		{
 			ReloadType = other.ReloadType;
 			Lifetime = other.Lifetime;
@@ -38,7 +40,8 @@ namespace Assets.draco18s
 			TimeOffset = other.TimeOffset;
 			dataValues.CopyFrom(other.dataValues);
 			timeline.CopyFrom(other.timeline);
-			childPattern = other.childPattern;
+			if(includeChildPatterns)
+				childPattern = other.childPattern;
 		}
 	}
 }

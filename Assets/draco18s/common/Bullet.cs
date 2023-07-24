@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Assets.draco18s.util;
 using JetBrains.Annotations;
 using UnityEngine;
 
@@ -10,13 +11,17 @@ namespace Assets.draco18s.training
 	{
 		public PatternData pattern;
 		protected Dictionary<PatternDataKey, float> currentValues = PopulateDict();
+		public Dictionary<PatternDataKey, float> modifiers = PopulateDict();
 
 		public PatternData Pattern => pattern;
 		
-		public float CurrentTime => timeAlive % pattern.Lifetime;
+		public float CurrentTime => timeAlive % (pattern.Lifetime* lifetime);
 		[SerializeField]
 		
 		public float timeAlive;
+
+		protected float damage;
+		protected float lifetime;
 
 		public IDamageDealer playerOwner;
 		public Vector2 previousPosition1;
@@ -45,6 +50,21 @@ namespace Assets.draco18s.training
 			Init();
 		}
 
+		public void SetDamage(float dmg)
+		{
+			damage = dmg;
+		}
+
+		public void SetLifetime(float time)
+		{
+			lifetime = time;
+		}
+
+		public void SetStat(PatternDataKey key, float val)
+		{
+			pattern.dataValues[key] = val;
+		}
+
 		public void Init()
 		{
 			foreach (PatternDataKey d in GetAllowedValues())
@@ -56,16 +76,13 @@ namespace Assets.draco18s.training
 					postWrapMode = WrapMode.ClampForever
 				});
 			}
-			if(!pattern.timeline.data.ContainsKey(PatternDataKey.Damage))
-				pattern.timeline.data.Add(PatternDataKey.Damage, AnimationCurve.Constant(0, 10, 1));
-			pattern.timeline.data[PatternDataKey.Speed].AddKey(0, 1);
+			pattern.timeline.data[PatternDataKey.Speed].AddKey(0, 3);
 			pattern.timeline.data[PatternDataKey.Size].AddKey(0, 1);
-			pattern.timeline.data[PatternDataKey.Speed].AddKey(10, 1);
+			pattern.timeline.data[PatternDataKey.Speed].AddKey(10, 3);
 			pattern.timeline.data[PatternDataKey.Size].AddKey(10, 1);
 
-			pattern.dataValues[PatternDataKey.Size] = 1;
-			pattern.dataValues[PatternDataKey.Damage] = 1;
-			pattern.dataValues[PatternDataKey.Speed] = 3;
+			pattern.dataValues[PatternDataKey.Size] = 3;
+			pattern.dataValues[PatternDataKey.Speed] = 1;
 			pattern.dataValues[PatternDataKey.Rotation] = 72;
 		}
 
@@ -82,7 +99,7 @@ namespace Assets.draco18s.training
 			{
 				GetComponent<SpriteRenderer>().enabled = timeAlive > 0;
 			}
-			if (timeAlive >= pattern.Lifetime)
+			if (timeAlive >= pattern.Lifetime || Mathf.Abs(transform.localPosition.x) > 10f || Mathf.Abs(transform.localPosition.y) > 10)
 			{
 				timeAlive = -1000;
 				if (!hitSomething && playerOwner != null)
@@ -97,22 +114,17 @@ namespace Assets.draco18s.training
 				currentValues[d] = pattern.dataValues[d] * pattern.timeline.Evaluate(d, timeAlive / pattern.Lifetime * 10);
 			}
 			transform.Translate(new Vector3(currentValues[PatternDataKey.Speed] * dt, 0, dt), Space.Self);
-			transform.localScale = Vector3.one * currentValues[PatternDataKey.Size];
+			transform.localScale = Vector3.one * currentValues[PatternDataKey.Size] / 3;
 			transform.Rotate(Vector3.forward, currentValues[PatternDataKey.Rotation] * dt, Space.Self);
 		}
 
 		[UsedImplicitly]
 		private void OnTriggerEnter2D(Collider2D col)
 		{
-			if (col.gameObject.layer != this.gameObject.layer)
-			{
-				float d = col.gameObject.GetComponent<IDamageTaker>().ApplyDamage(currentValues[PatternDataKey.Damage], GetComponent<Collider2D>());
-				if (playerOwner != null)
-				{
-					playerOwner.AddScore(d, col);
-				}
-				hitSomething = true;
-			}
+			if (col.gameObject.layer == this.gameObject.layer) return;
+			float d = col.gameObject.GetComponent<IDamageTaker>().ApplyDamage(damage, GetComponent<Collider2D>());
+			playerOwner?.AddScore(d, col);
+			hitSomething = true;
 		}
 
 		public Timeline GetTimeline()

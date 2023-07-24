@@ -71,9 +71,9 @@ namespace Assets.draco18s
 		public void AccessSubsystem()
 		{
 			PatternData hasPattern = targetPattern.childPattern;
-			if (hasPattern == null) return;
+			if (hasPattern == null || !hasPattern.isEditable) return;
 
-			subButton.interactable = (hasPattern.childPattern != null);
+			subButton.interactable = (hasPattern.childPattern != null && hasPattern.childPattern.isEditable);
 			supButton.interactable = true;
 			isEditingGun = !isEditingGun;
 			ChangeTarget(hasPattern);

@@ -60,7 +60,7 @@
     <Compile Include="Assets\Origin\Script\VertexLine.cs" />
     <Compile Include="Assets\draco18s\training\ShipGraze.cs" />
     <Compile Include="Assets\draco18s\bulletboss\BossHealth.cs" />
-    <Compile Include="Assets\SimTrainer.cs" />
+    <Compile Include="Assets\draco18s\common\StatAttribute.cs" />
     <Compile Include="Assets\draco18s\patterns\Timeline.cs" />
     <Compile Include="Assets\draco18s\interfaces\IDamageTaker.cs" />
     <Compile Include="Assets\draco18s\ui\GunSlotTarget.cs" />
@@ -70,41 +70,34 @@
     <Compile Include="Assets\UGUIMeshLab\UIPolygon.cs" />
     <Compile Include="Assets\draco18s\ui\Inventory.cs" />
     <Compile Include="Assets\draco18s\ui\UpgradeSlotGroup.cs" />
-    <Compile Include="Assets\draco18s\ui\HardPointTarget.cs" />
+    <Compile Include="Assets\draco18s\ui\HardPoint.cs" />
     <Compile Include="Assets\Origin\Script\DragUICompont.cs" />
     <Compile Include="Assets\draco18s\patterns\PatternDataKey.cs" />
     <Compile Include="Assets\draco18s\ui\PercentageBar.cs" />
     <Compile Include="Assets\UGUIMeshLab\UIMeshLine.cs" />
-    <Compile Include="Assets\Noedify\Scripts\Noedify_Plot.cs" />
     <Compile Include="Assets\draco18s\common\Bullet.cs" />
-    <Compile Include="Assets\draco18s\training\AgentShip.cs" />
     <Compile Include="Assets\draco18s\common\GunBarrel.cs" />
-    <Compile Include="Assets\draco18s\serialize\SerializableDictionary.cs" />
+    <Compile Include="Assets\draco18s\util\SerializableDictionary.cs" />
     <Compile Include="Assets\draco18s\patterns\PatternData.cs" />
     <Compile Include="Assets\draco18s\util\TypeExtensions.cs" />
     <Compile Include="Assets\UGUIMeshLab\DataContainer.cs" />
-    <Compile Include="Assets\Noedify\Scripts\Noedify_Debugger.cs" />
     <Compile Include="Assets\draco18s\interfaces\GunType.cs" />
-    <Compile Include="Assets\AgentTrainer.cs" />
     <Compile Include="Assets\Origin\Script\RayCastCheck.cs" />
     <Compile Include="Assets\draco18s\bulletboss\PlayerHealth.cs" />
-    <Compile Include="Assets\draco18s\training\PlayerRecorder.cs" />
     <Compile Include="Assets\BackgroundScroll.cs" />
     <Compile Include="Assets\Origin\Script\AddPoint.cs" />
     <Compile Include="Assets\draco18s\interfaces\IDamageDealer.cs" />
     <Compile Include="Assets\draco18s\patterns\PatternEditor.cs" />
     <Compile Include="Assets\UGUIMeshLab\Math\Math.cs" />
     <Compile Include="Assets\draco18s\training\BossHealth.cs" />
-    <Compile Include="Assets\draco18s\training\AIFighter.cs" />
     <Compile Include="Assets\draco18s\interfaces\IInventoryDropTarget.cs" />
     <Compile Include="Assets\draco18s\bulletboss\UpgradeScriptable.cs" />
-    <Compile Include="Assets\draco18s\training\ShipAcademy.cs" />
+    <Compile Include="Assets\draco18s\bulletboss\GameTransform.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
-    <None Include="Assets\Noedify\Resources\Noedify\ModelParameterFiles\FC_mnist_600x300x140_parameters.txt" />
     <None Include="Assets\UGUIMeshLab\Shaders\Laser.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
@@ -118,8 +111,8 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
-    <None Include="Assets\Noedify\dll\Noedify.dll" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
+    <None Include="Assets\codeandweb.com\Readme.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
@@ -385,9 +378,6 @@
     </Reference>
     <Reference Include="Google.Protobuf">
       <HintPath>Library\PackageCache\com.unity.barracuda@2.0.0\Barracuda\Runtime\Plugins\ProtoBuffer\Google.Protobuf.dll</HintPath>
-    </Reference>
-    <Reference Include="Noedify">
-      <HintPath>Assets\Noedify\dll\Noedify.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Cecil.Pdb">
       <HintPath>Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.CodeGen\Unity.Burst.Cecil.Pdb.dll</HintPath>
@@ -803,11 +793,11 @@
     <Reference Include="Unity.2D.PixelPerfect">
       <HintPath>Library\ScriptAssemblies\Unity.2D.PixelPerfect.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.2D.Tilemap.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.2D.Tilemap.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.2D.Animation.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.2D.Animation.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Tilemap.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.2D.Tilemap.Editor.dll</HintPath>
     </Reference>
     <Reference Include="PsdPlugin">
       <HintPath>Library\ScriptAssemblies\PsdPlugin.dll</HintPath>
@@ -866,6 +856,9 @@
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.SpatialTracking">
+      <HintPath>Library\ScriptAssemblies\UnityEngine.SpatialTracking.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.2D.Tilemap.Extras.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.2D.Tilemap.Extras.Editor.dll</HintPath>
     </Reference>
@@ -887,6 +880,9 @@
     <Reference Include="Unity.Burst">
       <HintPath>Library\ScriptAssemblies\Unity.Burst.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.XR.LegacyInputHelpers">
+      <HintPath>Library\ScriptAssemblies\UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.VisualScripting.Shared.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Shared.Editor.dll</HintPath>
     </Reference>
@@ -899,6 +895,9 @@
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.XR.LegacyInputHelpers">
+      <HintPath>Library\ScriptAssemblies\UnityEditor.XR.LegacyInputHelpers.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Mathematics.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
     </Reference>
@@ -907,6 +906,9 @@
     </Reference>
     <Reference Include="Unity.2D.SpriteShape.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.2D.SpriteShape.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.SpatialTracking">
+      <HintPath>Library\ScriptAssemblies\UnityEditor.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Common.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.2D.Common.Editor.dll</HintPath>

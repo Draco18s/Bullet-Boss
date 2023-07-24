@@ -8,7 +8,7 @@ public class RandomBossSelector : MonoBehaviour
 {
 	public static RandomBossSelector instance;
 	public GameObject[] BossChoices;
-	public Transform GameLayer;
+	//public Transform GameLayer;
 
 	void Start()
 	{

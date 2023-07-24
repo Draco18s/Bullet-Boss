@@ -125,7 +125,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1518833181630772388}
-  - component: {fileID: 1518833181630772391}
   - component: {fileID: 7918820030842841993}
   - component: {fileID: 6059809059804031632}
   m_Layer: 6
@@ -152,52 +151,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1518833181630772391
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1518833181630772394}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6cb1ae3f8ee4eb499818d66a391b685, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Idle:
-  - {fileID: 156519461, guid: 1e8e50f77fe68d346acae5d1cbc099ff, type: 3}
-  - {fileID: 1606330807, guid: 1e8e50f77fe68d346acae5d1cbc099ff, type: 3}
-  - {fileID: 697145853, guid: 1e8e50f77fe68d346acae5d1cbc099ff, type: 3}
-  - {fileID: -1941839017, guid: 1e8e50f77fe68d346acae5d1cbc099ff, type: 3}
-  - {fileID: 1333175804, guid: 1e8e50f77fe68d346acae5d1cbc099ff, type: 3}
-  - {fileID: 545064310, guid: 1e8e50f77fe68d346acae5d1cbc099ff, type: 3}
-  Attack:
-  - {fileID: 1933469592, guid: d59f3d72918d13a418ef2d33dcc85317, type: 3}
-  - {fileID: -462651915, guid: d59f3d72918d13a418ef2d33dcc85317, type: 3}
-  - {fileID: 884934376, guid: d59f3d72918d13a418ef2d33dcc85317, type: 3}
-  - {fileID: 1072246017, guid: d59f3d72918d13a418ef2d33dcc85317, type: 3}
-  Move:
-  - {fileID: -1401341479, guid: c1b0ffe39d3f5e14fa0c3c748de0eee6, type: 3}
-  - {fileID: -948308584, guid: c1b0ffe39d3f5e14fa0c3c748de0eee6, type: 3}
-  - {fileID: -528672150, guid: c1b0ffe39d3f5e14fa0c3c748de0eee6, type: 3}
-  bulletPrefab: {fileID: 4980912360934297282, guid: 015b58317c5c8ee4bbbfb36d3ed80292, type: 3}
-  muzzle: {fileID: 1518833180786470887}
-  bulletTexture: {fileID: 21300000, guid: 9af881480caaa7b45aaac80ae589439e, type: 3}
-  attackRate: 0.2
-  speed: 1.7
-  MaxBombs: 4
-  MaxHP: 30
-  CurHP: 30
-  FirePressed: 0
-  LeftPressed: 0
-  RigtPressed: 0
-  BombPressed: 0
-  Training: 1
-  score: 0
-  scoreOffset: 0
-  damageScore: 0
-  decisionPeriod: 1
-  decisionOutcomeCheckDelay: 0.75
 --- !u!58 &7918820030842841993
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -36,7 +36,8 @@ namespace Assets.draco18s.ui{
 				transform.parent.GetComponent<IInventoryDropTarget>().Clear(this);
 			}
 			isDragging = true;
-			transform.parent = Inventory.instance.transform;
+			//transform.parent = Inventory.instance.transform;
+			transform.SetParent(Inventory.instance.transform, false);
 		}
 
 		public virtual void OnPointerUp(PointerEventData eventData)
@@ -63,8 +64,9 @@ namespace Assets.draco18s.ui{
 				dat.position = Input.mousePosition;
 
 				List<RaycastResult> results = new List<RaycastResult>();
-				GraphicRaycaster raycaster = GetTopLevelRaycaster(transform);
+				GraphicRaycaster raycaster = GetComponentInParent<GraphicRaycaster>();
 				raycaster.Raycast(dat, results);
+				results.RemoveAll(r => r.gameObject == gameObject);
 				if (results.Count > 0)
 				{
 					target = results[0].gameObject.GetComponent<IInventoryDropTarget>();
@@ -72,10 +74,10 @@ namespace Assets.draco18s.ui{
 					if (didAttach)
 					{
 						isAttached = true;
+						//Inventory.instance.Remove(this);
 						return;
 					}
 					transform.parent = scrollTransform;
-					Inventory.instance.Remove(this);
 				}
 				else
 				{

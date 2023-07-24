@@ -6,7 +6,7 @@ namespace Assets.draco18s
 {
 	public enum PatternDataKey
 	{
-		Damage,Size,Speed,FireShot,Rotation,
+		Invalid,Size,Speed,FireShot,Rotation,
 		Length
 	}
 }

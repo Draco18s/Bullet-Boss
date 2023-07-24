@@ -32,6 +32,8 @@ namespace Assets.draco18s.ui
 			if(Input.GetButtonDown("OpenInventory"))
 			{
 				canvas.enabled = !canvas.enabled;
+				if (!canvas.enabled)
+					UpgradeSlotGroup.instance.Hide();
 			}
 		}
 

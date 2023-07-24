@@ -1,7 +1,10 @@
 using System;
 using System.Collections.Generic;
+using Assets.draco18s.ui;
+using Assets.draco18s.util;
 using Google.Protobuf.WellKnownTypes;
 using JetBrains.Annotations;
+using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -11,10 +14,10 @@ namespace Assets.draco18s.training
 	{
 		public PatternData pattern;
 		public Transform[] muzzles;
-		public Sprite bulletTexture;
-		public GameObject bulletPrefab;
+		public SerializableDictionary<StatAttribute, float> gunBaseModifiers;
 		protected GameObject bulletClone;
 		protected Dictionary<PatternDataKey, float> currentValues = PopulateDict();
+		protected HardPoint mountingPoint;
 
 		public PatternData Pattern => pattern;
 		
@@ -42,11 +45,12 @@ namespace Assets.draco18s.training
 					minFireDelay = 0.6f;
 				}
 				pattern.ReloadType = value;
+				heatOrClip = Mathf.RoundToInt(MaxCapacity * actualClip);
 			}
 		}
 
 		[SerializeField]
-		public float MaxCapacity { get; set; } = 1;
+		public float MaxCapacity => GetStat(StatAttribute.Capacity, (a, b) => a * b);
 		[SerializeField]
 		public float CooldownTime { get; set; } = 0;
 		public float timeAlive;
@@ -74,7 +78,6 @@ namespace Assets.draco18s.training
 		void OnValidate()
 		{
 			pattern ??= new PatternData();
-			pattern.childPattern ??= new PatternData();
 		}
 
 		[UsedImplicitly]
@@ -91,12 +94,6 @@ namespace Assets.draco18s.training
 		public void Init()
 		{
 			timeAlive = 0;
-			if (pattern.childPattern != null)
-			{
-				bulletClone = Instantiate(bulletPrefab);
-				bulletClone.SetActive(false);
-				bulletClone.GetComponent<Bullet>().SetPattern(pattern.childPattern);
-			}
 
 			if (pattern.timeline.data.Count > 0) return;
 			foreach (PatternDataKey d in GetAllowedValues())
@@ -112,6 +109,23 @@ namespace Assets.draco18s.training
 			ReloadType = ReloadType;
 		}
 
+		public void SetMounting(HardPoint point)
+		{
+			mountingPoint = point;
+		}
+
+		public void SetShell(InventoryItem item)
+		{
+			Destroy(bulletClone);
+			bulletClone = null;
+			if (item == null) return;
+
+			bulletClone = Instantiate(item.upgradeTypeData.relevantPrefab);
+			bulletClone.SetActive(false);
+			bulletClone.GetComponent<Bullet>().SetPattern(item.upgradeTypeData.relevantPattern);
+			bulletClone.GetComponent<SpriteRenderer>().sprite = item.upgradeTypeData.image;
+		}
+
 		[UsedImplicitly]
 		void Update()
 		{
@@ -121,7 +135,12 @@ namespace Assets.draco18s.training
 			{
 				currentValues[d] = pattern.dataValues[d] * pattern.timeline.Evaluate(d, timeAlive * (pattern.Lifetime / 10));
 			}
-			transform.Rotate(Vector3.forward, currentValues[PatternDataKey.Rotation] * dt, Space.Self);
+			transform.Rotate(Vector3.forward, currentValues[PatternDataKey.Rotation] * dt * GetStat(StatAttribute.GunSpeed, (a, b) => a * b), Space.Self);
+
+			float ang = GetStat(StatAttribute.AngleRestriction, (a, b) => a + b) / 2;
+			float f = transform.localEulerAngles.z - pattern.StartAngle;
+			if (f > 180) f -= 360;
+			transform.localEulerAngles = transform.localEulerAngles.ReplaceZ(Mathf.Clamp(f, -ang, ang) + pattern.StartAngle);
 
 			if (ReloadType == GunType.None) return;
 			if (ReloadType == GunType.SingleShot || ReloadType == GunType.Shotgun)
@@ -145,15 +164,15 @@ namespace Assets.draco18s.training
 				actualClip = 12;
 			}
 
-			fireDelay -= dt;
-			
+			fireDelay -= dt * GetStat(StatAttribute.FiringRate, (a, b) => a*b);
+
 			if (ReloadType == GunType.ClipSize)
 			{
 				if (heatOrClip <= 0)
 				{
 					if (reloadDelay <= 0)
 						reloadDelay = actualCooldown;
-					reloadDelay -= dt;
+					reloadDelay -= dt * GetStat(StatAttribute.Reload, (a, b) => a * b);
 					if (reloadDelay <= 0)
 						heatOrClip = Mathf.RoundToInt(MaxCapacity * actualClip);
 					return;
@@ -174,7 +193,7 @@ namespace Assets.draco18s.training
 				{
 					if (reloadDelay <= 0)
 						reloadDelay = actualCooldown * 2;
-					reloadDelay -= dt;
+					reloadDelay -= dt * GetStat(StatAttribute.Reload, (a, b) => a * b);
 					if (reloadDelay <= 0)
 						heatOrClip = Mathf.RoundToInt(MaxCapacity * actualClip);
 					return;
@@ -186,14 +205,13 @@ namespace Assets.draco18s.training
 				{
 					if (reloadDelay <= 0)
 						reloadDelay = actualCooldown * 2;
-					reloadDelay -= dt;
+					reloadDelay -= dt * GetStat(StatAttribute.Reload, (a, b) => a * b);
 					if (reloadDelay <= 0)
 						heatOrClip = Mathf.RoundToInt(MaxCapacity * actualClip);
 					return;
 				}
 
 			}
-
 
 			if (currentValues[PatternDataKey.FireShot] >= 0.99f)
 			{
@@ -224,22 +242,33 @@ namespace Assets.draco18s.training
 			}
 		}
 
+		private float GetStat(StatAttribute stat, Func<float,float,float> combine)
+		{
+			float r = 1;
+			if(gunBaseModifiers.TryGetValue(stat, out var modifier))
+				r = combine(r, modifier);
+			r = combine(r, mountingPoint.GetStat(stat, combine));
+			return r;
+		}
+
 		public void Fire()
 		{
 			if (ReloadType == GunType.None) return;
 			if (fireDelay > 0 || heatOrClip <= 0) return;
+			if(muzzles.Length == 0) Debug.LogError("Gun barrel has no muzzles!");
 			foreach (Transform tr in muzzles)
 				Fire(tr);
 			fireDelay = minFireDelay;
 		}
+
 		private void Fire(Transform muz)
 		{
-			GameObject go = Instantiate(bulletClone, muz.position, muz.transform.rotation, RandomBossSelector.instance.GameLayer);
+			GameObject go = Instantiate(bulletClone, muz.position, muz.transform.rotation, GameTransform.instance.transform);
+			Debug.Log(go.name);
 			go.SetActive(true);
 			go.layer = gameObject.layer;
-			go.GetComponent<SpriteRenderer>().sprite = bulletTexture;
 			Bullet b = go.GetComponent<Bullet>();
-			b.SetPattern(pattern.childPattern);
+			SetBulletDetails(b);
 
 			if (ReloadType == GunType.SingleShot) return;
 			if (ReloadType == GunType.Shotgun)
@@ -251,13 +280,12 @@ namespace Assets.draco18s.training
 				for (int i = 1; i < (float)heatOrClip / muzzles.Length; i++)
 				{
 					randAngle = Random.value * spreadAngle - (spreadAngle / 2);
-					go = Instantiate(bulletClone, muz.position, muz.transform.rotation, RandomBossSelector.instance.GameLayer);
+					go = Instantiate(bulletClone, muz.position, muz.transform.rotation, GameTransform.instance.transform);
 					go.SetActive(true);
 					go.transform.Rotate(Vector3.forward, randAngle);
-					go.GetComponent<SpriteRenderer>().sprite = bulletTexture;
 					b = go.GetComponent<Bullet>();
-					b.SetPattern(pattern.childPattern);
 					b.timeAlive = (Random.value - 0.5f) * 0.15f;
+					SetBulletDetails(b);
 				}
 				return;
 			}
@@ -274,17 +302,25 @@ namespace Assets.draco18s.training
 				{
 					//randAngle = Random.value * spreadAngle - (spreadAngle / 2);
 					angle += angleDelta;
-					go = Instantiate(bulletClone, muz.position, muz.transform.rotation, RandomBossSelector.instance.GameLayer);
+					go = Instantiate(bulletClone, muz.position, muz.transform.rotation, GameTransform.instance.transform);
 					go.SetActive(true);
 					go.transform.Rotate(Vector3.forward, angle);
-					go.GetComponent<SpriteRenderer>().sprite = bulletTexture;
 					b = go.GetComponent<Bullet>();
-					b.SetPattern(pattern.childPattern);
 					b.timeAlive = (Random.value - 0.5f) * 0.15f;
+					SetBulletDetails(b);
 				}
 				return;
 			}
 			heatOrClip--;
+		}
+
+		private void SetBulletDetails(Bullet bul)
+		{
+			//bul.SetPattern(item.upgradeTypeData.relevantPattern);
+			bul.SetDamage(GetStat(StatAttribute.Damage, (a, b) => a + b));
+			bul.SetLifetime(GetStat(StatAttribute.Lifetime, (a, b) => a * b));
+
+			bul.SetStat(PatternDataKey.Speed, GetStat(StatAttribute.BulletSpeed, (a, b) => a * b));
 		}
 
 		public Timeline GetTimeline()

@@ -57,7 +57,7 @@ Transform:
   m_GameObject: {fileID: 2586209270828630267}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1.75, y: 1.75, z: 1.75}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 587376441919016367}
@@ -131,7 +131,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2586209271111932935}
   - component: {fileID: 2586209271111932933}
-  - component: {fileID: 8803803547100533978}
   m_Layer: 7
   m_Name: pd-sprayer
   m_TagString: Untagged
@@ -146,7 +145,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2586209271111932936}
-  m_LocalRotation: {x: 0, y: 0, z: -0.9873212, w: 0.15873538}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -154,7 +153,7 @@ Transform:
   - {fileID: 2586209270828630266}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -161.733}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2586209271111932933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,8 +177,8 @@ MonoBehaviour:
       - 0
       - 0
       - 0
-      - 1
-      - 28.85
+      - 0
+      - 0
     timeline:
       duration: 0
       data:
@@ -213,6 +212,8 @@ MonoBehaviour:
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
+    childPattern:
+      rid: 1000
   muzzles:
   - {fileID: 587376441919016367}
   - {fileID: 6736806553562953194}
@@ -220,26 +221,41 @@ MonoBehaviour:
   - {fileID: 6736806555136696717}
   - {fileID: 6736806554204389252}
   - {fileID: 6736806553920399062}
-  bulletTexture: {fileID: 21300000, guid: 6f4f64b717078d94b8a6ec23a9e0b707, type: 3}
-  bulletPrefab: {fileID: 5986200609076484592, guid: ef8f1cae4506d0744be3b7183e2cec3a, type: 3}
+  gunBaseModifiers:
+    keys: 030000000400000002000000
+    values:
+    - 3
+    - 360
+    - 2
   timeAlive: 0
   minFireDelay: 0.6
---- !u!58 &8803803547100533978
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2586209271111932936}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.7
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
+    - rid: 1000
+      type: {class: PatternData, ns: Assets.draco18s, asm: Assembly-CSharp}
+      data:
+        ReloadType: 0
+        Lifetime: 10
+        StartAngle: 0
+        TimeOffset: 0
+        dataValues:
+          keys: 0000000001000000020000000300000004000000
+          values:
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+        timeline:
+          duration: 0
+          data:
+            keys: 
+            values: []
+        childPattern:
+          rid: -2
 --- !u!1 &6736806553562953195
 GameObject:
   m_ObjectHideFlags: 0
