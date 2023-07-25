@@ -4,6 +4,7 @@ using JetBrains.Annotations;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 namespace Assets.draco18s.ui
 {
@@ -81,6 +82,9 @@ namespace Assets.draco18s.ui
 				r = combine(r, modifier);
 			}
 
+			if(attachedShell != null && attachedShell.upgradeTypeData.attributeModifiers.TryGetValue(stat, out var attributeModifier))
+				r = combine(r, attributeModifier);
+
 			foreach (InventoryItem item in attachedUpgrades)
 			{
 				if(!item.upgradeTypeData.attributeModifiers.ContainsKey(stat)) continue;
@@ -116,6 +120,17 @@ namespace Assets.draco18s.ui
 				gun.SetShell(attachedShell);
 				attachedBarrel = item;
 			}
+		}
+
+		public PatternEffects GetPatternModifiers()
+		{
+			PatternEffects ret = new PatternEffects();
+			foreach (InventoryItem item in attachedUpgrades)
+			{
+				ret = ret.Merge(item.upgradeTypeData.patternModifiers);
+			}
+
+			return ret;
 		}
 	}
 }

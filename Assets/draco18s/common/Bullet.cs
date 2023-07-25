@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using Assets.draco18s.util;
 using JetBrains.Annotations;
 using UnityEngine;
@@ -70,20 +71,24 @@ namespace Assets.draco18s.training
 			foreach (PatternDataKey d in GetAllowedValues())
 			{
 				if(pattern.timeline.data.ContainsKey(d)) continue;
-				pattern.timeline.data.Add(d, new AnimationCurve()
+				AnimationCurve c = new AnimationCurve()
 				{
 					preWrapMode = WrapMode.ClampForever,
 					postWrapMode = WrapMode.ClampForever
-				});
-			}
-			pattern.timeline.data[PatternDataKey.Speed].AddKey(0, 3);
-			pattern.timeline.data[PatternDataKey.Size].AddKey(0, 1);
-			pattern.timeline.data[PatternDataKey.Speed].AddKey(10, 3);
-			pattern.timeline.data[PatternDataKey.Size].AddKey(10, 1);
+				};
+				if (d == PatternDataKey.Speed)
+				{
+					c.AddKey(0, 3);
+					c.AddKey(10, 3);
+				}
 
-			pattern.dataValues[PatternDataKey.Size] = 3;
-			pattern.dataValues[PatternDataKey.Speed] = 1;
-			pattern.dataValues[PatternDataKey.Rotation] = 72;
+				if (d == PatternDataKey.Size)
+				{
+					c.AddKey(0, 1);
+					c.AddKey(10, 1);
+				}
+				pattern.timeline.data.Add(d, c);
+			}
 		}
 
 		[UsedImplicitly]
@@ -115,7 +120,29 @@ namespace Assets.draco18s.training
 			}
 			transform.Translate(new Vector3(currentValues[PatternDataKey.Speed] * dt, 0, dt), Space.Self);
 			transform.localScale = Vector3.one * currentValues[PatternDataKey.Size] / 3;
-			transform.Rotate(Vector3.forward, currentValues[PatternDataKey.Rotation] * dt, Space.Self);
+
+			if (pattern.effects.HomingShots)
+			{
+				float bestAngle = 180;
+				foreach (Collider2D c in Physics2D.OverlapCircleAll(transform.position, 10, LayerMask.GetMask(new[] { "AIPlayer" })))
+				{
+					Transform playerTransform = c.transform;
+
+					Vector3 relativePos = playerTransform.position - transform.position;
+					Vector3 forward = transform.right;
+					var angle = Vector3.SignedAngle(relativePos.ReplaceZ(0), forward, transform.forward);
+
+					if (Math.Abs(angle) < Math.Abs(bestAngle))
+					{
+						bestAngle = angle;
+					}
+				}
+				transform.Rotate(Vector3.forward, Math.Max(Math.Abs(currentValues[PatternDataKey.Rotation]), 0.25f) * pattern.dataValues[PatternDataKey.Rotation] * dt * Mathf.Sign(-bestAngle) * 0.2f, Space.Self);
+			}
+			else
+			{
+				transform.Rotate(Vector3.forward, currentValues[PatternDataKey.Rotation] * dt * (pattern.effects.MirrorSpreadShots ? -1 : 1), Space.Self);
+			}
 		}
 
 		[UsedImplicitly]

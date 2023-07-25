@@ -14,16 +14,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 1
   image: {fileID: 1300002276, guid: 0b8c38ada7c558140870b5702c367d60, type: 3}
-  upgradeID: gun1
+  upgradeID: Cannon
   upgradeName: Basic Cannon
   description: Fires a single bullet
   rarityTier: 0
   relativeRarityInTier: 100
+  attributeModifiers:
+    keys: 
+    values: []
   relevantPattern:
     ReloadType: 1
     Lifetime: 10
     StartAngle: 0
     TimeOffset: 0
+    isEditable: 0
+    effects:
+      MirrorSpreadShots:
+        v: 0
+      HomingShots:
+        v: 0
+    image: {fileID: 0}
     dataValues:
       keys: 0000000001000000020000000300000004000000
       values:
@@ -37,4 +47,16 @@ MonoBehaviour:
       data:
         keys: 
         values: []
+    childPattern:
+      rid: -2
   relevantPrefab: {fileID: 2206095113025173180, guid: 9055253f30e2e1340a675e824562f2d9, type: 3}
+  patternModifiers:
+    MirrorSpreadShots:
+      v: 0
+    HomingShots:
+      v: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }

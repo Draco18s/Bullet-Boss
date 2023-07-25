@@ -21,7 +21,8 @@ namespace Assets.draco18s.ui{
 			scrollTransform = transform.parent;
 			if(upgradeTypeData == null)
 				Destroy(gameObject);
-			GetComponent<Image>().sprite = upgradeTypeData.image;
+			var img = GetComponent<Image>();
+		    img.sprite = upgradeTypeData.image;
 	    }
 
 		public virtual void OnPointerDown(PointerEventData eventData)
@@ -33,7 +34,7 @@ namespace Assets.draco18s.ui{
 			//	return;
 			if (isAttached)
 			{
-				transform.parent.GetComponent<IInventoryDropTarget>().Clear(this);
+				transform.parent?.GetComponent<IInventoryDropTarget>()?.Clear(this);
 			}
 			isDragging = true;
 			//transform.parent = Inventory.instance.transform;
@@ -74,10 +75,9 @@ namespace Assets.draco18s.ui{
 					if (didAttach)
 					{
 						isAttached = true;
-						//Inventory.instance.Remove(this);
 						return;
 					}
-					transform.parent = scrollTransform;
+					transform.SetParent(scrollTransform);
 				}
 				else
 				{

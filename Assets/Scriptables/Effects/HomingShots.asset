@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2ef877f22a8be024787ac225f5cd6a6f, type: 3}
-  m_Name: Lifetime1
+  m_Name: HomingShots
   m_EditorClassIdentifier: 
   type: 5
-  image: {fileID: -1422517691, guid: 0b8c38ada7c558140870b5702c367d60, type: 3}
-  upgradeID: Lifetime1
-  upgradeName: Longer Lived Bullets
-  description: Increased bullet lifetime
-  rarityTier: 1
+  image: {fileID: 67620644, guid: 0b8c38ada7c558140870b5702c367d60, type: 3}
+  upgradeID: HomingShots
+  upgradeName: Homing
+  description: Shots home in on the player
+  rarityTier: 3
   relativeRarityInTier: 50
   attributeModifiers:
-    keys: 08000000
+    keys: 06000000
     values:
-    - 1.25
+    - 0.95
   relevantPattern:
     ReloadType: 0
     Lifetime: 10
@@ -31,6 +31,8 @@ MonoBehaviour:
     isEditable: 0
     effects:
       MirrorSpreadShots:
+        v: 0
+      HomingShots:
         v: 0
     image: {fileID: 0}
     dataValues:
@@ -51,7 +53,9 @@ MonoBehaviour:
   relevantPrefab: {fileID: 0}
   patternModifiers:
     MirrorSpreadShots:
-      v: 0
+      v: -1
+    HomingShots:
+      v: 1
   references:
     version: 2
     RefIds:

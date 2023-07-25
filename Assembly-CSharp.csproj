@@ -66,6 +66,7 @@
     <Compile Include="Assets\draco18s\ui\GunSlotTarget.cs" />
     <Compile Include="Assets\draco18s\ui\InventoryItem.cs" />
     <Compile Include="Assets\draco18s\ui\CustomScrollbar.cs" />
+    <Compile Include="Assets\draco18s\bulletboss\GameTransform.cs" />
     <Compile Include="Assets\draco18s\interfaces\IHasPattern.cs" />
     <Compile Include="Assets\UGUIMeshLab\UIPolygon.cs" />
     <Compile Include="Assets\draco18s\ui\Inventory.cs" />
@@ -76,6 +77,7 @@
     <Compile Include="Assets\draco18s\ui\PercentageBar.cs" />
     <Compile Include="Assets\UGUIMeshLab\UIMeshLine.cs" />
     <Compile Include="Assets\draco18s\common\Bullet.cs" />
+    <Compile Include="Assets\draco18s\patterns\PatternEffects.cs" />
     <Compile Include="Assets\draco18s\common\GunBarrel.cs" />
     <Compile Include="Assets\draco18s\util\SerializableDictionary.cs" />
     <Compile Include="Assets\draco18s\patterns\PatternData.cs" />
@@ -84,6 +86,7 @@
     <Compile Include="Assets\draco18s\interfaces\GunType.cs" />
     <Compile Include="Assets\Origin\Script\RayCastCheck.cs" />
     <Compile Include="Assets\draco18s\bulletboss\PlayerHealth.cs" />
+    <Compile Include="Assets\draco18s\util\TriValue.cs" />
     <Compile Include="Assets\BackgroundScroll.cs" />
     <Compile Include="Assets\Origin\Script\AddPoint.cs" />
     <Compile Include="Assets\draco18s\interfaces\IDamageDealer.cs" />
@@ -92,7 +95,6 @@
     <Compile Include="Assets\draco18s\training\BossHealth.cs" />
     <Compile Include="Assets\draco18s\interfaces\IInventoryDropTarget.cs" />
     <Compile Include="Assets\draco18s\bulletboss\UpgradeScriptable.cs" />
-    <Compile Include="Assets\draco18s\bulletboss\GameTransform.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

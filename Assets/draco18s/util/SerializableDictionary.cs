@@ -50,10 +50,12 @@ namespace Assets.draco18s.util
 		{
 			keys.Clear();
 			values.Clear();
+			this.Clear();
 			foreach (KeyValuePair<TKey, TValue> pair in other)
 			{
 				keys.Add(pair.Key);
 				values.Add(pair.Value);
+				this.Add(pair.Key, pair.Value);
 			}
 		}
 

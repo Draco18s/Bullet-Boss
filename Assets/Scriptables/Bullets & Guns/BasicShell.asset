@@ -27,17 +27,105 @@ MonoBehaviour:
     Lifetime: 10
     StartAngle: 0
     TimeOffset: 0
+    isEditable: 1
+    effects:
+      MirrorSpreadShots:
+        v: 0
+      HomingShots:
+        v: 0
+    image: {fileID: 0}
     dataValues:
       keys: 0000000001000000020000000300000004000000
       values:
-      - 1
-      - 1
+      - 0
+      - 3
       - 3
       - 0
-      - 0
+      - 72
     timeline:
       duration: 10
       data:
-        keys: 
-        values: []
+        keys: 010000000200000004000000
+        values:
+        - serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0.33333334
+          - serializedVersion: 3
+            time: 10
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 0
+        - serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0.33333334
+          - serializedVersion: 3
+            time: 10
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 0
+        - serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 0
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0.33333334
+          - serializedVersion: 3
+            time: 10
+            value: 0
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 0
+    childPattern:
+      rid: -2
   relevantPrefab: {fileID: 5986200609076484592, guid: ef8f1cae4506d0744be3b7183e2cec3a, type: 3}
+  patternModifiers:
+    MirrorSpreadShots:
+      v: 0
+    HomingShots:
+      v: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }

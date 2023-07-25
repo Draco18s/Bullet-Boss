@@ -61,10 +61,11 @@
     <Compile Include="Assets\Origin\Script\Editor\VertexLineEditor.cs" />
     <Compile Include="Assets\UGUIMeshLab\Editor\MenuExtender.cs" />
     <Compile Include="Assets\UGUIMeshLab\Editor\PropertyDrawerCollection.cs" />
+    <Compile Include="Assets\draco18s\Editor\PatternEditor.cs" />
     <Compile Include="Assets\codeandweb.com\Editor\SpritesheetImporter.cs" />
+    <Compile Include="Assets\draco18s\Editor\TriValueDrawer.cs" />
     <Compile Include="Assets\draco18s\Editor\CustomScrollbarEd.cs" />
     <Compile Include="Assets\codeandweb.com\Editor\UIImageSetSizeAndPivot.cs" />
-    <Compile Include="Assets\draco18s\Editor\PatternEditor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\codeandweb.com\Editor\SettingsTexturePackerImporter.txt" />

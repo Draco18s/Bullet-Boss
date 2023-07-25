@@ -71,9 +71,14 @@ namespace Assets.draco18s
 		public void AccessSubsystem()
 		{
 			PatternData hasPattern = targetPattern.childPattern;
+			
+			if (targetPattern == targetPatternObj.Pattern && (hasPattern == null || !hasPattern.isEditable))
+			{
+				hasPattern = targetPatternObj.GetSubsystem();
+			}
 			if (hasPattern == null || !hasPattern.isEditable) return;
 
-			subButton.interactable = (hasPattern.childPattern != null && hasPattern.childPattern.isEditable);
+			subButton.interactable = hasPattern.childPattern is { isEditable: true };
 			supButton.interactable = true;
 			isEditingGun = !isEditingGun;
 			ChangeTarget(hasPattern);
@@ -114,7 +119,15 @@ namespace Assets.draco18s
 			attributeDropdown.AddOptions(list.Select(x => x.ToString()).ToList());
 			attributeDropdown.SetValueWithoutNotify(0);
 			reloadDropdown.SetValueWithoutNotify((int)tl.ReloadType);
-			subButton.interactable = targetPattern.childPattern != null;
+
+			if (targetPattern == targetPatternObj.Pattern && (targetPattern.childPattern == null || !targetPattern.childPattern.isEditable))
+			{
+				subButton.interactable = targetPatternObj.GetSubsystem() is { isEditable: true };
+			}
+			else
+			{
+				subButton.interactable = targetPattern.childPattern is { isEditable: true };
+			}
 			//capField.SetValueWithoutNotify(tl.Pattern.MaxCapacity * 10);
 			//bool isGun = tl is GunBarrel && tl.ReloadType != GunType.None;
 			//bool isBullet = tl is Bullet;

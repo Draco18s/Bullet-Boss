@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Assets.draco18s;
 using Assets.draco18s.util;
+using UnityEditor;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Upgrade", menuName = "BulletBoss/Upgrade", order = 1)]
@@ -32,6 +33,7 @@ public class UpgradeScriptable : ScriptableObject
 
 	public PatternData relevantPattern;
 	public GameObject relevantPrefab;
+	public PatternEffects patternModifiers;
 
 	void OnValidate()
 	{

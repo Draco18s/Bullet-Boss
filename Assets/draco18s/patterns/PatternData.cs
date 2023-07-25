@@ -15,6 +15,8 @@ namespace Assets.draco18s
 		public float StartAngle;
 		public float TimeOffset;
 		public bool isEditable;
+		public PatternEffects effects;
+		public Sprite image;
 
 		public SerializableDictionary<PatternDataKey, float> dataValues = PopulateDict();
 		public Timeline timeline = new Timeline();
@@ -40,8 +42,16 @@ namespace Assets.draco18s
 			TimeOffset = other.TimeOffset;
 			dataValues.CopyFrom(other.dataValues);
 			timeline.CopyFrom(other.timeline);
-			if(includeChildPatterns)
+			image = other.image;
+			isEditable = other.isEditable;
+			effects = other.effects;
+			if (includeChildPatterns)
 				childPattern = other.childPattern;
+		}
+
+		public void ApplyEffects(PatternEffects changes)
+		{
+			effects = effects.Merge(changes);
 		}
 	}
 }

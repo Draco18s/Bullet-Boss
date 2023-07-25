@@ -20,6 +20,10 @@ public class PatternEditor : PropertyDrawer
 		position.x += 14;
 		position.width -= 14;
 		position.y += EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
+		EditorGUI.PropertyField(position, property.FindPropertyRelative("isEditable"), new GUIContent("Editable"));
+		position.y += EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
+		EditorGUI.PropertyField(position, property.FindPropertyRelative("image"), new GUIContent("Sprite"));
+		position.y += EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
 		EditorGUI.PropertyField(position, property.FindPropertyRelative("ReloadType"), new GUIContent("Reload Type"));
 		position.y += EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
 		EditorGUI.PropertyField(position, property.FindPropertyRelative("Lifetime"), new GUIContent("Lifetime"));
@@ -81,6 +85,6 @@ public class PatternEditor : PropertyDrawer
 		SerializedProperty dataProp = property.FindPropertyRelative("dataValues");
 		SerializedProperty timeProp = property.FindPropertyRelative("timeline");
 		SerializedProperty childProp = property.FindPropertyRelative("childPattern");
-		return EditorGUIUtility.singleLineHeight * 5 + EditorGUIUtility.standardVerticalSpacing * 8 + EditorGUI.GetPropertyHeight(dataProp) + EditorGUI.GetPropertyHeight(timeProp) + EditorGUI.GetPropertyHeight(childProp);
+		return EditorGUIUtility.singleLineHeight * 7 + EditorGUIUtility.standardVerticalSpacing * 8 + EditorGUI.GetPropertyHeight(dataProp) + EditorGUI.GetPropertyHeight(timeProp) + EditorGUI.GetPropertyHeight(childProp);
 	}
 }
