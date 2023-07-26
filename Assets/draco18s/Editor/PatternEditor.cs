@@ -85,6 +85,6 @@ public class PatternEditor : PropertyDrawer
 		SerializedProperty dataProp = property.FindPropertyRelative("dataValues");
 		SerializedProperty timeProp = property.FindPropertyRelative("timeline");
 		SerializedProperty childProp = property.FindPropertyRelative("childPattern");
-		return EditorGUIUtility.singleLineHeight * 7 + EditorGUIUtility.standardVerticalSpacing * 8 + EditorGUI.GetPropertyHeight(dataProp) + EditorGUI.GetPropertyHeight(timeProp) + EditorGUI.GetPropertyHeight(childProp);
+		return EditorGUIUtility.singleLineHeight * 7 + EditorGUIUtility.standardVerticalSpacing * 9 + EditorGUI.GetPropertyHeight(dataProp) + EditorGUI.GetPropertyHeight(timeProp) + EditorGUI.GetPropertyHeight(childProp);
 	}
 }

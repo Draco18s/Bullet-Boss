@@ -5,28 +5,31 @@ using System.Collections.Generic;
 using Assets.draco18s;
 using UnityEngine;
 
-public class PlayerHealth : MonoBehaviour
+namespace Assets.draco18s.bulletboss
 {
-	public GameObject playerShip;
-	public GameObject heartPrefab;
-	public GameObject dimHeartPrefab;
-	private IDamageDealer ship;
-
-	void Start()
+	public class PlayerHealth : MonoBehaviour
 	{
-		//ship = playerShip.GetComponent<IDamageDealer>();
-		//ship.OnTakeDamage.AddListener(Recalculate);
-	}
+		public GameObject playerShip;
+		public GameObject heartPrefab;
+		public GameObject dimHeartPrefab;
+		private IDamageDealer ship;
 
-	public void Recalculate()
-	{
-		transform.Clear();
-		for(int i = 0; i < ship.GetMaxHealth(); i++)
+		void Start()
 		{
-			if(i+1 <= ship.GetCurrentHealth())
-				Instantiate(heartPrefab, transform);
-			else
-				Instantiate(dimHeartPrefab, transform);
+			//ship = playerShip.GetComponent<IDamageDealer>();
+			//ship.OnTakeDamage.AddListener(Recalculate);
+		}
+
+		public void Recalculate()
+		{
+			transform.Clear();
+			for (int i = 0; i < ship.GetMaxHealth(); i++)
+			{
+				if (i + 1 <= ship.GetCurrentHealth())
+					Instantiate(heartPrefab, transform);
+				else
+					Instantiate(dimHeartPrefab, transform);
+			}
 		}
 	}
 }

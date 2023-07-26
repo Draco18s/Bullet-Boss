@@ -23,14 +23,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2286487779407507901}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.00008726013, w: 1}
   m_LocalPosition: {x: 0.3079, y: 0.083, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5858023278004486257}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.01}
 --- !u!1 &7020408186383510336
 GameObject:
   m_ObjectHideFlags: 0
@@ -159,7 +159,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7134596687949941138}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fb6b9597ffe6b043af50ec15de6a9fd, type: 3}
+  m_Script: {fileID: 11500000, guid: 0a0b4575064d5a8499bf8b345fec9147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pattern:
@@ -168,6 +168,12 @@ MonoBehaviour:
     StartAngle: 0
     TimeOffset: 0
     isEditable: 0
+    effects:
+      MirrorSpreadShots:
+        v: 0
+      HomingShots:
+        v: 0
+    image: {fileID: 0}
     dataValues:
       keys: 0000000001000000020000000300000004000000
       values:
@@ -205,6 +211,12 @@ MonoBehaviour:
         StartAngle: 0
         TimeOffset: 0
         isEditable: 0
+        effects:
+          MirrorSpreadShots:
+            v: 0
+          HomingShots:
+            v: 0
+        image: {fileID: 0}
         dataValues:
           keys: 0000000001000000020000000300000004000000
           values:
@@ -243,11 +255,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7472189429871917685}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.00008726013, w: 1}
   m_LocalPosition: {x: 0.3079, y: -0.087, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5858023278004486257}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -0.01}

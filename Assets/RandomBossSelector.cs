@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Assets.draco18s;
+using Assets.draco18s.bulletboss;
 using Assets.draco18s.training;
 using UnityEngine;
 

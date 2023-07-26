@@ -12,34 +12,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ef877f22a8be024787ac225f5cd6a6f, type: 3}
   m_Name: CapacityForVelocity
   m_EditorClassIdentifier: 
-  type: 5
-  image: {fileID: 292422020, guid: 0b8c38ada7c558140870b5702c367d60, type: 3}
-  upgradeID: CapacityForVelocity
-  upgradeName: Small Shells
-  description: Increases magazine size in exchange for bullet velocity
-  rarityTier: 1
-  relativeRarityInTier: 100
-  attributeModifiers:
-    keys: 0200000006000000
-    values:
-    - 1.2
-    - 0.8
-  relevantPattern:
-    ReloadType: 0
-    Lifetime: 10
-    StartAngle: 0
-    TimeOffset: 0
-    dataValues:
-      keys: 0000000001000000020000000300000004000000
+  data: 
+    type: 5
+    image: {fileID: 292422020, guid: 0b8c38ada7c558140870b5702c367d60, type: 3}
+    upgradeID: CapacityForVelocity
+    upgradeName: Small Shells
+    description: Increases magazine size in exchange for bullet velocity
+    rarityTier: 1
+    relativeRarityInTier: 100
+    attributeModifiers:
+      keys: 0200000006000000
       values:
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
-    timeline:
-      duration: 0
-      data:
-        keys: 
-        values: []
-  relevantPrefab: {fileID: 0}
+      - 1.2
+      - 0.8
+    relevantPattern:
+      ReloadType: 0
+      Lifetime: 10
+      StartAngle: 0
+      TimeOffset: 0
+      dataValues:
+        keys: 0000000001000000020000000300000004000000
+        values:
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+      timeline:
+        duration: 0
+        data:
+          keys: 
+          values: []
+    relevantPrefab: {fileID: 0}

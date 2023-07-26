@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using JetBrains.Annotations;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace Assets.draco18s
@@ -7,6 +8,5 @@ namespace Assets.draco18s
 	{
 		UnityEvent OnTakeDamage { get; }
 		float ApplyDamage(float damage, Collider2D col);
-		float ApplyGraze(float damage, Collider2D col);
 	}
 }

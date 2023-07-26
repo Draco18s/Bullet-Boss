@@ -180,7 +180,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5986200609076484592}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab20f983b6de4384fb090b478419dada, type: 3}
+  m_Script: {fileID: 11500000, guid: 0064c6be4b500dd4c92962de9c0f5ed2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pattern:
@@ -188,6 +188,17 @@ MonoBehaviour:
     Lifetime: 10
     StartAngle: 0
     TimeOffset: 0
+    isEditable: 0
+    effects:
+      MirrorSpreadShots:
+        v: 0
+      HomingShots:
+        v: 0
+      AimAtPlayer:
+        v: 0
+      AimScreenDown:
+        v: 0
+    image: {fileID: 0}
     dataValues:
       keys: 0000000001000000020000000300000004000000
       values:
@@ -201,11 +212,18 @@ MonoBehaviour:
       data:
         keys: 
         values: []
+    childPattern:
+      rid: -2
   timeAlive: 0
   previousPosition1: {x: 0, y: 0}
   previousPosition2: {x: 0, y: 0}
   previousPosition3: {x: 0, y: 0}
   hitSomething: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
 --- !u!58 &2165779180356108856
 CircleCollider2D:
   m_ObjectHideFlags: 0

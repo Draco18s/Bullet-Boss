@@ -12,52 +12,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ef877f22a8be024787ac225f5cd6a6f, type: 3}
   m_Name: HomingShots
   m_EditorClassIdentifier: 
-  type: 5
-  image: {fileID: 67620644, guid: 0b8c38ada7c558140870b5702c367d60, type: 3}
-  upgradeID: HomingShots
-  upgradeName: Homing
-  description: Shots home in on the player
-  rarityTier: 3
-  relativeRarityInTier: 50
-  attributeModifiers:
-    keys: 06000000
-    values:
-    - 0.95
-  relevantPattern:
-    ReloadType: 0
-    Lifetime: 10
-    StartAngle: 0
-    TimeOffset: 0
-    isEditable: 0
-    effects:
-      MirrorSpreadShots:
-        v: 0
-      HomingShots:
-        v: 0
-    image: {fileID: 0}
-    dataValues:
-      keys: 0000000001000000020000000300000004000000
+  data: 
+    type: 5
+    image: {fileID: 67620644, guid: 0b8c38ada7c558140870b5702c367d60, type: 3}
+    upgradeID: HomingShots
+    upgradeName: Homing
+    description: Shots home in on the player
+    rarityTier: 3
+    relativeRarityInTier: 50
+    attributeModifiers:
+      keys: 06000000
       values:
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
-    timeline:
-      duration: 0
-      data:
-        keys: 
-        values: []
-    childPattern:
-      rid: -2
-  relevantPrefab: {fileID: 0}
-  patternModifiers:
-    MirrorSpreadShots:
-      v: -1
-    HomingShots:
-      v: 1
-  references:
-    version: 2
-    RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
+      - 0.95
+    relevantPattern:
+      ReloadType: 0
+      Lifetime: 10
+      StartAngle: 0
+      TimeOffset: 0
+      isEditable: 0
+      effects:
+        MirrorSpreadShots:
+          v: 0
+        HomingShots:
+          v: 0
+      image: {fileID: 0}
+      dataValues:
+        keys: 0000000001000000020000000300000004000000
+        values:
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+      timeline:
+        duration: 0
+        data:
+          keys: 
+          values: []
+      childPattern:
+        rid: -2
+    relevantPrefab: {fileID: 0}
+    patternModifiers:
+      MirrorSpreadShots:
+        v: -1
+      HomingShots:
+        v: 1
+    references:
+      version: 2
+      RefIds:
+      - rid: -2
+        type: {class: , ns: , asm: }

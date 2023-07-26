@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.11764706, b: 1, a: 0.5294118}
+  m_Color: {r: 0.062745094, g: 0.0627451, b: 1, a: 0.5294118}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -161,6 +161,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6357696589804883065}
+  - component: {fileID: 236435185146866809}
   m_Layer: 5
   m_Name: Card
   m_TagString: Untagged
@@ -192,6 +193,51 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 250, y: 350}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &236435185146866809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6357696589804883066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 573c475660ebea742b8aef6a5abab15a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 6357696591117614195}
+  glint: {fileID: 9209916063475503549}
+  title: {fileID: 6357696590850320605}
+  description: {fileID: 6357696589953164736}
+  rainbow:
+    serializedVersion: 2
+    key0: {r: 1, g: 0.0627451, b: 0.0627451, a: 1}
+    key1: {r: 1, g: 1, b: 0.0627451, a: 1}
+    key2: {r: 0.0627451, g: 1, b: 0.0627451, a: 0}
+    key3: {r: 0.0627451, g: 1, b: 1, a: 0}
+    key4: {r: 0.0627451, g: 0.0627451, b: 1, a: 0}
+    key5: {r: 1, g: 0.0627451, b: 1, a: 0}
+    key6: {r: 1, g: 0.0627451, b: 0.0627451, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 10918
+    ctime2: 21843
+    ctime3: 32768
+    ctime4: 43690
+    ctime5: 54612
+    ctime6: 65535
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 7
+    m_NumAlphaKeys: 2
 --- !u!1 &6357696589953164738
 GameObject:
   m_ObjectHideFlags: 0

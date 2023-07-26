@@ -12,258 +12,232 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ef877f22a8be024787ac225f5cd6a6f, type: 3}
   m_Name: Trail
   m_EditorClassIdentifier: 
-  type: 4
-  image: {fileID: 2048580316, guid: 6b88c01682600cb428fea6c4cb065843, type: 3}
-  upgradeID: Trail
-  upgradeName: 
-  description: Leaves a trail behind itself
-  rarityTier: 5
-  relativeRarityInTier: 100
-  attributeModifiers:
-    keys: 03000000
-    values:
-    - 0.25
-  relevantPattern:
-    ReloadType: 0
-    Lifetime: 10
-    StartAngle: 0
-    TimeOffset: 0
-    isEditable: 1
-    effects:
+  data: 
+    type: 4
+    image: {fileID: -1878167980, guid: 6b88c01682600cb428fea6c4cb065843, type: 3}
+    upgradeID: Trail
+    upgradeName: 
+    description: Leaves a trail behind itself
+    rarityTier: 5
+    relativeRarityInTier: 100
+    attributeModifiers:
+      keys: 03000000
+      values:
+      - 0.25
+    relevantPattern:
+      ReloadType: 0
+      Lifetime: 10
+      StartAngle: 0
+      TimeOffset: 0
+      isEditable: 1
+      effects:
+        MirrorSpreadShots:
+          v: 0
+        HomingShots:
+          v: 0
+      image: {fileID: 2048580316, guid: 6b88c01682600cb428fea6c4cb065843, type: 3}
+      dataValues:
+        keys: 0000000001000000020000000300000004000000
+        values:
+        - 0
+        - 3
+        - 3
+        - 0
+        - 72
+      timeline:
+        duration: 0
+        data:
+          keys: 010000000200000004000000
+          values:
+          - serializedVersion: 2
+            m_Curve:
+            - serializedVersion: 3
+              time: 0
+              value: 1
+              inSlope: 0
+              outSlope: 0
+              tangentMode: 34
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0.33333334
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+          - serializedVersion: 2
+            m_Curve:
+            - serializedVersion: 3
+              time: 0
+              value: 1.25
+              inSlope: 0
+              outSlope: 0
+              tangentMode: 34
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0.33333334
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+          - serializedVersion: 2
+            m_Curve:
+            - serializedVersion: 3
+              time: 0
+              value: 0
+              inSlope: 0
+              outSlope: 0
+              tangentMode: 34
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0.33333334
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+      childPattern:
+        rid: 9087713732852187274
+    relevantPrefab: {fileID: 5986200609076484592, guid: 9126ab5b103efaf49a2a5263e2bd89df, type: 3}
+    patternModifiers:
       MirrorSpreadShots:
         v: 0
       HomingShots:
         v: 0
-    image: {fileID: 2048580316, guid: 6b88c01682600cb428fea6c4cb065843, type: 3}
-    dataValues:
-      keys: 0000000001000000020000000300000004000000
-      values:
-      - 0
-      - 3
-      - 3
-      - 0
-      - 72
-    timeline:
-      duration: 0
-      data:
-        keys: 010000000200000004000000
-        values:
-        - serializedVersion: 2
-          m_Curve:
-          - serializedVersion: 3
-            time: 0
-            value: 1
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0.33333334
-          - serializedVersion: 3
-            time: 10
-            value: 1
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0.33333334
-            outWeight: 0
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
-        - serializedVersion: 2
-          m_Curve:
-          - serializedVersion: 3
-            time: 0
-            value: 1.25
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0.33333334
-          - serializedVersion: 3
-            time: 10
-            value: 1.25
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0.33333334
-            outWeight: 0
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
-        - serializedVersion: 2
-          m_Curve:
-          - serializedVersion: 3
-            time: 0
-            value: 0
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0.33333334
-          - serializedVersion: 3
-            time: 10
-            value: 0
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0.33333334
-            outWeight: 0
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
-    childPattern:
-      rid: 9087713732852187274
-  relevantPrefab: {fileID: 5986200609076484592, guid: 9126ab5b103efaf49a2a5263e2bd89df, type: 3}
-  patternModifiers:
-    MirrorSpreadShots:
-      v: 0
-    HomingShots:
-      v: 0
-  references:
-    version: 2
-    RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
-    - rid: 9087713732852187274
-      type: {class: PatternData, ns: Assets.draco18s, asm: Assembly-CSharp}
-      data:
-        ReloadType: 3
-        Lifetime: 10
-        StartAngle: 180
-        TimeOffset: 0
-        isEditable: 0
-        effects:
-          MirrorSpreadShots:
-            v: 0
-          HomingShots:
-            v: 0
-        image: {fileID: 0}
-        dataValues:
-          keys: 0000000001000000020000000300000004000000
-          values:
-          - 0
-          - 1
-          - 0
-          - 1
-          - 36
-        timeline:
-          duration: 10
-          data:
-            keys: 0300000004000000
+    references:
+      version: 2
+      RefIds:
+      - rid: -2
+        type: {class: , ns: , asm: }
+      - rid: 9087713732852187274
+        type: {class: PatternData, ns: Assets.draco18s, asm: Assembly-CSharp}
+        data:
+          ReloadType: 3
+          Lifetime: 10
+          StartAngle: 180
+          TimeOffset: 0
+          isEditable: 0
+          effects:
+            MirrorSpreadShots:
+              v: 0
+            HomingShots:
+              v: 0
+          image: {fileID: 0}
+          dataValues:
+            keys: 0000000001000000020000000300000004000000
             values:
-            - serializedVersion: 2
-              m_Curve:
-              - serializedVersion: 3
-                time: 0
-                value: 1
-                inSlope: 0
-                outSlope: 0
-                tangentMode: 136
-                weightedMode: 0
-                inWeight: 0
-                outWeight: 0
-              m_PreInfinity: 0
-              m_PostInfinity: 0
-              m_RotationOrder: 0
-            - serializedVersion: 2
-              m_Curve:
-              - serializedVersion: 3
-                time: 0
-                value: 0
-                inSlope: 0
-                outSlope: 0
-                tangentMode: 136
-                weightedMode: 0
-                inWeight: 0
-                outWeight: 0
-              m_PreInfinity: 0
-              m_PostInfinity: 0
-              m_RotationOrder: 0
-        childPattern:
-          rid: 9087713732852187277
-    - rid: 9087713732852187277
-      type: {class: PatternData, ns: Assets.draco18s, asm: Assembly-CSharp}
-      data:
-        ReloadType: 0
-        Lifetime: 3
-        StartAngle: 0
-        TimeOffset: 0
-        isEditable: 0
-        effects:
-          MirrorSpreadShots:
-            v: 0
-          HomingShots:
-            v: 0
-        image: {fileID: -1878167980, guid: 6b88c01682600cb428fea6c4cb065843, type: 3}
-        dataValues:
-          keys: 0000000001000000020000000300000004000000
-          values:
-          - 0
-          - 3
-          - 3
-          - 0
-          - 72
-        timeline:
-          duration: 0
-          data:
-            keys: 020000000400000001000000
+            - 0
+            - 1
+            - 0
+            - 1
+            - 36
+          timeline:
+            duration: 10
+            data:
+              keys: 0300000004000000
+              values:
+              - serializedVersion: 2
+                m_Curve:
+                - serializedVersion: 3
+                  time: 0
+                  value: 1
+                  inSlope: 0
+                  outSlope: 0
+                  tangentMode: 136
+                  weightedMode: 0
+                  inWeight: 0
+                  outWeight: 0
+                m_PreInfinity: 0
+                m_PostInfinity: 0
+                m_RotationOrder: 0
+              - serializedVersion: 2
+                m_Curve:
+                - serializedVersion: 3
+                  time: 0
+                  value: 0
+                  inSlope: 0
+                  outSlope: 0
+                  tangentMode: 136
+                  weightedMode: 0
+                  inWeight: 0
+                  outWeight: 0
+                m_PreInfinity: 0
+                m_PostInfinity: 0
+                m_RotationOrder: 0
+          childPattern:
+            rid: 9087713732852187277
+      - rid: 9087713732852187277
+        type: {class: PatternData, ns: Assets.draco18s, asm: Assembly-CSharp}
+        data:
+          ReloadType: 0
+          Lifetime: 3
+          StartAngle: 0
+          TimeOffset: 0
+          isEditable: 0
+          effects:
+            MirrorSpreadShots:
+              v: 0
+            HomingShots:
+              v: 0
+          image: {fileID: -1878167980, guid: 6b88c01682600cb428fea6c4cb065843, type: 3}
+          dataValues:
+            keys: 0000000001000000020000000300000004000000
             values:
-            - serializedVersion: 2
-              m_Curve:
-              - serializedVersion: 3
-                time: 0
-                value: 0
-                inSlope: 0
-                outSlope: 0
-                tangentMode: 136
-                weightedMode: 0
-                inWeight: 0
-                outWeight: 0
-              m_PreInfinity: 0
-              m_PostInfinity: 0
-              m_RotationOrder: 0
-            - serializedVersion: 2
-              m_Curve:
-              - serializedVersion: 3
-                time: 0
-                value: 0
-                inSlope: 0
-                outSlope: 0
-                tangentMode: 136
-                weightedMode: 0
-                inWeight: 0
-                outWeight: 0
-              m_PreInfinity: 0
-              m_PostInfinity: 0
-              m_RotationOrder: 0
-            - serializedVersion: 2
-              m_Curve:
-              - serializedVersion: 3
-                time: 0
-                value: 3
-                inSlope: 0
-                outSlope: 0
-                tangentMode: 34
-                weightedMode: 0
-                inWeight: 0
-                outWeight: 0.33333334
-              - serializedVersion: 3
-                time: 1
-                value: 3
-                inSlope: 0
-                outSlope: 0
-                tangentMode: 34
-                weightedMode: 0
-                inWeight: 0.33333334
-                outWeight: 0
-              m_PreInfinity: 2
-              m_PostInfinity: 2
-              m_RotationOrder: 0
-        childPattern:
-          rid: -2
+            - 0
+            - 3
+            - 3
+            - 0
+            - 72
+          timeline:
+            duration: 0
+            data:
+              keys: 020000000400000001000000
+              values:
+              - serializedVersion: 2
+                m_Curve:
+                - serializedVersion: 3
+                  time: 0
+                  value: 0
+                  inSlope: 0
+                  outSlope: 0
+                  tangentMode: 136
+                  weightedMode: 0
+                  inWeight: 0
+                  outWeight: 0
+                m_PreInfinity: 0
+                m_PostInfinity: 0
+                m_RotationOrder: 0
+              - serializedVersion: 2
+                m_Curve:
+                - serializedVersion: 3
+                  time: 0
+                  value: 0
+                  inSlope: 0
+                  outSlope: 0
+                  tangentMode: 136
+                  weightedMode: 0
+                  inWeight: 0
+                  outWeight: 0
+                m_PreInfinity: 0
+                m_PostInfinity: 0
+                m_RotationOrder: 0
+              - serializedVersion: 2
+                m_Curve:
+                - serializedVersion: 3
+                  time: 0
+                  value: 3
+                  inSlope: 0
+                  outSlope: 0
+                  tangentMode: 34
+                  weightedMode: 0
+                  inWeight: 0
+                  outWeight: 0.33333334
+                - serializedVersion: 3
+                  time: 1
+                  value: 3
+                  inSlope: 0
+                  outSlope: 0
+                  tangentMode: 34
+                  weightedMode: 0
+                  inWeight: 0.33333334
+                  outWeight: 0
+                m_PreInfinity: 2
+                m_PostInfinity: 2
+                m_RotationOrder: 0
+          childPattern:
+            rid: -2

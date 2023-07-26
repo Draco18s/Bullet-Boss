@@ -13,8 +13,8 @@ TagManager:
   - UI
   - AIPlayer
   - BossEnemy
-  - 
-  - 
+  - PlayerBullets
+  - PlayerCollectable
   - 
   - 
   - 

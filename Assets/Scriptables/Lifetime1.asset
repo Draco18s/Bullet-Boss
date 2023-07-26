@@ -12,48 +12,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ef877f22a8be024787ac225f5cd6a6f, type: 3}
   m_Name: Lifetime1
   m_EditorClassIdentifier: 
-  type: 5
-  image: {fileID: -1422517691, guid: 0b8c38ada7c558140870b5702c367d60, type: 3}
-  upgradeID: Lifetime1
-  upgradeName: Longer Lived Bullets
-  description: Increased bullet lifetime
-  rarityTier: 1
-  relativeRarityInTier: 50
-  attributeModifiers:
-    keys: 08000000
-    values:
-    - 1.25
-  relevantPattern:
-    ReloadType: 0
-    Lifetime: 10
-    StartAngle: 0
-    TimeOffset: 0
-    isEditable: 0
-    effects:
+  data: 
+    type: 5
+    image: {fileID: -1422517691, guid: 0b8c38ada7c558140870b5702c367d60, type: 3}
+    upgradeID: Lifetime1
+    upgradeName: Longer Lived Bullets
+    description: Increased bullet lifetime
+    rarityTier: 1
+    relativeRarityInTier: 50
+    attributeModifiers:
+      keys: 08000000
+      values:
+      - 1.25
+    relevantPattern:
+      ReloadType: 0
+      Lifetime: 10
+      StartAngle: 0
+      TimeOffset: 0
+      isEditable: 0
+      effects:
+        MirrorSpreadShots:
+          v: 0
+      image: {fileID: 0}
+      dataValues:
+        keys: 0000000001000000020000000300000004000000
+        values:
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+      timeline:
+        duration: 0
+        data:
+          keys: 
+          values: []
+      childPattern:
+        rid: -2
+    relevantPrefab: {fileID: 0}
+    patternModifiers:
       MirrorSpreadShots:
         v: 0
-    image: {fileID: 0}
-    dataValues:
-      keys: 0000000001000000020000000300000004000000
-      values:
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
-    timeline:
-      duration: 0
-      data:
-        keys: 
-        values: []
-    childPattern:
-      rid: -2
-  relevantPrefab: {fileID: 0}
-  patternModifiers:
-    MirrorSpreadShots:
-      v: 0
-  references:
-    version: 2
-    RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
+    references:
+      version: 2
+      RefIds:
+      - rid: -2
+        type: {class: , ns: , asm: }

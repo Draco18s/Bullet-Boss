@@ -12,34 +12,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ef877f22a8be024787ac225f5cd6a6f, type: 3}
   m_Name: FiringRateForLifetime
   m_EditorClassIdentifier: 
-  type: 5
-  image: {fileID: -1653263653, guid: 0b8c38ada7c558140870b5702c367d60, type: 3}
-  upgradeID: FiringRateForLifetime
-  upgradeName: Hypervelocity Firing
-  description: Increases rate of fire in exchange for maximum bullet lifetime
-  rarityTier: 2
-  relativeRarityInTier: 100
-  attributeModifiers:
-    keys: 0800000003000000
-    values:
-    - 0.8
-    - 0.8
-  relevantPattern:
-    ReloadType: 0
-    Lifetime: 10
-    StartAngle: 0
-    TimeOffset: 0
-    dataValues:
-      keys: 0000000001000000020000000300000004000000
+  data: 
+    type: 5
+    image: {fileID: -1653263653, guid: 0b8c38ada7c558140870b5702c367d60, type: 3}
+    upgradeID: FiringRateForLifetime
+    upgradeName: Hypervelocity Firing
+    description: Increases rate of fire in exchange for maximum bullet lifetime
+    rarityTier: 2
+    relativeRarityInTier: 100
+    attributeModifiers:
+      keys: 0800000003000000
       values:
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
-    timeline:
-      duration: 0
-      data:
-        keys: 
-        values: []
-  relevantPrefab: {fileID: 0}
+      - 0.8
+      - 0.8
+    relevantPattern:
+      ReloadType: 0
+      Lifetime: 10
+      StartAngle: 0
+      TimeOffset: 0
+      dataValues:
+        keys: 0000000001000000020000000300000004000000
+        values:
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+      timeline:
+        duration: 0
+        data:
+          keys: 
+          values: []
+    relevantPrefab: {fileID: 0}

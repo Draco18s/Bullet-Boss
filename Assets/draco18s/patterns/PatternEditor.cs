@@ -5,6 +5,7 @@ using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Assets.draco18s.ui;
 using MathS = System.MathF; //fuck off System.MathF
 
 namespace Assets.draco18s
@@ -21,6 +22,7 @@ namespace Assets.draco18s
 		public Slider capField;
 		public Slider reloadField;
 		public Slider angleField;
+		public Slider timeOffsetField;
 		public Slider lifetimeField;
 		public Button subButton;
 		public Button supButton;
@@ -62,7 +64,20 @@ namespace Assets.draco18s
 			//capField.onValueChanged.AddListener(UpdateCapacity);
 			reloadField.interactable = false;
 			lifetimeField.onValueChanged.AddListener(UpdateLife);
+			lifetimeField.AddHover(c =>
+			{
+				Tooltip.ShowTooltip(lifetimeField.transform.position, (lifetimeField.value).ToString("0.#"));
+			});
 			angleField.onValueChanged.AddListener(UpdateStartAngle);
+			angleField.AddHover(c =>
+			{
+				Tooltip.ShowTooltip(angleField.transform.position, (5 * angleField.value).ToString("0.#"));
+			});
+			timeOffsetField.onValueChanged.AddListener(UpdateTimeOffset);
+			timeOffsetField.AddHover(c =>
+			{
+				Tooltip.ShowTooltip(timeOffsetField.transform.position, (timeOffsetField.value).ToString("0.#"));
+			});
 			line.ClearPoints();
 			canvas = GetComponent<Canvas>();
 			canvas.enabled = false;
@@ -133,8 +148,8 @@ namespace Assets.draco18s
 			//bool isBullet = tl is Bullet;
 
 			lifetimeField.SetValueWithoutNotify(tl.Lifetime);
-
 			angleField.SetValueWithoutNotify(tl.StartAngle / 5f);
+			timeOffsetField.SetValueWithoutNotify(tl.TimeOffset);
 			reloadDropdown.interactable = isEditingGun;
 			gunThings.SetActive(isEditingGun);
 			bulletThings.SetActive(!isEditingGun);
@@ -227,15 +242,14 @@ namespace Assets.draco18s
 			return new Vector3(x, -y);
 		}
 
-		/*private void UpdateCapacity(float t)
-		{
-			targetTimeline.Pattern.MaxCapacity = t/10;
-			reloadField.SetValueWithoutNotify(reloadField.maxValue - capField.value + 1);
-		}*/
-
 		private void UpdateStartAngle(float t)
 		{
 			targetPattern.StartAngle = t * 5;
+		}
+
+		private void UpdateTimeOffset(float t)
+		{
+			targetPattern.TimeOffset = t;
 		}
 
 		private void UpdateLife(float t)

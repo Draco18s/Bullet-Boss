@@ -158,7 +158,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2206095113025173180}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fb6b9597ffe6b043af50ec15de6a9fd, type: 3}
+  m_Script: {fileID: 11500000, guid: 0a0b4575064d5a8499bf8b345fec9147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pattern:
@@ -167,6 +167,16 @@ MonoBehaviour:
     StartAngle: 0
     TimeOffset: 0
     isEditable: 0
+    effects:
+      MirrorSpreadShots:
+        v: 0
+      HomingShots:
+        v: 0
+      AimAtPlayer:
+        v: 0
+      AimScreenDown:
+        v: 0
+    image: {fileID: 0}
     dataValues:
       keys: 0000000001000000020000000300000004000000
       values:
@@ -181,13 +191,11 @@ MonoBehaviour:
         keys: 
         values: []
     childPattern:
-      rid: 1000
-  muzzles:
-  - {fileID: 5703866066629195707}
+      rid: -2
+  muzzles: []
   gunBaseModifiers:
-    keys: 02000000
-    values:
-    - 1
+    keys: 
+    values: []
   timeAlive: 0
   minFireDelay: 0.25
   references:
@@ -195,26 +203,3 @@ MonoBehaviour:
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
-    - rid: 1000
-      type: {class: PatternData, ns: Assets.draco18s, asm: Assembly-CSharp}
-      data:
-        ReloadType: 0
-        Lifetime: 10
-        StartAngle: 0
-        TimeOffset: 0
-        isEditable: 0
-        dataValues:
-          keys: 0000000001000000020000000300000004000000
-          values:
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-        timeline:
-          duration: 0
-          data:
-            keys: 
-            values: []
-        childPattern:
-          rid: -2

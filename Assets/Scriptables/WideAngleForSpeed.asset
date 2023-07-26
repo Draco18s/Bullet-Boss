@@ -12,34 +12,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ef877f22a8be024787ac225f5cd6a6f, type: 3}
   m_Name: WideAngleForSpeed
   m_EditorClassIdentifier: 
-  type: 5
-  image: {fileID: -629449405, guid: 0b8c38ada7c558140870b5702c367d60, type: 3}
-  upgradeID: WideAngleForSpeed
-  upgradeName: Angle Adjustment
-  description: Increases the available firing arc but reduces angular speed
-  rarityTier: 2
-  relativeRarityInTier: 50
-  attributeModifiers:
-    keys: 0400000005000000
-    values:
-    - 10
-    - 0.9
-  relevantPattern:
-    ReloadType: 0
-    Lifetime: 10
-    StartAngle: 0
-    TimeOffset: 0
-    dataValues:
-      keys: 0000000001000000020000000300000004000000
+  data: 
+    type: 5
+    image: {fileID: -629449405, guid: 0b8c38ada7c558140870b5702c367d60, type: 3}
+    upgradeID: WideAngleForSpeed
+    upgradeName: Angle Adjustment
+    description: Increases the available firing arc but reduces angular speed
+    rarityTier: 2
+    relativeRarityInTier: 50
+    attributeModifiers:
+      keys: 0400000005000000
       values:
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
-    timeline:
-      duration: 0
-      data:
-        keys: 
-        values: []
-  relevantPrefab: {fileID: 0}
+      - 10
+      - 0.9
+    relevantPattern:
+      ReloadType: 0
+      Lifetime: 10
+      StartAngle: 0
+      TimeOffset: 0
+      dataValues:
+        keys: 0000000001000000020000000300000004000000
+        values:
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+      timeline:
+        duration: 0
+        data:
+          keys: 
+          values: []
+    relevantPrefab: {fileID: 0}

@@ -12,33 +12,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ef877f22a8be024787ac225f5cd6a6f, type: 3}
   m_Name: Damage1
   m_EditorClassIdentifier: 
-  type: 5
-  image: {fileID: 1640443584, guid: 0b8c38ada7c558140870b5702c367d60, type: 3}
-  upgradeID: Damage1
-  upgradeName: +1 Damage
-  description: Increased damage dealt
-  rarityTier: 4
-  relativeRarityInTier: 50
-  attributeModifiers:
-    keys: 07000000
-    values:
-    - 1
-  relevantPattern:
-    ReloadType: 0
-    Lifetime: 10
-    StartAngle: 0
-    TimeOffset: 0
-    dataValues:
-      keys: 0000000001000000020000000300000004000000
+  data: 
+    type: 5
+    image: {fileID: 1640443584, guid: 0b8c38ada7c558140870b5702c367d60, type: 3}
+    upgradeID: Damage1
+    upgradeName: +1 Damage
+    description: Increased damage dealt
+    rarityTier: 4
+    relativeRarityInTier: 50
+    attributeModifiers:
+      keys: 07000000
       values:
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
-    timeline:
-      duration: 0
-      data:
-        keys: 
-        values: []
-  relevantPrefab: {fileID: 0}
+      - 1
+    relevantPattern:
+      ReloadType: 0
+      Lifetime: 10
+      StartAngle: 0
+      TimeOffset: 0
+      dataValues:
+        keys: 0000000001000000020000000300000004000000
+        values:
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+      timeline:
+        duration: 0
+        data:
+          keys: 
+          values: []
+    relevantPrefab: {fileID: 0}

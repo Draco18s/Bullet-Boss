@@ -73,8 +73,8 @@ namespace FLGCoreEditor.Utilities
 				var serializedObject = new SerializedObject(g);
 
 				var prop = serializedObject.FindProperty("m_Component");
-
-				prop.DeleteArrayElementAtIndex(i - r);
+				
+				//prop.DeleteArrayElementAtIndex(i - r);
 				r++;
 
 				serializedObject.ApplyModifiedProperties();

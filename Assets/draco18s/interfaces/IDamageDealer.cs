@@ -13,5 +13,6 @@ namespace Assets.draco18s
 		void AddScore(float amt, Collider2D col);
 		public float GetCurrentHealth();
 		public float GetMaxHealth();
+		float ApplyGraze(float damage, Collider2D col);
 	}
 }
