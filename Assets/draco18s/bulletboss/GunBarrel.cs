@@ -128,7 +128,14 @@ namespace Assets.draco18s.bulletboss
 			bulletClone.SetActive(false);
 			bulletClone.GetComponent<Bullet>().SetPattern(item.upgradeTypeData.relevantPattern);
 			bulletClone.GetComponent<SpriteRenderer>().sprite = item.upgradeTypeData.image;
-			pattern.childPattern =  new PatternData();
+		}
+
+		public void SetShell(UpgradeRuntime data, PatternData patt)
+		{
+			bulletClone = Instantiate(data.relevantPrefab);
+			bulletClone.SetActive(false);
+			bulletClone.GetComponent<Bullet>().SetPattern(patt);
+			bulletClone.GetComponent<SpriteRenderer>().sprite = data.image;
 		}
 
 		[UsedImplicitly]
@@ -158,6 +165,10 @@ namespace Assets.draco18s.bulletboss
 					}
 				}
 				transform.Rotate(Vector3.forward, Math.Max(Math.Abs(currentValues[PatternDataKey.Rotation]), 0.25f) * pattern.dataValues[PatternDataKey.Rotation] * dt * Mathf.Sign(-bestAngle) * 0.2f, Space.Self);
+			}
+			else if (pattern.effects.AimScreenDown)
+			{
+				transform.rotation = Quaternion.identity;
 			}
 			else
 			{

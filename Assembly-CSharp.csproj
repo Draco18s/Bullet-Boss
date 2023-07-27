@@ -82,7 +82,7 @@
     <Compile Include="Assets\UGUIMeshLab\DataContainer.cs" />
     <Compile Include="Assets\draco18s\interfaces\GunType.cs" />
     <Compile Include="Assets\Origin\Script\RayCastCheck.cs" />
-    <Compile Include="Assets\draco18s\bulletboss\PlayerHealth.cs" />
+    <Compile Include="Assets\draco18s\bulletboss\player\PlayerHealth.cs" />
     <Compile Include="Assets\draco18s\util\TriValue.cs" />
     <Compile Include="Assets\BackgroundScroll.cs" />
     <Compile Include="Assets\Origin\Script\AddPoint.cs" />
@@ -101,7 +101,10 @@
     <Compile Include="Assets\draco18s\bulletboss\GunBarrel.cs" />
     <Compile Include="Assets\draco18s\bulletboss\Bullet.cs" />
     <Compile Include="Assets\draco18s\bulletboss\StatAttribute.cs" />
-    <Compile Include="Assets\draco18s\bulletboss\PlayerCollectable.cs" />
+    <Compile Include="Assets\draco18s\bulletboss\player\PlayerCollectable.cs" />
+    <Compile Include="Assets\draco18s\bulletboss\player\PlayerBuffScriptable.cs" />
+    <Compile Include="Assets\draco18s\bulletboss\GameStateManager.cs" />
+    <Compile Include="Assets\draco18s\util\ResourcesManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

@@ -25,5 +25,15 @@ namespace Assets.draco18s
 			ret.AimScreenDown = AimScreenDown || other.AimScreenDown;
 			return ret;
 		}
+
+		public PatternEffects Copy()
+		{
+			PatternEffects ret = new PatternEffects();
+			ret.MirrorSpreadShots = MirrorSpreadShots;
+			ret.HomingShots = HomingShots;
+			ret.AimAtPlayer = AimAtPlayer;
+			ret.AimScreenDown = AimScreenDown;
+			return ret;
+		}
 	}
 }

@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc421399e494cd442bfac4caef4d061d, type: 3}
+  m_Name: Gem125
+  m_EditorClassIdentifier: 
+  BonusType: 1
+  ScoreValue: 125
+  Image: {fileID: 9925041, guid: 6b88c01682600cb428fea6c4cb065843, type: 3}
+  RelevantPrefab: {fileID: 4083042819947385067, guid: 12bbbd8cd5d036a49ab2db71d8538b78, type: 3}

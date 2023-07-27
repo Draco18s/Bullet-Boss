@@ -14,15 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data:
     type: 8
-    image: {fileID: 0}
-    upgradeID: 
-    upgradeName: 
-    description: 
-    rarityTier: 0
+    image: {fileID: 21300000, guid: 18363927013c3f940af111c60191b650, type: 3}
+    upgradeID: BasicHeavyFighter
+    upgradeName: Heavy Fighter
+    description: Armored fighter that fires a single shot weapon straight down while
+      traveling forward quickly.
+    rarityTier: 2
     relativeRarityInTier: 100
     attributeModifiers:
-      keys: 
-      values: []
+      keys: 0500000009000000
+      values:
+      - 1.5
+      - 1
     relevantPattern:
       ReloadType: 0
       Lifetime: 10
@@ -54,7 +57,7 @@ MonoBehaviour:
           values: []
       childPattern:
         rid: -2
-    relevantPrefab: {fileID: 0}
+    relevantPrefab: {fileID: 6306653702003728470, guid: 7a0e481e0a6f12c469d4014b6d596007, type: 3}
     patternModifiers:
       MirrorSpreadShots:
         v: 0
@@ -63,4 +66,9 @@ MonoBehaviour:
       AimAtPlayer:
         v: 0
       AimScreenDown:
-        v: 0
+        v: 1
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }

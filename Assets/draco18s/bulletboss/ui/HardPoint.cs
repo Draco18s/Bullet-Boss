@@ -3,6 +3,7 @@ using Assets.draco18s.util;
 using JetBrains.Annotations;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using static UnityEditor.Progress;
 
@@ -26,6 +27,12 @@ namespace Assets.draco18s.bulletboss.ui
 
 		public readonly List<InventoryItem> attachedUpgrades = new List<InventoryItem>();
 		public SerializableDictionary<StatAttribute, float> hardpointModifiers;
+
+		public int SpawnCount;
+		public float SpawnTime;
+		public float SpawnTimer;
+		public float cooldown;
+		public float cooldownTimer;
 
 		public bool Attach(InventoryItem item)
 		{
@@ -91,8 +98,36 @@ namespace Assets.draco18s.bulletboss.ui
 		[UsedImplicitly]
 		private void OnMouseUpAsButton()
 		{
-			PatternEditor.instance.ChangeTarget(spawnedObject);
-			UpgradeSlotGroup.instance.Detail(this);
+			if (GameStateManager.instance.state == GameStateManager.GameState.Manage)
+			{
+				PatternEditor.instance.ChangeTarget(spawnedObject);
+				UpgradeSlotGroup.instance.Detail(this);
+				return;
+			}
+
+			if (GameStateManager.instance.state == GameStateManager.GameState.InGame && slotType == UpgradeType.FighterEntry)
+			{
+				if (SpawnCount <= 0 || cooldownTimer > 0) return;
+				SpawnCount--;
+				GameObject go = Instantiate(spawnedObject);
+				HostileFighter fighter = go.GetComponent<HostileFighter>();
+				fighter.Spawn(this);
+			}
+		}
+
+		[UsedImplicitly]
+		void FixedUpdate()
+		{
+			if (GameStateManager.instance.state != GameStateManager.GameState.InGame || spawnedObject == null || slotType != UpgradeType.FighterEntry) return;
+			float dt = Time.fixedDeltaTime;
+			SpawnTimer += dt;
+			cooldownTimer -= dt;
+			if (SpawnTimer >= SpawnTime)
+			{
+				SpawnTimer -= SpawnTime;
+				SpawnCount++;
+				cooldownTimer = 1.5f;
+			}
 		}
 
 		public float GetStat(StatAttribute stat, Func<float, float, float> combine)
@@ -113,6 +148,15 @@ namespace Assets.draco18s.bulletboss.ui
 				r = combine(r, item.upgradeTypeData.attributeModifiers[stat]);
 			}
 			return r;
+		}
+
+		public (PatternData, InventoryItem) GetFighterGunPattern()
+		{
+			InventoryItem fg = attachedUpgrades.Find(x => x.upgradeTypeData.type == UpgradeType.FighterEntry);
+			if (fg.upgradeTypeData.relevantPattern.ReloadType != GunType.None)
+				return (fg.upgradeTypeData.relevantPattern,fg);
+			else
+				return (ResourcesManager.instance.GetAssetsMatching<UpgradeScriptable>(s => s.data.rarityTier == NamedRarity.Starting && s.data.type == UpgradeType.Bullet).First().data.relevantPattern,fg);
 		}
 
 		public void AttachFromSlotUpdate(UpgradeType slotType,InventoryItem item)

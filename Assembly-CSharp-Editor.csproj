@@ -66,6 +66,7 @@
     <Compile Include="Assets\draco18s\Editor\TriValueDrawer.cs" />
     <Compile Include="Assets\draco18s\Editor\CustomScrollbarEd.cs" />
     <Compile Include="Assets\codeandweb.com\Editor\UIImageSetSizeAndPivot.cs" />
+    <Compile Include="Assets\draco18s\Editor\ResourcesManagerEd.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\codeandweb.com\Editor\SettingsTexturePackerImporter.txt" />

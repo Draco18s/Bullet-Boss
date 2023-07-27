@@ -23,5 +23,25 @@ namespace Assets.draco18s.bulletboss
 		public PatternData relevantPattern;
 		public GameObject relevantPrefab;
 		public PatternEffects patternModifiers;
+
+		public void Populate(UpgradeRuntime original)
+		{
+			type = original.type;
+			image = original.image;
+			upgradeID = original.upgradeID;
+			upgradeName = original.upgradeName;
+			description = original.description;
+			rarityTier = original.rarityTier;
+			relativeRarityInTier = original.relativeRarityInTier;
+
+			foreach (var kvp in original.attributeModifiers)
+			{
+				attributeModifiers.Add(kvp.Key, kvp.Value);
+			}
+
+			patternModifiers = original.patternModifiers.Copy();
+			relevantPattern.CopyFrom(original.relevantPattern);
+			relevantPrefab = original.relevantPrefab;
+		}
 	}
 }
