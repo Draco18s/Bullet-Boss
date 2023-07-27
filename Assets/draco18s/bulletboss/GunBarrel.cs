@@ -122,12 +122,12 @@ namespace Assets.draco18s.bulletboss
 		{
 			Destroy(bulletClone);
 			bulletClone = null;
-			if (item == null || item.upgradeTypeData.data.type != UpgradeType.Bullet) return;
+			if (item == null || item.upgradeTypeData.type != UpgradeType.Bullet) return;
 
-			bulletClone = Instantiate(item.upgradeTypeData.data.relevantPrefab);
+			bulletClone = Instantiate(item.upgradeTypeData.relevantPrefab);
 			bulletClone.SetActive(false);
-			bulletClone.GetComponent<Bullet>().SetPattern(item.upgradeTypeData.data.relevantPattern);
-			bulletClone.GetComponent<SpriteRenderer>().sprite = item.upgradeTypeData.data.image;
+			bulletClone.GetComponent<Bullet>().SetPattern(item.upgradeTypeData.relevantPattern);
+			bulletClone.GetComponent<SpriteRenderer>().sprite = item.upgradeTypeData.image;
 			pattern.childPattern =  new PatternData();
 		}
 

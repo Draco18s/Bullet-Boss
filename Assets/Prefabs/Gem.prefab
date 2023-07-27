@@ -102,6 +102,7 @@ MonoBehaviour:
   previousPosition1: {x: 0, y: 0}
   previousPosition2: {x: 0, y: 0}
   previousPosition3: {x: 0, y: 0}
+  speed: 0.6
 --- !u!61 &9043524636799721262
 BoxCollider2D:
   m_ObjectHideFlags: 0

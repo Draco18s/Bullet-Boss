@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Assets.draco18s.ui;
 using MathS = System.MathF; //fuck off System.MathF
+using Assets.draco18s.bulletboss.ui;
 
 namespace Assets.draco18s
 {
@@ -203,8 +204,9 @@ namespace Assets.draco18s
 				canvas.enabled = false;
 				target = null;
 				targetPattern = null;
+				UpgradeSlotGroup.instance.Hide();
 			}
-			if (target == null || targetPatternObj == null) return;
+			if (target == null || targetPatternObj == null || targetPattern == null) return;
 
 			float t = targetPatternObj.CurrentTime;
 			float h1 = lineRectTransform.rect.height;

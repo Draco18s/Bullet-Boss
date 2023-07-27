@@ -63,7 +63,7 @@ namespace Assets.draco18s.bulletboss.ui
 			GetFirstRelevantSlot(UpgradeType.Bullet).SetNoUpdate(hardPoint.attachedShell);
 			foreach (InventoryItem item in hardPoint.attachedUpgrades)
 			{
-				GunSlotTarget slot = GetFirstRelevantSlot(item.upgradeTypeData.data.type);
+				GunSlotTarget slot = GetFirstRelevantSlot(item.upgradeTypeData.type);
 				slot?.SetNoUpdate(item);
 			}
 			foreach (GunSlotTarget slot in slots)

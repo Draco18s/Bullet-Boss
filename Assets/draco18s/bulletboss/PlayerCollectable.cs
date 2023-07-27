@@ -10,11 +10,12 @@ namespace Assets.draco18s.bulletboss
 		public Vector2 previousPosition1;
 		public Vector2 previousPosition2;
 		public Vector2 previousPosition3;
+		public float speed = 3 / 5f;
 
 		[UsedImplicitly]
 		void Start()
 		{
-			GetComponent<SpriteRenderer>().sprite = image;
+			//GetComponent<SpriteRenderer>().sprite = image;
 		}
 
 		[UsedImplicitly]
@@ -25,7 +26,7 @@ namespace Assets.draco18s.bulletboss
 			previousPosition3 = transform.localPosition;
 			float dt = Time.fixedDeltaTime;
 
-			transform.Translate(new Vector3(0, -1 * dt, dt), Space.Self);
+			transform.Translate(new Vector3(0, -1 * dt * speed, dt), Space.Self);
 		}
 	}
 }

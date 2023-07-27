@@ -12,7 +12,7 @@ namespace Assets.draco18s.bulletboss.ui
 		private RectTransform rectTransform;
 		private bool isDragging = false;
 		private bool isAttached = false;
-		public UpgradeScriptable upgradeTypeData;
+		public UpgradeRuntime upgradeTypeData;
 
 		[UsedImplicitly]
 		void Start()
@@ -26,7 +26,7 @@ namespace Assets.draco18s.bulletboss.ui
 			}
 
 			Image img = GetComponent<Image>();
-		    img.sprite = upgradeTypeData.data.image;
+		    img.sprite = upgradeTypeData.image;
 	    }
 
 		public virtual void OnPointerDown(PointerEventData eventData)
@@ -50,7 +50,7 @@ namespace Assets.draco18s.bulletboss.ui
 
 			Collider2D hit = Physics2D.OverlapPoint(mousePosition, LayerMask.GetMask(new[] { "UI" }));
 			IInventoryDropTarget target = hit?.GetComponent<IInventoryDropTarget>();
-			if (target != null && this.upgradeTypeData.data.type == target.slotType)
+			if (target != null && this.upgradeTypeData.type == target.slotType)
 			{
 				if (target.Attach(this))
 				{

@@ -22,7 +22,7 @@ namespace Assets.draco18s.bulletboss.ui
 
 		public bool Attach(InventoryItem item)
 		{
-			if (item.upgradeTypeData.data.type != slotType) return false;
+			if (item.upgradeTypeData.type != slotType) return false;
 			if (attachedItem != null)
 			{
 				Inventory.instance.Add(attachedItem);

@@ -41,16 +41,16 @@ namespace Assets.draco18s.bulletboss.ui
 		{
 			if (item == null) return;
 			inventory.Remove(item);
-			if (item.upgradeTypeData.data.rarityTier == NamedRarity.Starting)
+			if (item.upgradeTypeData.rarityTier == NamedRarity.Starting)
 			{
 				InventoryItem newCopy = Instantiate(item, container);
-				newCopy.transform.SetSiblingIndex((int)item.upgradeTypeData.data.type -1);
+				newCopy.transform.SetSiblingIndex((int)item.upgradeTypeData.type -1);
 			}
 		}
 
 		public void Add(InventoryItem item)
 		{
-			if (item.upgradeTypeData.data.rarityTier == NamedRarity.Starting)
+			if (item.upgradeTypeData.rarityTier == NamedRarity.Starting)
 			{
 				Destroy(item.gameObject);
 				return;

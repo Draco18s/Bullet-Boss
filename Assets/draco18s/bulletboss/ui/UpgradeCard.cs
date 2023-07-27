@@ -24,10 +24,10 @@ namespace Assets.draco18s.bulletboss.ui
 				return;
 			}
 			gameObject.SetActive(true);
-			image.sprite = item.upgradeTypeData.data.image;
-			title.text = item.upgradeTypeData.data.upgradeName;
-			description.text = item.upgradeTypeData.data.description;
-			Color c = GetColor(item.upgradeTypeData.data.rarityTier);
+			image.sprite = item.upgradeTypeData.image;
+			title.text = item.upgradeTypeData.upgradeName;
+			description.text = item.upgradeTypeData.description;
+			Color c = GetColor(item.upgradeTypeData.rarityTier);
 			c.a = 135 / 255f;
 			glint.color = c;
 		}
@@ -36,7 +36,7 @@ namespace Assets.draco18s.bulletboss.ui
 		void Update()
 		{
 			if (item == null) return;
-			if (item.upgradeTypeData.data.rarityTier != NamedRarity.Legendary) return;
+			if (item.upgradeTypeData.rarityTier != NamedRarity.Legendary) return;
 			Color c = rainbow.Evaluate(Time.time % 1);
 			c.a = 135 / 255f;
 			glint.color = c;

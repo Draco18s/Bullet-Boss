@@ -37,7 +37,7 @@ namespace Assets.draco18s.bulletboss.ui
 					return true;
 				}
 				attachedBarrel = item;
-				spawnedObject = Instantiate(item.upgradeTypeData.data.relevantPrefab, transform.position.ReplaceZ(-1), Quaternion.identity, transform.parent);
+				spawnedObject = Instantiate(item.upgradeTypeData.relevantPrefab, transform.position.ReplaceZ(-1), Quaternion.identity, transform.parent);
 				HostileFighter fighter = spawnedObject.GetComponent<HostileFighter>();
 
 				if (fighter == null) return false;
@@ -53,14 +53,14 @@ namespace Assets.draco18s.bulletboss.ui
 				Clear(attachedBarrel);
 				return true;
 			}
-			if (item.upgradeTypeData.data.type != slotType) return false;
+			if (item.upgradeTypeData.type != slotType) return false;
 			if (attachedBarrel != null)
 			{
 				Destroy(spawnedObject);
-				if(attachedBarrel.upgradeTypeData.data.rarityTier != NamedRarity.Starting)
+				if(attachedBarrel.upgradeTypeData.rarityTier != NamedRarity.Starting)
 					Inventory.instance.Add(attachedBarrel);
 			}
-			spawnedObject = Instantiate(item.upgradeTypeData.data.relevantPrefab, transform.position.ReplaceZ(-1), Quaternion.identity, transform.parent);
+			spawnedObject = Instantiate(item.upgradeTypeData.relevantPrefab, transform.position.ReplaceZ(-1), Quaternion.identity, transform.parent);
 			gun = spawnedObject.GetComponent<GunBarrel>();
 			if (gun != null)
 			{
@@ -104,13 +104,13 @@ namespace Assets.draco18s.bulletboss.ui
 				r = combine(r, modifier);
 			}
 
-			if(attachedShell != null && attachedShell.upgradeTypeData.data.attributeModifiers.TryGetValue(stat, out var attributeModifier))
+			if(attachedShell != null && attachedShell.upgradeTypeData.attributeModifiers.TryGetValue(stat, out var attributeModifier))
 				r = combine(r, attributeModifier);
 
 			foreach (InventoryItem item in attachedUpgrades)
 			{
-				if(!item.upgradeTypeData.data.attributeModifiers.ContainsKey(stat)) continue;
-				r = combine(r, item.upgradeTypeData.data.attributeModifiers[stat]);
+				if(!item.upgradeTypeData.attributeModifiers.ContainsKey(stat)) continue;
+				r = combine(r, item.upgradeTypeData.attributeModifiers[stat]);
 			}
 			return r;
 		}
@@ -136,7 +136,7 @@ namespace Assets.draco18s.bulletboss.ui
 					Inventory.instance.Add(attachedBarrel);
 				}
 
-				spawnedObject = Instantiate(item.upgradeTypeData.data.relevantPrefab, transform.position.ReplaceZ(-1), Quaternion.identity, transform.parent);
+				spawnedObject = Instantiate(item.upgradeTypeData.relevantPrefab, transform.position.ReplaceZ(-1), Quaternion.identity, transform.parent);
 				HostileFighter fighter = spawnedObject.GetComponent<HostileFighter>();
 				fighter.SetSpawn(this);
 				attachedBarrel = item;
@@ -155,7 +155,7 @@ namespace Assets.draco18s.bulletboss.ui
 					Inventory.instance.Add(attachedBarrel);
 				}
 
-				spawnedObject = Instantiate(item.upgradeTypeData.data.relevantPrefab, transform.position.ReplaceZ(-1), Quaternion.identity, transform.parent);
+				spawnedObject = Instantiate(item.upgradeTypeData.relevantPrefab, transform.position.ReplaceZ(-1), Quaternion.identity, transform.parent);
 				gun = spawnedObject.GetComponent<GunBarrel>();
 				gun.SetMounting(this);
 				gun.SetShell(attachedShell);
@@ -168,7 +168,7 @@ namespace Assets.draco18s.bulletboss.ui
 			PatternEffects ret = new PatternEffects();
 			foreach (InventoryItem item in attachedUpgrades)
 			{
-				ret = ret.Merge(item.upgradeTypeData.data.patternModifiers);
+				ret = ret.Merge(item.upgradeTypeData.patternModifiers);
 			}
 
 			return ret;
