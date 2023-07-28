@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 using static UnityEditor.Progress;
 
 namespace Assets.draco18s.bulletboss.ui
@@ -20,6 +21,8 @@ namespace Assets.draco18s.bulletboss.ui
 		public InventoryItem attachedBarrel;
 		[SerializeField]
 		public InventoryItem attachedShell;
+
+		public Image timerGraphic;
 
 		public GunBarrel gun;
 
@@ -107,11 +110,12 @@ namespace Assets.draco18s.bulletboss.ui
 
 			if (GameStateManager.instance.state == GameStateManager.GameState.InGame && slotType == UpgradeType.FighterEntry)
 			{
-				if (SpawnCount <= 0 || cooldownTimer > 0) return;
+				if (SpawnCount <= 0 || cooldownTimer <= 0) return;
 				SpawnCount--;
 				GameObject go = Instantiate(spawnedObject, GameTransform.instance.transform);
 				HostileFighter fighter = go.GetComponent<HostileFighter>();
 				fighter.Spawn(this);
+				cooldownTimer = 0f;
 			}
 		}
 
@@ -121,12 +125,22 @@ namespace Assets.draco18s.bulletboss.ui
 			if (GameStateManager.instance.state != GameStateManager.GameState.InGame || spawnedObject == null || slotType != UpgradeType.FighterEntry) return;
 			float dt = Time.fixedDeltaTime;
 			SpawnTimer += dt;
-			cooldownTimer -= dt;
+			cooldownTimer += dt;
 			if (SpawnTimer >= SpawnTime)
 			{
 				SpawnTimer -= SpawnTime;
 				SpawnCount++;
-				cooldownTimer = 1.5f;
+			}
+
+			if (SpawnCount > 0)
+			{
+				timerGraphic.fillAmount = cooldownTimer / 1.5f;
+				timerGraphic.color = Color.yellow;
+			}
+			else
+			{
+				timerGraphic.fillAmount = SpawnTimer / SpawnTime;
+				timerGraphic.color = Color.red;
 			}
 		}
 

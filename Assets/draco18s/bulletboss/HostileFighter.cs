@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Assets.draco18s.bulletboss.ui;
 using Assets.draco18s.util;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.Events;
+using Random = UnityEngine.Random;
 
 namespace Assets.draco18s.bulletboss
 {
@@ -20,6 +22,7 @@ namespace Assets.draco18s.bulletboss
 		public float CurHp;
 		public float MaxHp;
 		private float speed = 1;
+		private float expValue = 1;
 
 		public void SetSpawn(HardPoint mount)
 		{
@@ -52,6 +55,7 @@ namespace Assets.draco18s.bulletboss
 			bar.Init();
 			image.color = Color.white;
 			active = true;
+			expValue = 1 + MaxHp + Math.Max((int)i.upgradeTypeData.rarityTier - 2, 0) * 10;
 		}
 
 		[UsedImplicitly]
@@ -61,12 +65,16 @@ namespace Assets.draco18s.bulletboss
 
 			if (CurHp <= 0)
 			{
-				GenerateDrops(MaxHp);
+				GenerateDrops(expValue);
 				Destroy(gameObject);
 				return;
 			}
 			float dt = Time.fixedDeltaTime;
 			transform.Translate(new Vector3(1, 0, 0) * dt, Space.Self);
+			if (Mathf.Abs(transform.localPosition.x) > 10f || Mathf.Abs(transform.localPosition.y) > 10)
+			{
+				Destroy(gameObject);
+			}
 		}
 
 		private void GenerateDrops(float value)
