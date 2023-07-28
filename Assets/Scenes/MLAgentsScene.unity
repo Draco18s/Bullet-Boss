@@ -54179,6 +54179,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 776955894}
     m_Modifications:
+    - target: {fileID: 1279206080062830891, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 519420031}
+    - target: {fileID: 1279206080062830891, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2519050091870446944, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
+      propertyPath: SpawnTime
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2519050091870446944, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
+      propertyPath: SpawnCount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3298389657536010196, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
       propertyPath: m_Name
       value: FighterEntry

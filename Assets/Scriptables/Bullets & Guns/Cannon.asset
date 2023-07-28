@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ef877f22a8be024787ac225f5cd6a6f, type: 3}
   m_Name: Cannon
   m_EditorClassIdentifier: 
-  data: 
+  data:
     type: 1
     image: {fileID: 1300002276, guid: 0b8c38ada7c558140870b5702c367d60, type: 3}
     upgradeID: Cannon
@@ -34,6 +34,10 @@ MonoBehaviour:
           v: 0
         HomingShots:
           v: 0
+        AimAtPlayer:
+          v: 0
+        AimScreenDown:
+          v: 0
       image: {fileID: 0}
       dataValues:
         keys: 0000000001000000020000000300000004000000
@@ -46,8 +50,36 @@ MonoBehaviour:
       timeline:
         duration: 0
         data:
-          keys: 
-          values: []
+          keys: 0300000004000000
+          values:
+          - serializedVersion: 2
+            m_Curve:
+            - serializedVersion: 3
+              time: 0
+              value: 1
+              inSlope: 0
+              outSlope: 0
+              tangentMode: 136
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            m_PreInfinity: 0
+            m_PostInfinity: 0
+            m_RotationOrder: 0
+          - serializedVersion: 2
+            m_Curve:
+            - serializedVersion: 3
+              time: 0
+              value: 0
+              inSlope: 0
+              outSlope: 0
+              tangentMode: 136
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            m_PreInfinity: 0
+            m_PostInfinity: 0
+            m_RotationOrder: 0
       childPattern:
         rid: -2
     relevantPrefab: {fileID: 2206095113025173180, guid: 9055253f30e2e1340a675e824562f2d9, type: 3}
@@ -56,8 +88,12 @@ MonoBehaviour:
         v: 0
       HomingShots:
         v: 0
-    references:
-      version: 2
-      RefIds:
-      - rid: -2
-        type: {class: , ns: , asm: }
+      AimAtPlayer:
+        v: 0
+      AimScreenDown:
+        v: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }

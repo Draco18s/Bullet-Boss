@@ -24,8 +24,8 @@ MonoBehaviour:
     attributeModifiers:
       keys: 0500000009000000
       values:
-      - 1.5
       - 1
+      - 3
     relevantPattern:
       ReloadType: 0
       Lifetime: 10

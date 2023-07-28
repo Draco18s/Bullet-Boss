@@ -51,7 +51,7 @@ namespace Assets.draco18s
 
 		public void ApplyEffects(PatternEffects changes)
 		{
-			effects = effects.Merge(changes);
+			effects = effects.CombineIntoNew(changes);
 		}
 	}
 }

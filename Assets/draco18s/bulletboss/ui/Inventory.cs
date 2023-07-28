@@ -28,7 +28,6 @@ namespace Assets.draco18s.bulletboss.ui
 			canvas = GetComponent<Canvas>();
 			foreach (UpgradeScriptable v in ResourcesManager.instance.GetAssetsMatching<UpgradeScriptable>(s => s.data.rarityTier == NamedRarity.Starting))
 			{
-				Debug.Log(v.name);
 				GameObject go = Instantiate(itemPrefab, container);
 				InventoryItem item = go.GetComponent<InventoryItem>();
 				item.upgradeTypeData.Populate(v.data);

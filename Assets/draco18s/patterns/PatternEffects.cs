@@ -16,7 +16,7 @@ namespace Assets.draco18s
 		public TriValue AimAtPlayer = TriValue.Default.Clone();
 		public TriValue AimScreenDown = TriValue.Default.Clone();
 
-		public PatternEffects Merge(PatternEffects other)
+		public PatternEffects CombineIntoNew(PatternEffects other)
 		{
 			PatternEffects ret = new PatternEffects();
 			ret.MirrorSpreadShots = MirrorSpreadShots || other.MirrorSpreadShots;
@@ -24,6 +24,14 @@ namespace Assets.draco18s
 			ret.AimAtPlayer = AimAtPlayer || other.AimAtPlayer;
 			ret.AimScreenDown = AimScreenDown || other.AimScreenDown;
 			return ret;
+		}
+
+		public void MergeWith(PatternEffects other)
+		{
+			MirrorSpreadShots = MirrorSpreadShots || other.MirrorSpreadShots;
+			HomingShots = HomingShots || other.HomingShots;
+			AimAtPlayer = AimAtPlayer || other.AimAtPlayer;
+			AimScreenDown = AimScreenDown || other.AimScreenDown;
 		}
 
 		public PatternEffects Copy()

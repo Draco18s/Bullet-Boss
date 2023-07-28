@@ -98,6 +98,10 @@ namespace Assets.draco18s.bulletboss
 		public void Init()
 		{
 			timeAlive = 0;
+			
+			pattern.dataValues[PatternDataKey.FireShot] = 1;
+			pattern.dataValues[PatternDataKey.Rotation] = 36f;
+			ReloadType = ReloadType;
 
 			if (pattern.timeline.data.Count > 0) return;
 			foreach (PatternDataKey d in GetAllowedValues())
@@ -108,9 +112,6 @@ namespace Assets.draco18s.bulletboss
 					postWrapMode = WrapMode.Loop
 				});
 			}
-			pattern.dataValues[PatternDataKey.FireShot] = 1;
-			pattern.dataValues[PatternDataKey.Rotation] = 36f;
-			ReloadType = ReloadType;
 		}
 
 		public void SetMounting(HardPoint point)
@@ -130,12 +131,11 @@ namespace Assets.draco18s.bulletboss
 			bulletClone.GetComponent<SpriteRenderer>().sprite = item.upgradeTypeData.image;
 		}
 
-		public void SetShell(UpgradeRuntime data, PatternData patt)
+		public void SetShell(GameObject prefab, PatternData patt)
 		{
-			bulletClone = Instantiate(data.relevantPrefab);
+			bulletClone = Instantiate(prefab);
 			bulletClone.SetActive(false);
 			bulletClone.GetComponent<Bullet>().SetPattern(patt);
-			bulletClone.GetComponent<SpriteRenderer>().sprite = data.image;
 		}
 
 		[UsedImplicitly]
@@ -168,17 +168,17 @@ namespace Assets.draco18s.bulletboss
 			}
 			else if (pattern.effects.AimScreenDown)
 			{
-				transform.rotation = Quaternion.identity;
+				transform.localEulerAngles = -transform.parent.localEulerAngles;
 			}
 			else
 			{
 				transform.Rotate(Vector3.forward, currentValues[PatternDataKey.Rotation] * dt * GetStat(StatAttribute.GunSpeed, (a, b) => a * b), Space.Self);
+				
+				float ang = GetStat(StatAttribute.AngleRestriction, (a, b) => a + b) / 2;
+				float f = transform.localEulerAngles.z - pattern.StartAngle;
+				if (f > 180) f -= 360;
+				transform.localEulerAngles = transform.localEulerAngles.ReplaceZ(Mathf.Clamp(f, -ang, ang) + pattern.StartAngle);
 			}
-
-			float ang = GetStat(StatAttribute.AngleRestriction, (a, b) => a + b) / 2;
-			float f = transform.localEulerAngles.z - pattern.StartAngle;
-			if (f > 180) f -= 360;
-			transform.localEulerAngles = transform.localEulerAngles.ReplaceZ(Mathf.Clamp(f, -ang, ang) + pattern.StartAngle);
 			
 			if (ReloadType == GunType.None) return;
 			if (ReloadType == GunType.SingleShot)
@@ -393,10 +393,11 @@ namespace Assets.draco18s.bulletboss
 				bul.SetPattern(pattern.childPattern);
 			bul.SetDamage(GetStat(StatAttribute.Damage, (a, b) => a + b));
 			bul.SetLifetime(GetStat(StatAttribute.Lifetime, (a, b) => a * b));
+
 			bul.SetStat(PatternDataKey.Speed, GetStat(StatAttribute.BulletSpeed, (a, b) => a * b));
 			if (mountingPoint != null)
 			{
-				bul.pattern.effects = bul.pattern.effects.Merge(mountingPoint.GetPatternModifiers());
+				bul.pattern.effects = bul.pattern.effects.CombineIntoNew(mountingPoint.GetPatternModifiers());
 			}
 			if (bul.pattern.image != null) bul.GetComponent<SpriteRenderer>().sprite = bul.pattern.image;
 			if (bul.pattern.childPattern == null) return;

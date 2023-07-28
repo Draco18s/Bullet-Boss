@@ -109,7 +109,7 @@ namespace Assets.draco18s.bulletboss.ui
 			{
 				if (SpawnCount <= 0 || cooldownTimer > 0) return;
 				SpawnCount--;
-				GameObject go = Instantiate(spawnedObject);
+				GameObject go = Instantiate(spawnedObject, GameTransform.instance.transform);
 				HostileFighter fighter = go.GetComponent<HostileFighter>();
 				fighter.Spawn(this);
 			}
@@ -152,11 +152,11 @@ namespace Assets.draco18s.bulletboss.ui
 
 		public (PatternData, InventoryItem) GetFighterGunPattern()
 		{
-			InventoryItem fg = attachedUpgrades.Find(x => x.upgradeTypeData.type == UpgradeType.FighterEntry);
+			InventoryItem fg = attachedBarrel;
 			if (fg.upgradeTypeData.relevantPattern.ReloadType != GunType.None)
 				return (fg.upgradeTypeData.relevantPattern,fg);
 			else
-				return (ResourcesManager.instance.GetAssetsMatching<UpgradeScriptable>(s => s.data.rarityTier == NamedRarity.Starting && s.data.type == UpgradeType.Bullet).First().data.relevantPattern,fg);
+				return (ResourcesManager.instance.GetAssetsMatching<UpgradeScriptable>(s => s.data.rarityTier == NamedRarity.Starting && s.data.type == UpgradeType.SmallGun).First().data.relevantPattern,fg);
 		}
 
 		public void AttachFromSlotUpdate(UpgradeType slotType,InventoryItem item)
@@ -212,7 +212,7 @@ namespace Assets.draco18s.bulletboss.ui
 			PatternEffects ret = new PatternEffects();
 			foreach (InventoryItem item in attachedUpgrades)
 			{
-				ret = ret.Merge(item.upgradeTypeData.patternModifiers);
+				ret = ret.CombineIntoNew(item.upgradeTypeData.patternModifiers);
 			}
 
 			return ret;

@@ -22,6 +22,7 @@ namespace Assets.draco18s.bulletboss
 
 		public PatternData relevantPattern;
 		public GameObject relevantPrefab;
+		public GameObject secondaryPrefab;
 		public PatternEffects patternModifiers;
 
 		public void Populate(UpgradeRuntime original)
@@ -42,6 +43,7 @@ namespace Assets.draco18s.bulletboss
 			patternModifiers = original.patternModifiers.Copy();
 			relevantPattern.CopyFrom(original.relevantPattern);
 			relevantPrefab = original.relevantPrefab;
+			secondaryPrefab = original.secondaryPrefab;
 		}
 	}
 }
