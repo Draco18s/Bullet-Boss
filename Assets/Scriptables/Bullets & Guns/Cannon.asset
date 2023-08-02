@@ -35,9 +35,9 @@ MonoBehaviour:
         HomingShots:
           v: 0
         AimAtPlayer:
-          v: 0
+          v: 1
         AimScreenDown:
-          v: 0
+          v: 1
       image: {fileID: 0}
       dataValues:
         keys: 0000000001000000020000000300000004000000
@@ -83,6 +83,7 @@ MonoBehaviour:
       childPattern:
         rid: -2
     relevantPrefab: {fileID: 2206095113025173180, guid: 9055253f30e2e1340a675e824562f2d9, type: 3}
+    secondaryPrefab: {fileID: 0}
     patternModifiers:
       MirrorSpreadShots:
         v: 0

@@ -12,19 +12,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ef877f22a8be024787ac225f5cd6a6f, type: 3}
   m_Name: PDT
   m_EditorClassIdentifier: 
-  data: 
+  data:
     type: 2
     image: {fileID: -285149717, guid: 0b8c38ada7c558140870b5702c367d60, type: 3}
-    upgradeID: gun4
+    upgradeID: PDT
     upgradeName: Point Defense Turret
     description: Fires six bullets in all directions
-    rarityTier: 2
+    rarityTier: 0
     relativeRarityInTier: 100
+    attributeModifiers:
+      keys: 
+      values: []
     relevantPattern:
       ReloadType: 1
       Lifetime: 10
       StartAngle: 0
       TimeOffset: 0
+      isEditable: 0
+      effects:
+        MirrorSpreadShots:
+          v: 0
+        HomingShots:
+          v: 0
+        AimAtPlayer:
+          v: 0
+        AimScreenDown:
+          v: 0
+      image: {fileID: 0}
       dataValues:
         keys: 0000000001000000020000000300000004000000
         values:
@@ -38,4 +52,21 @@ MonoBehaviour:
         data:
           keys: 
           values: []
+      childPattern:
+        rid: -2
     relevantPrefab: {fileID: 2586209271111932936, guid: 2254e4a3868e9b64f9817daa7d123696, type: 3}
+    secondaryPrefab: {fileID: 0}
+    patternModifiers:
+      MirrorSpreadShots:
+        v: 0
+      HomingShots:
+        v: 0
+      AimAtPlayer:
+        v: 0
+      AimScreenDown:
+        v: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }

@@ -8,8 +8,25 @@ namespace Assets.draco18s.training
 {
 	public class ShipGraze : MonoBehaviour, IDamageTaker
 	{
+		// NOT BEING USED
+		// GOTO TrainingDodgeDetection!!
 		public UnityEvent OnTakeDamage { get; set; } = new UnityEvent();
+
 		private IDamageDealer parent;
+		public float GetCurrentHealth()
+		{
+			return 0;
+		}
+
+		public float GetMaxHealth()
+		{
+			return 0;
+		}
+
+		public float ApplyDamage(float damage, Collider2D col)
+		{
+			return 0;
+		}
 
 		[UsedImplicitly]
 		void Start()
@@ -17,25 +34,13 @@ namespace Assets.draco18s.training
 			parent = GetComponentInParent<IDamageDealer>();
 		}
 
-		public float ApplyDamage(float damage, Collider2D col)
-		{
-			parent.ApplyGraze(1, col);
-			//parent.AddScore(0.00025f, col);
-			return 0;
-		}
-
-		public float ApplyGraze(float damage, Collider2D col)
-		{
-			return 0;
-		}
-
-		[UsedImplicitly]
+		/*[UsedImplicitly]
 		private void OnCollisionStay2D(Collision2D col)
 		{
 			if (col.gameObject.layer != this.gameObject.layer)
 			{
-				parent.AddScore(0.5f * Time.fixedDeltaTime, col.gameObject.GetComponent<Collider2D>());
+				
 			}
-		}
+		}*/
 	}
 }

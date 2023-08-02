@@ -58,19 +58,13 @@
   <ItemGroup>
     <Compile Include="Assets\draco18s\Editor\FindMissingScriptsRecursivelyAndRemove.cs" />
     <Compile Include="Assets\UGUIMeshLab\Editor\UIMeshLineEditor.cs" />
+    <Compile Include="Assets\draco18s\Editor\ResourcesManagerEd.cs" />
     <Compile Include="Assets\Origin\Script\Editor\VertexLineEditor.cs" />
     <Compile Include="Assets\UGUIMeshLab\Editor\MenuExtender.cs" />
     <Compile Include="Assets\UGUIMeshLab\Editor\PropertyDrawerCollection.cs" />
     <Compile Include="Assets\draco18s\Editor\PatternEditor.cs" />
-    <Compile Include="Assets\codeandweb.com\Editor\SpritesheetImporter.cs" />
     <Compile Include="Assets\draco18s\Editor\TriValueDrawer.cs" />
     <Compile Include="Assets\draco18s\Editor\CustomScrollbarEd.cs" />
-    <Compile Include="Assets\codeandweb.com\Editor\UIImageSetSizeAndPivot.cs" />
-    <Compile Include="Assets\draco18s\Editor\ResourcesManagerEd.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Assets\codeandweb.com\Editor\SettingsTexturePackerImporter.txt" />
-    <None Include="Assets\codeandweb.com\Editor\TexturePackerImporter.dll" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -329,7 +323,7 @@
       <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.19f1\Editor\Data\PlaybackEngines\WindowsStandaloneSupport\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="System.IO.Abstractions">
-      <HintPath>Library\PackageCache\com.unity.ml-agents@2.0.1\Plugins\System.IO.Abstractions.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.ml-agents@89a6357016\Plugins\System.IO.Abstractions.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Plastic.Newtonsoft.Json">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@2.0.0\Lib\Editor\PlasticSCM\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
@@ -347,7 +341,7 @@
       <HintPath>Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.CodeGen\Unity.Burst.Cecil.Mdb.dll</HintPath>
     </Reference>
     <Reference Include="Google.Protobuf">
-      <HintPath>Library\PackageCache\com.unity.barracuda@2.0.0\Barracuda\Runtime\Plugins\ProtoBuffer\Google.Protobuf.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.barracuda@3.0.0\Barracuda\Runtime\Plugins\ProtoBuffer\Google.Protobuf.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.TextureAssets">
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.8.0\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
@@ -373,17 +367,14 @@
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.8.0\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="TexturePackerImporter">
-      <HintPath>Assets\codeandweb.com\Editor\TexturePackerImporter.dll</HintPath>
-    </Reference>
     <Reference Include="System.IO.Abstractions.TestingHelpers">
-      <HintPath>Library\PackageCache\com.unity.ml-agents@2.0.1\Plugins\System.IO.Abstractions.TestingHelpers.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.ml-agents@89a6357016\Plugins\System.IO.Abstractions.TestingHelpers.dll</HintPath>
     </Reference>
     <Reference Include="System.Interactive.Async">
-      <HintPath>Library\PackageCache\com.unity.ml-agents@2.0.1\Plugins\ProtoBuffer\System.Interactive.Async.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.ml-agents@89a6357016\Plugins\ProtoBuffer\System.Interactive.Async.dll</HintPath>
     </Reference>
     <Reference Include="Grpc.Core">
-      <HintPath>Library\PackageCache\com.unity.ml-agents@2.0.1\Plugins\ProtoBuffer\Grpc.Core.dll</HintPath>
+      <HintPath>Library\PackageCache\com.unity.ml-agents@89a6357016\Plugins\ProtoBuffer\Grpc.Core.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>Library\PackageCache\com.unity.ext.nunit@1.0.6\net35\unity-custom\nunit.framework.dll</HintPath>

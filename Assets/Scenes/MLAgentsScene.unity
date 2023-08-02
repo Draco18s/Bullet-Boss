@@ -329,6 +329,7 @@ MonoBehaviour:
     values: []
   timeAlive: 73.51867
   minFireDelay: 0.25
+  active: 1
   references:
     version: 2
     RefIds:
@@ -692,6 +693,7 @@ MonoBehaviour:
     values: []
   timeAlive: 223.70471
   minFireDelay: 0.78000003
+  active: 1
   references:
     version: 2
     RefIds:
@@ -1077,6 +1079,7 @@ MonoBehaviour:
     values: []
   timeAlive: 223.70471
   minFireDelay: 0.78000003
+  active: 1
   references:
     version: 2
     RefIds:
@@ -1126,6 +1129,7 @@ GameObject:
   - component: {fileID: 47218322}
   - component: {fileID: 47218323}
   - component: {fileID: 47218324}
+  - component: {fileID: 47218325}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
@@ -1145,6 +1149,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1859397509}
   - {fileID: 137187375}
   - {fileID: 1551191974}
   m_Father: {fileID: 0}
@@ -1176,6 +1181,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
+--- !u!114 &47218325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 47218321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a84c82d5423fa4747969bc630d1bcd9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ToggleableThings:
+  - {fileID: 1325991869}
+  - {fileID: 1376696469}
+  - {fileID: 1407052700}
+  - {fileID: 1465555159}
+  FighterSpawnRate: 0.3
+  GemDropRate: 0.3
 --- !u!1 &48167665
 GameObject:
   m_ObjectHideFlags: 0
@@ -2155,6 +2179,7 @@ MonoBehaviour:
     values: []
   timeAlive: 223.70471
   minFireDelay: 0.78000003
+  active: 1
   references:
     version: 2
     RefIds:
@@ -2376,6 +2401,7 @@ MonoBehaviour:
     values: []
   timeAlive: 53.840427
   minFireDelay: 0.25
+  active: 1
   references:
     version: 2
     RefIds:
@@ -2724,6 +2750,7 @@ MonoBehaviour:
     values: []
   timeAlive: 92.938416
   minFireDelay: 2.6
+  active: 1
   references:
     version: 2
     RefIds:
@@ -2927,7 +2954,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &137187375
 Transform:
   m_ObjectHideFlags: 0
@@ -2941,7 +2968,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 47218322}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!50 &137187376
 Rigidbody2D:
@@ -3392,6 +3419,7 @@ MonoBehaviour:
     values: []
   timeAlive: 73.51867
   minFireDelay: 0.78000003
+  active: 1
   references:
     version: 2
     RefIds:
@@ -3563,6 +3591,7 @@ MonoBehaviour:
     values: []
   timeAlive: 63.27657
   minFireDelay: 0.78000003
+  active: 1
   references:
     version: 2
     RefIds:
@@ -3923,6 +3952,7 @@ MonoBehaviour:
     values: []
   timeAlive: 45.051125
   minFireDelay: 0.25
+  active: 1
   references:
     version: 2
     RefIds:
@@ -4113,6 +4143,7 @@ MonoBehaviour:
     values: []
   timeAlive: 417.18246
   minFireDelay: 0.25
+  active: 1
   references:
     version: 2
     RefIds:
@@ -4406,6 +4437,7 @@ MonoBehaviour:
     values: []
   timeAlive: 223.70471
   minFireDelay: 0.78000003
+  active: 1
   references:
     version: 2
     RefIds:
@@ -4619,6 +4651,76 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &166667560
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 776955894}
+    m_Modifications:
+    - target: {fileID: 2519050091870446944, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
+      propertyPath: SpawnTime
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2519050091870446944, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
+      propertyPath: SpawnTimer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3298389657536010196, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
+      propertyPath: m_Name
+      value: FighterEntry
+      objectReference: {fileID: 0}
+    - target: {fileID: 4237710972048377517, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4237710972048377517, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4237710972048377517, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 4237710972048377517, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4237710972048377517, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4237710972048377517, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4237710972048377517, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4237710972048377517, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4237710972048377517, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4237710972048377517, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4237710972048377517, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -90
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
+--- !u!4 &166667561 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4237710972048377517, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
+  m_PrefabInstance: {fileID: 166667560}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &172126155
 GameObject:
   m_ObjectHideFlags: 0
@@ -5027,6 +5129,7 @@ MonoBehaviour:
     values: []
   timeAlive: 223.70471
   minFireDelay: 0.78000003
+  active: 1
   references:
     version: 2
     RefIds:
@@ -5462,6 +5565,7 @@ MonoBehaviour:
     values: []
   timeAlive: 85.13066
   minFireDelay: 0.6
+  active: 1
   references:
     version: 2
     RefIds:
@@ -6086,6 +6190,7 @@ MonoBehaviour:
     values: []
   timeAlive: 223.70471
   minFireDelay: 0.78000003
+  active: 1
   references:
     version: 2
     RefIds:
@@ -6317,6 +6422,7 @@ MonoBehaviour:
     values: []
   timeAlive: 124.68718
   minFireDelay: 0.25
+  active: 1
   references:
     version: 2
     RefIds:
@@ -6534,6 +6640,7 @@ MonoBehaviour:
     values: []
   timeAlive: 223.70471
   minFireDelay: 0.78000003
+  active: 1
   references:
     version: 2
     RefIds:
@@ -6715,6 +6822,7 @@ MonoBehaviour:
     values: []
   timeAlive: 425.67026
   minFireDelay: 0.78000003
+  active: 1
   references:
     version: 2
     RefIds:
@@ -7880,6 +7988,7 @@ MonoBehaviour:
     values: []
   timeAlive: 223.70471
   minFireDelay: 0.78000003
+  active: 1
   references:
     version: 2
     RefIds:
@@ -8094,6 +8203,7 @@ MonoBehaviour:
     values: []
   timeAlive: 18.41426
   minFireDelay: 0.25
+  active: 1
   references:
     version: 2
     RefIds:
@@ -8302,6 +8412,7 @@ MonoBehaviour:
     values: []
   timeAlive: 223.70471
   minFireDelay: 0.78000003
+  active: 1
   references:
     version: 2
     RefIds:
@@ -8696,6 +8807,7 @@ MonoBehaviour:
     values: []
   timeAlive: 124.68718
   minFireDelay: 0.78000003
+  active: 1
   references:
     version: 2
     RefIds:
@@ -8876,6 +8988,7 @@ MonoBehaviour:
     values: []
   timeAlive: 230.42975
   minFireDelay: 0.25
+  active: 1
   references:
     version: 2
     RefIds:
@@ -9084,6 +9197,7 @@ MonoBehaviour:
     values: []
   timeAlive: 223.70471
   minFireDelay: 0.78000003
+  active: 1
   references:
     version: 2
     RefIds:
@@ -9815,6 +9929,7 @@ MonoBehaviour:
     values: []
   timeAlive: 223.70471
   minFireDelay: 0.78000003
+  active: 1
   references:
     version: 2
     RefIds:
@@ -9958,9 +10073,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SimTrainer, Assembly-CSharp
-        m_MethodName: StartGame
+      - m_Target: {fileID: 47218324}
+        m_TargetAssemblyTypeName: Assets.draco18s.bulletboss.GameStateManager, Assembly-CSharp
+        m_MethodName: BeginGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10203,6 +10318,7 @@ MonoBehaviour:
     values: []
   timeAlive: 417.18246
   minFireDelay: 0.25
+  active: 1
   references:
     version: 2
     RefIds:
@@ -10376,6 +10492,7 @@ MonoBehaviour:
     values: []
   timeAlive: 18.41426
   minFireDelay: 0.25
+  active: 1
   references:
     version: 2
     RefIds:
@@ -10540,6 +10657,7 @@ MonoBehaviour:
     values: []
   timeAlive: 45.051125
   minFireDelay: 0.25
+  active: 1
   references:
     version: 2
     RefIds:
@@ -11070,6 +11188,7 @@ MonoBehaviour:
     values: []
   timeAlive: 73.51867
   minFireDelay: 0.25
+  active: 1
   references:
     version: 2
     RefIds:
@@ -11363,6 +11482,7 @@ MonoBehaviour:
     values: []
   timeAlive: 417.18246
   minFireDelay: 0.6
+  active: 1
   references:
     version: 2
     RefIds:
@@ -11687,6 +11807,7 @@ MonoBehaviour:
     values: []
   timeAlive: 92.938416
   minFireDelay: 2.6
+  active: 1
   references:
     version: 2
     RefIds:
@@ -12385,7 +12506,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 778798223601149581, guid: db431273d5681684cb52d3101f9ac589, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 778798223601149581, guid: db431273d5681684cb52d3101f9ac589, type: 3}
       propertyPath: m_LocalPosition.y
@@ -12609,6 +12730,7 @@ MonoBehaviour:
     values: []
   timeAlive: 223.70471
   minFireDelay: 0.78000003
+  active: 1
   references:
     version: 2
     RefIds:
@@ -13004,6 +13126,7 @@ MonoBehaviour:
     values: []
   timeAlive: 223.70471
   minFireDelay: 0.78000003
+  active: 1
   references:
     version: 2
     RefIds:
@@ -13359,6 +13482,7 @@ MonoBehaviour:
     values: []
   timeAlive: 223.70471
   minFireDelay: 0.78000003
+  active: 1
   references:
     version: 2
     RefIds:
@@ -14146,6 +14270,7 @@ MonoBehaviour:
     values: []
   timeAlive: 223.70471
   minFireDelay: 0.78000003
+  active: 1
   references:
     version: 2
     RefIds:
@@ -14547,6 +14672,7 @@ MonoBehaviour:
     values: []
   timeAlive: 45.051125
   minFireDelay: 0.25
+  active: 1
   references:
     version: 2
     RefIds:
@@ -14942,6 +15068,7 @@ MonoBehaviour:
     values: []
   timeAlive: 45.051125
   minFireDelay: 0.25
+  active: 1
   references:
     version: 2
     RefIds:
@@ -15204,6 +15331,7 @@ MonoBehaviour:
     values: []
   timeAlive: 92.938416
   minFireDelay: 0.25
+  active: 1
   references:
     version: 2
     RefIds:
@@ -15668,6 +15796,7 @@ MonoBehaviour:
     values: []
   timeAlive: 53.840427
   minFireDelay: 0.78000003
+  active: 1
   references:
     version: 2
     RefIds:
@@ -16073,7 +16202,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 778798223601149581, guid: 677b6b65f13b10b49bdb498500b84b0e, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 778798223601149581, guid: 677b6b65f13b10b49bdb498500b84b0e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -16284,6 +16413,7 @@ MonoBehaviour:
     values: []
   timeAlive: 92.938416
   minFireDelay: 0.25
+  active: 1
   references:
     version: 2
     RefIds:
@@ -16922,6 +17052,7 @@ MonoBehaviour:
     values: []
   timeAlive: 417.18246
   minFireDelay: 2.6
+  active: 1
   references:
     version: 2
     RefIds:
@@ -17224,6 +17355,7 @@ MonoBehaviour:
     values: []
   timeAlive: 99.66467
   minFireDelay: 2.6
+  active: 1
   references:
     version: 2
     RefIds:
@@ -17528,6 +17660,7 @@ MonoBehaviour:
     values: []
   timeAlive: 124.68718
   minFireDelay: 0.25
+  active: 1
   references:
     version: 2
     RefIds:
@@ -17566,6 +17699,76 @@ MonoBehaviour:
             values: []
         childPattern:
           rid: -2
+--- !u!1001 &622333276
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 776955894}
+    m_Modifications:
+    - target: {fileID: 2519050091870446944, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
+      propertyPath: SpawnTime
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2519050091870446944, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
+      propertyPath: SpawnTimer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3298389657536010196, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
+      propertyPath: m_Name
+      value: FighterEntry
+      objectReference: {fileID: 0}
+    - target: {fileID: 4237710972048377517, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4237710972048377517, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4237710972048377517, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4237710972048377517, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4237710972048377517, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.21643949
+      objectReference: {fileID: 0}
+    - target: {fileID: 4237710972048377517, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4237710972048377517, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4237710972048377517, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.976296
+      objectReference: {fileID: 0}
+    - target: {fileID: 4237710972048377517, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4237710972048377517, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4237710972048377517, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 205
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
+--- !u!4 &622333277 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4237710972048377517, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
+  m_PrefabInstance: {fileID: 622333276}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &644571353
 GameObject:
   m_ObjectHideFlags: 0
@@ -17736,6 +17939,7 @@ MonoBehaviour:
     values: []
   timeAlive: 223.70471
   minFireDelay: 0.78000003
+  active: 1
   references:
     version: 2
     RefIds:
@@ -18570,6 +18774,7 @@ MonoBehaviour:
     values: []
   timeAlive: 223.70471
   minFireDelay: 0.78000003
+  active: 1
   references:
     version: 2
     RefIds:
@@ -19225,6 +19430,7 @@ MonoBehaviour:
     values: []
   timeAlive: 73.51867
   minFireDelay: 0.25
+  active: 1
   references:
     version: 2
     RefIds:
@@ -20096,11 +20302,15 @@ Transform:
   m_Children:
   - {fileID: 649482131}
   - {fileID: 462170054}
+  - {fileID: 1626706140}
   - {fileID: 1080288339}
   - {fileID: 1530510494}
   - {fileID: 1993709906}
   - {fileID: 539850592}
   - {fileID: 7096135822153822292}
+  - {fileID: 622333277}
+  - {fileID: 1820146837}
+  - {fileID: 166667561}
   m_Father: {fileID: 1551191974}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -20265,6 +20475,7 @@ MonoBehaviour:
     values: []
   timeAlive: 250.06514
   minFireDelay: 0.6
+  active: 1
   references:
     version: 2
     RefIds:
@@ -21009,6 +21220,7 @@ MonoBehaviour:
     values: []
   timeAlive: 223.70471
   minFireDelay: 0.78000003
+  active: 1
   references:
     version: 2
     RefIds:
@@ -21210,6 +21422,7 @@ MonoBehaviour:
     values: []
   timeAlive: 45.051125
   minFireDelay: 0.78000003
+  active: 1
   references:
     version: 2
     RefIds:
@@ -21440,6 +21653,7 @@ MonoBehaviour:
     values: []
   timeAlive: 45.051125
   minFireDelay: 0.78000003
+  active: 1
   references:
     version: 2
     RefIds:
@@ -21648,6 +21862,7 @@ MonoBehaviour:
     values: []
   timeAlive: 223.70471
   minFireDelay: 0.78000003
+  active: 1
   references:
     version: 2
     RefIds:
@@ -21877,6 +22092,7 @@ MonoBehaviour:
     values: []
   timeAlive: 417.18246
   minFireDelay: 2.6
+  active: 1
   references:
     version: 2
     RefIds:
@@ -22041,6 +22257,7 @@ MonoBehaviour:
     values: []
   timeAlive: 73.51867
   minFireDelay: 2.6
+  active: 1
   references:
     version: 2
     RefIds:
@@ -22258,6 +22475,7 @@ MonoBehaviour:
     values: []
   timeAlive: 223.70471
   minFireDelay: 0.78000003
+  active: 1
   references:
     version: 2
     RefIds:
@@ -22656,6 +22874,7 @@ MonoBehaviour:
     values: []
   timeAlive: 417.18246
   minFireDelay: 0.6
+  active: 1
   references:
     version: 2
     RefIds:
@@ -23270,6 +23489,7 @@ MonoBehaviour:
     values: []
   timeAlive: 45.051125
   minFireDelay: 0.25
+  active: 1
   references:
     version: 2
     RefIds:
@@ -23551,6 +23771,7 @@ MonoBehaviour:
     values: []
   timeAlive: 18.41426
   minFireDelay: 0.25
+  active: 1
   references:
     version: 2
     RefIds:
@@ -23936,6 +24157,7 @@ MonoBehaviour:
     values: []
   timeAlive: 124.68718
   minFireDelay: 0.25
+  active: 1
   references:
     version: 2
     RefIds:
@@ -24148,6 +24370,7 @@ MonoBehaviour:
     values: []
   timeAlive: 425.67026
   minFireDelay: 0.78000003
+  active: 1
   references:
     version: 2
     RefIds:
@@ -24338,6 +24561,7 @@ MonoBehaviour:
     values: []
   timeAlive: 417.18246
   minFireDelay: 0.25
+  active: 1
   references:
     version: 2
     RefIds:
@@ -24502,6 +24726,7 @@ MonoBehaviour:
     values: []
   timeAlive: 73.51867
   minFireDelay: 2.6
+  active: 1
   references:
     version: 2
     RefIds:
@@ -25095,6 +25320,7 @@ MonoBehaviour:
     values: []
   timeAlive: 223.70471
   minFireDelay: 0.78000003
+  active: 1
   references:
     version: 2
     RefIds:
@@ -25370,6 +25596,7 @@ MonoBehaviour:
     values: []
   timeAlive: 223.70471
   minFireDelay: 0.78000003
+  active: 1
   references:
     version: 2
     RefIds:
@@ -26015,6 +26242,7 @@ MonoBehaviour:
     values: []
   timeAlive: 73.51867
   minFireDelay: 0.25
+  active: 1
   references:
     version: 2
     RefIds:
@@ -26337,6 +26565,7 @@ MonoBehaviour:
     values: []
   timeAlive: 45.051125
   minFireDelay: 0.25
+  active: 1
   references:
     version: 2
     RefIds:
@@ -26508,6 +26737,7 @@ MonoBehaviour:
     values: []
   timeAlive: 63.27657
   minFireDelay: 0.78000003
+  active: 1
   references:
     version: 2
     RefIds:
@@ -26805,6 +27035,7 @@ MonoBehaviour:
     values: []
   timeAlive: 223.70471
   minFireDelay: 0.78000003
+  active: 1
   references:
     version: 2
     RefIds:
@@ -27054,6 +27285,7 @@ MonoBehaviour:
     values: []
   timeAlive: 85.13066
   minFireDelay: 2.6
+  active: 1
   references:
     version: 2
     RefIds:
@@ -27244,6 +27476,7 @@ MonoBehaviour:
     values: []
   timeAlive: 53.840427
   minFireDelay: 0.25
+  active: 1
   references:
     version: 2
     RefIds:
@@ -27706,6 +27939,7 @@ MonoBehaviour:
     values: []
   timeAlive: 92.938416
   minFireDelay: 0.25
+  active: 1
   references:
     version: 2
     RefIds:
@@ -28071,6 +28305,7 @@ MonoBehaviour:
     values: []
   timeAlive: 53.840427
   minFireDelay: 0.25
+  active: 1
   references:
     version: 2
     RefIds:
@@ -28138,7 +28373,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2135838770}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1144174317
 GameObject:
@@ -28310,6 +28545,7 @@ MonoBehaviour:
     values: []
   timeAlive: 124.68718
   minFireDelay: 0.78000003
+  active: 1
   references:
     version: 2
     RefIds:
@@ -28518,6 +28754,7 @@ MonoBehaviour:
     values: []
   timeAlive: 124.68718
   minFireDelay: 0.78000003
+  active: 1
   references:
     version: 2
     RefIds:
@@ -28812,6 +29049,7 @@ MonoBehaviour:
     values: []
   timeAlive: 73.51867
   minFireDelay: 2.6
+  active: 1
   references:
     version: 2
     RefIds:
@@ -29002,6 +29240,7 @@ MonoBehaviour:
     values: []
   timeAlive: 73.51867
   minFireDelay: 0.78000003
+  active: 1
   references:
     version: 2
     RefIds:
@@ -29367,6 +29606,7 @@ MonoBehaviour:
     values: []
   timeAlive: 99.66467
   minFireDelay: 2.6
+  active: 1
   references:
     version: 2
     RefIds:
@@ -30167,6 +30407,7 @@ MonoBehaviour:
     values: []
   timeAlive: 230.42975
   minFireDelay: 0.25
+  active: 1
   references:
     version: 2
     RefIds:
@@ -30357,6 +30598,7 @@ MonoBehaviour:
     values: []
   timeAlive: 417.18246
   minFireDelay: 0.25
+  active: 1
   references:
     version: 2
     RefIds:
@@ -30538,6 +30780,7 @@ MonoBehaviour:
     values: []
   timeAlive: 223.70471
   minFireDelay: 0.78000003
+  active: 1
   references:
     version: 2
     RefIds:
@@ -30692,6 +30935,11 @@ Transform:
   m_Father: {fileID: 456394647}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1221993174 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1518833180786470887, guid: 81724de5b872d604a9ded4fec031d87b, type: 3}
+  m_PrefabInstance: {fileID: 1430214850}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1234273318
 GameObject:
   m_ObjectHideFlags: 0
@@ -30960,6 +31208,7 @@ MonoBehaviour:
     values: []
   timeAlive: 223.70471
   minFireDelay: 0.78000003
+  active: 1
   references:
     version: 2
     RefIds:
@@ -31150,6 +31399,7 @@ MonoBehaviour:
     values: []
   timeAlive: 250.06514
   minFireDelay: 0.6
+  active: 1
   references:
     version: 2
     RefIds:
@@ -31367,6 +31617,7 @@ MonoBehaviour:
     values: []
   timeAlive: 99.66467
   minFireDelay: 2.6
+  active: 1
   references:
     version: 2
     RefIds:
@@ -31569,6 +31820,7 @@ MonoBehaviour:
     values: []
   timeAlive: 53.840427
   minFireDelay: 0.6
+  active: 1
   references:
     version: 2
     RefIds:
@@ -31916,6 +32168,7 @@ MonoBehaviour:
     values: []
   timeAlive: 223.70471
   minFireDelay: 0.78000003
+  active: 1
   references:
     version: 2
     RefIds:
@@ -32205,6 +32458,7 @@ MonoBehaviour:
     values: []
   timeAlive: 45.051125
   minFireDelay: 0.25
+  active: 1
   references:
     version: 2
     RefIds:
@@ -32481,6 +32735,7 @@ MonoBehaviour:
     values: []
   timeAlive: 124.68718
   minFireDelay: 0.25
+  active: 1
   references:
     version: 2
     RefIds:
@@ -33251,6 +33506,7 @@ MonoBehaviour:
     values: []
   timeAlive: 223.70471
   minFireDelay: 0.78000003
+  active: 1
   references:
     version: 2
     RefIds:
@@ -33289,6 +33545,11 @@ MonoBehaviour:
             values: []
         childPattern:
           rid: -2
+--- !u!1 &1325991869 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3298389657536010196, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
+  m_PrefabInstance: {fileID: 7096135822153822291}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1327412311
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33819,6 +34080,7 @@ MonoBehaviour:
     values: []
   timeAlive: 223.70471
   minFireDelay: 0.78000003
+  active: 1
   references:
     version: 2
     RefIds:
@@ -34502,6 +34764,7 @@ MonoBehaviour:
     values: []
   timeAlive: 124.68718
   minFireDelay: 0.78000003
+  active: 1
   references:
     version: 2
     RefIds:
@@ -34540,6 +34803,11 @@ MonoBehaviour:
             values: []
         childPattern:
           rid: -2
+--- !u!1 &1376696469 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3298389657536010196, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
+  m_PrefabInstance: {fileID: 622333276}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1377446224
 GameObject:
   m_ObjectHideFlags: 0
@@ -34893,6 +35161,7 @@ MonoBehaviour:
     values: []
   timeAlive: 53.840427
   minFireDelay: 0.25
+  active: 1
   references:
     version: 2
     RefIds:
@@ -35016,6 +35285,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1407052700 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3298389657536010196, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
+  m_PrefabInstance: {fileID: 1820146836}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1412501246
 GameObject:
   m_ObjectHideFlags: 0
@@ -35494,6 +35768,91 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1429891639}
   m_CullTransparentMesh: 1
+--- !u!1001 &1430214850
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 47218322}
+    m_Modifications:
+    - target: {fileID: 1066276561944075840, guid: 81724de5b872d604a9ded4fec031d87b, type: 3}
+      propertyPath: m_Model
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1066276561944075840, guid: 81724de5b872d604a9ded4fec031d87b, type: 3}
+      propertyPath: m_BehaviorType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1066276561944075840, guid: 81724de5b872d604a9ded4fec031d87b, type: 3}
+      propertyPath: m_BrainParameters.VectorObservationSize
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 1066276561944075840, guid: 81724de5b872d604a9ded4fec031d87b, type: 3}
+      propertyPath: m_BrainParameters.VectorActionSize.Array.data[0]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1066276561944075840, guid: 81724de5b872d604a9ded4fec031d87b, type: 3}
+      propertyPath: m_BrainParameters.m_ActionSpec.m_NumContinuousActions
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1518833181630772388, guid: 81724de5b872d604a9ded4fec031d87b, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1518833181630772388, guid: 81724de5b872d604a9ded4fec031d87b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1518833181630772388, guid: 81724de5b872d604a9ded4fec031d87b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1518833181630772388, guid: 81724de5b872d604a9ded4fec031d87b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 225
+      objectReference: {fileID: 0}
+    - target: {fileID: 1518833181630772388, guid: 81724de5b872d604a9ded4fec031d87b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1518833181630772388, guid: 81724de5b872d604a9ded4fec031d87b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1518833181630772388, guid: 81724de5b872d604a9ded4fec031d87b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1518833181630772388, guid: 81724de5b872d604a9ded4fec031d87b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1518833181630772388, guid: 81724de5b872d604a9ded4fec031d87b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1518833181630772388, guid: 81724de5b872d604a9ded4fec031d87b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1518833181630772388, guid: 81724de5b872d604a9ded4fec031d87b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1518833181630772394, guid: 81724de5b872d604a9ded4fec031d87b, type: 3}
+      propertyPath: m_Name
+      value: PlayerFighter
+      objectReference: {fileID: 0}
+    - target: {fileID: 1518833181630772394, guid: 81724de5b872d604a9ded4fec031d87b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8018901576301481295, guid: 81724de5b872d604a9ded4fec031d87b, type: 3}
+      propertyPath: muzzle
+      value: 
+      objectReference: {fileID: 1221993174}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 81724de5b872d604a9ded4fec031d87b, type: 3}
 --- !u!1 &1439919168
 GameObject:
   m_ObjectHideFlags: 0
@@ -35732,6 +36091,7 @@ MonoBehaviour:
     values: []
   timeAlive: 45.051125
   minFireDelay: 0.78000003
+  active: 1
   references:
     version: 2
     RefIds:
@@ -35917,6 +36277,11 @@ Transform:
   m_Father: {fileID: 456394647}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1465555159 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3298389657536010196, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
+  m_PrefabInstance: {fileID: 166667560}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1484598234
 GameObject:
   m_ObjectHideFlags: 0
@@ -36524,6 +36889,7 @@ MonoBehaviour:
     values: []
   timeAlive: 45.051125
   minFireDelay: 0.78000003
+  active: 1
   references:
     version: 2
     RefIds:
@@ -36763,6 +37129,7 @@ MonoBehaviour:
     values: []
   timeAlive: 223.70471
   minFireDelay: 0.78000003
+  active: 1
   references:
     version: 2
     RefIds:
@@ -36953,6 +37320,7 @@ MonoBehaviour:
     values: []
   timeAlive: 250.06514
   minFireDelay: 0.6
+  active: 1
   references:
     version: 2
     RefIds:
@@ -37192,6 +37560,7 @@ MonoBehaviour:
     values: []
   timeAlive: 223.70471
   minFireDelay: 0.78000003
+  active: 1
   references:
     version: 2
     RefIds:
@@ -37396,6 +37765,7 @@ MonoBehaviour:
     values: []
   timeAlive: 18.41426
   minFireDelay: 0.25
+  active: 1
   references:
     version: 2
     RefIds:
@@ -37447,7 +37817,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 778798223601149581, guid: 677b6b65f13b10b49bdb498500b84b0e, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 778798223601149581, guid: 677b6b65f13b10b49bdb498500b84b0e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -37782,6 +38152,7 @@ MonoBehaviour:
     values: []
   timeAlive: 417.18246
   minFireDelay: 0.6
+  active: 1
   references:
     version: 2
     RefIds:
@@ -38052,6 +38423,7 @@ MonoBehaviour:
     values: []
   timeAlive: 124.68718
   minFireDelay: 0.25
+  active: 1
   references:
     version: 2
     RefIds:
@@ -38269,6 +38641,7 @@ MonoBehaviour:
     values: []
   timeAlive: 99.66467
   minFireDelay: 2.6
+  active: 1
   references:
     version: 2
     RefIds:
@@ -38337,7 +38710,7 @@ Transform:
   m_Children:
   - {fileID: 776955894}
   m_Father: {fileID: 47218322}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1555980140
 GameObject:
@@ -38500,6 +38873,7 @@ MonoBehaviour:
     values: []
   timeAlive: 85.13066
   minFireDelay: 0.6
+  active: 1
   references:
     version: 2
     RefIds:
@@ -38733,6 +39107,7 @@ MonoBehaviour:
     values: []
   timeAlive: 63.27657
   minFireDelay: 0.78000003
+  active: 1
   references:
     version: 2
     RefIds:
@@ -39175,6 +39550,7 @@ MonoBehaviour:
     values: []
   timeAlive: 0
   minFireDelay: 0.25
+  active: 1
   references:
     version: 2
     RefIds:
@@ -39805,6 +40181,7 @@ MonoBehaviour:
     values: []
   timeAlive: 223.70471
   minFireDelay: 0.78000003
+  active: 1
   references:
     version: 2
     RefIds:
@@ -39843,72 +40220,6 @@ MonoBehaviour:
             values: []
         childPattern:
           rid: -2
---- !u!1001 &1618663647
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 2135838770}
-    m_Modifications:
-    - target: {fileID: 7359119994121160034, guid: 056d52f1416a17440968ba3b4b643232, type: 3}
-      propertyPath: m_Name
-      value: Ensign Variant
-      objectReference: {fileID: 0}
-    - target: {fileID: 7359119994121160034, guid: 056d52f1416a17440968ba3b4b643232, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7359119994121160044, guid: 056d52f1416a17440968ba3b4b643232, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7359119994121160044, guid: 056d52f1416a17440968ba3b4b643232, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7359119994121160044, guid: 056d52f1416a17440968ba3b4b643232, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -3.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7359119994121160044, guid: 056d52f1416a17440968ba3b4b643232, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 250
-      objectReference: {fileID: 0}
-    - target: {fileID: 7359119994121160044, guid: 056d52f1416a17440968ba3b4b643232, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7359119994121160044, guid: 056d52f1416a17440968ba3b4b643232, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7359119994121160044, guid: 056d52f1416a17440968ba3b4b643232, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7359119994121160044, guid: 056d52f1416a17440968ba3b4b643232, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7359119994121160044, guid: 056d52f1416a17440968ba3b4b643232, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7359119994121160044, guid: 056d52f1416a17440968ba3b4b643232, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7359119994121160044, guid: 056d52f1416a17440968ba3b4b643232, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 056d52f1416a17440968ba3b4b643232, type: 3}
---- !u!4 &1618663648 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7359119994121160044, guid: 056d52f1416a17440968ba3b4b643232, type: 3}
-  m_PrefabInstance: {fileID: 1618663647}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1619963101
 GameObject:
   m_ObjectHideFlags: 0
@@ -40133,6 +40444,7 @@ MonoBehaviour:
     values: []
   timeAlive: 92.938416
   minFireDelay: 0.25
+  active: 1
   references:
     version: 2
     RefIds:
@@ -40171,6 +40483,11 @@ MonoBehaviour:
             values: []
         childPattern:
           rid: -2
+--- !u!4 &1626706140 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 778798223601149581, guid: db431273d5681684cb52d3101f9ac589, type: 3}
+  m_PrefabInstance: {fileID: 1883074731}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1628413693
 GameObject:
   m_ObjectHideFlags: 0
@@ -40352,6 +40669,7 @@ MonoBehaviour:
     values: []
   timeAlive: 53.840427
   minFireDelay: 0.78000003
+  active: 1
   references:
     version: 2
     RefIds:
@@ -41057,6 +41375,7 @@ MonoBehaviour:
     values: []
   timeAlive: 223.70471
   minFireDelay: 0.78000003
+  active: 1
   references:
     version: 2
     RefIds:
@@ -41256,6 +41575,7 @@ MonoBehaviour:
     values: []
   timeAlive: 73.51867
   minFireDelay: 0.78000003
+  active: 1
   references:
     version: 2
     RefIds:
@@ -41628,6 +41948,7 @@ MonoBehaviour:
     values: []
   timeAlive: 223.70471
   minFireDelay: 0.78000003
+  active: 1
   references:
     version: 2
     RefIds:
@@ -42501,6 +42822,7 @@ MonoBehaviour:
     values: []
   timeAlive: 85.13066
   minFireDelay: 0.6
+  active: 1
   references:
     version: 2
     RefIds:
@@ -42901,6 +43223,7 @@ MonoBehaviour:
     values: []
   timeAlive: 92.938416
   minFireDelay: 0.6
+  active: 1
   references:
     version: 2
     RefIds:
@@ -43795,6 +44118,7 @@ MonoBehaviour:
     values: []
   timeAlive: 223.70471
   minFireDelay: 0.78000003
+  active: 1
   references:
     version: 2
     RefIds:
@@ -44012,6 +44336,7 @@ MonoBehaviour:
     values: []
   timeAlive: 223.70471
   minFireDelay: 0.78000003
+  active: 1
   references:
     version: 2
     RefIds:
@@ -44500,7 +44825,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1116785122}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.7866287
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -44543,6 +44868,76 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1817527016}
   m_CullTransparentMesh: 1
+--- !u!1001 &1820146836
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 776955894}
+    m_Modifications:
+    - target: {fileID: 2519050091870446944, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
+      propertyPath: SpawnTime
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2519050091870446944, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
+      propertyPath: SpawnTimer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3298389657536010196, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
+      propertyPath: m_Name
+      value: FighterEntry
+      objectReference: {fileID: 0}
+    - target: {fileID: 4237710972048377517, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4237710972048377517, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4237710972048377517, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 4237710972048377517, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4237710972048377517, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4237710972048377517, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4237710972048377517, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4237710972048377517, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4237710972048377517, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4237710972048377517, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4237710972048377517, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -90
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
+--- !u!4 &1820146837 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4237710972048377517, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
+  m_PrefabInstance: {fileID: 1820146836}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1820608262
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -44826,6 +45221,7 @@ MonoBehaviour:
     values: []
   timeAlive: 124.68718
   minFireDelay: 0.25
+  active: 1
   references:
     version: 2
     RefIds:
@@ -45272,6 +45668,7 @@ MonoBehaviour:
     values: []
   timeAlive: 223.70471
   minFireDelay: 0.78000003
+  active: 1
   references:
     version: 2
     RefIds:
@@ -45780,6 +46177,7 @@ MonoBehaviour:
     values: []
   timeAlive: 53.840427
   minFireDelay: 0.78000003
+  active: 1
   references:
     version: 2
     RefIds:
@@ -46057,6 +46455,7 @@ MonoBehaviour:
     values: []
   timeAlive: 45.051125
   minFireDelay: 0.25
+  active: 1
   references:
     version: 2
     RefIds:
@@ -46095,6 +46494,11 @@ MonoBehaviour:
             values: []
         childPattern:
           rid: -2
+--- !u!4 &1859397509 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1518833181630772388, guid: 81724de5b872d604a9ded4fec031d87b, type: 3}
+  m_PrefabInstance: {fileID: 1430214850}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1864603274
 GameObject:
   m_ObjectHideFlags: 0
@@ -46564,6 +46968,7 @@ MonoBehaviour:
     values: []
   timeAlive: 417.18246
   minFireDelay: 0.6
+  active: 1
   references:
     version: 2
     RefIds:
@@ -46748,6 +47153,63 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &1883074731
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 776955894}
+    m_Modifications:
+    - target: {fileID: 778798223601149580, guid: db431273d5681684cb52d3101f9ac589, type: 3}
+      propertyPath: m_Name
+      value: heavy-mount (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 778798223601149581, guid: db431273d5681684cb52d3101f9ac589, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 778798223601149581, guid: db431273d5681684cb52d3101f9ac589, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 778798223601149581, guid: db431273d5681684cb52d3101f9ac589, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 778798223601149581, guid: db431273d5681684cb52d3101f9ac589, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 778798223601149581, guid: db431273d5681684cb52d3101f9ac589, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 778798223601149581, guid: db431273d5681684cb52d3101f9ac589, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 778798223601149581, guid: db431273d5681684cb52d3101f9ac589, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 778798223601149581, guid: db431273d5681684cb52d3101f9ac589, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 778798223601149581, guid: db431273d5681684cb52d3101f9ac589, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 778798223601149581, guid: db431273d5681684cb52d3101f9ac589, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 778798223601149581, guid: db431273d5681684cb52d3101f9ac589, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: db431273d5681684cb52d3101f9ac589, type: 3}
 --- !u!1 &1883091167
 GameObject:
   m_ObjectHideFlags: 0
@@ -46918,6 +47380,7 @@ MonoBehaviour:
     values: []
   timeAlive: 53.840427
   minFireDelay: 0.78000003
+  active: 1
   references:
     version: 2
     RefIds:
@@ -47469,6 +47932,7 @@ MonoBehaviour:
     values: []
   timeAlive: 63.27657
   minFireDelay: 0.78000003
+  active: 1
   references:
     version: 2
     RefIds:
@@ -47731,6 +48195,7 @@ MonoBehaviour:
     values: []
   timeAlive: 223.70471
   minFireDelay: 0.78000003
+  active: 1
   references:
     version: 2
     RefIds:
@@ -47985,6 +48450,7 @@ MonoBehaviour:
     values: []
   timeAlive: 223.70471
   minFireDelay: 0.78000003
+  active: 1
   references:
     version: 2
     RefIds:
@@ -48461,6 +48927,7 @@ MonoBehaviour:
     values: []
   timeAlive: 92.938416
   minFireDelay: 2.6
+  active: 1
   references:
     version: 2
     RefIds:
@@ -48652,6 +49119,7 @@ MonoBehaviour:
     values: []
   timeAlive: 73.51867
   minFireDelay: 0.6
+  active: 1
   references:
     version: 2
     RefIds:
@@ -48851,6 +49319,7 @@ MonoBehaviour:
     values: []
   timeAlive: 92.938416
   minFireDelay: 0.6
+  active: 1
   references:
     version: 2
     RefIds:
@@ -49113,6 +49582,7 @@ MonoBehaviour:
     values: []
   timeAlive: 223.70471
   minFireDelay: 0.78000003
+  active: 1
   references:
     version: 2
     RefIds:
@@ -49277,6 +49747,7 @@ MonoBehaviour:
     values: []
   timeAlive: 85.13066
   minFireDelay: 2.6
+  active: 1
   references:
     version: 2
     RefIds:
@@ -49526,6 +49997,7 @@ MonoBehaviour:
     values: []
   timeAlive: 73.51867
   minFireDelay: 2.6
+  active: 1
   references:
     version: 2
     RefIds:
@@ -49864,6 +50336,7 @@ MonoBehaviour:
     values: []
   timeAlive: 73.51867
   minFireDelay: 0.6
+  active: 1
   references:
     version: 2
     RefIds:
@@ -50233,6 +50706,7 @@ MonoBehaviour:
     values: []
   timeAlive: 73.51867
   minFireDelay: 0.78000003
+  active: 1
   references:
     version: 2
     RefIds:
@@ -50315,7 +50789,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 778798223601149581, guid: 677b6b65f13b10b49bdb498500b84b0e, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 778798223601149581, guid: 677b6b65f13b10b49bdb498500b84b0e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -50619,6 +51093,7 @@ MonoBehaviour:
     values: []
   timeAlive: 223.70471
   minFireDelay: 0.78000003
+  active: 1
   references:
     version: 2
     RefIds:
@@ -51426,6 +51901,7 @@ MonoBehaviour:
     values: []
   timeAlive: 85.13066
   minFireDelay: 0.6
+  active: 1
   references:
     version: 2
     RefIds:
@@ -51625,6 +52101,7 @@ MonoBehaviour:
     values: []
   timeAlive: 250.06514
   minFireDelay: 0.6
+  active: 1
   references:
     version: 2
     RefIds:
@@ -51922,6 +52399,7 @@ MonoBehaviour:
     values: []
   timeAlive: 0
   minFireDelay: 0.25
+  active: 1
   references:
     version: 2
     RefIds:
@@ -52348,6 +52826,7 @@ MonoBehaviour:
     values: []
   timeAlive: 85.13066
   minFireDelay: 2.6
+  active: 1
   references:
     version: 2
     RefIds:
@@ -52556,6 +53035,7 @@ MonoBehaviour:
     values: []
   timeAlive: 92.938416
   minFireDelay: 2.6
+  active: 1
   references:
     version: 2
     RefIds:
@@ -52887,7 +53367,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 308023870}
-  - {fileID: 1618663648}
   - {fileID: 1141788076}
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -53250,6 +53729,7 @@ MonoBehaviour:
     values: []
   timeAlive: 85.13066
   minFireDelay: 2.6
+  active: 1
   references:
     version: 2
     RefIds:
@@ -53402,7 +53882,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 778798223601149581, guid: 677b6b65f13b10b49bdb498500b84b0e, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 778798223601149581, guid: 677b6b65f13b10b49bdb498500b84b0e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -54179,21 +54659,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 776955894}
     m_Modifications:
-    - target: {fileID: 1279206080062830891, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 519420031}
-    - target: {fileID: 1279206080062830891, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2519050091870446944, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
       propertyPath: SpawnTime
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 2519050091870446944, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
-      propertyPath: SpawnCount
-      value: 1
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 3298389657536010196, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
       propertyPath: m_Name
@@ -54201,15 +54669,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4237710972048377517, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4237710972048377517, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.93
+      value: -5.9
       objectReference: {fileID: 0}
     - target: {fileID: 4237710972048377517, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.9
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 4237710972048377517, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
       propertyPath: m_LocalPosition.z
@@ -54217,19 +54685,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4237710972048377517, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.92387956
+      value: 0.97629607
       objectReference: {fileID: 0}
     - target: {fileID: 4237710972048377517, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4237710972048377517, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4237710972048377517, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.38268343
+      value: -0.21643952
       objectReference: {fileID: 0}
     - target: {fileID: 4237710972048377517, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -54241,7 +54709,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4237710972048377517, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -45
+      value: -25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6671009c51c49d54597c3edbf816ba83, type: 3}
@@ -54367,6 +54835,7 @@ MonoBehaviour:
     values: []
   timeAlive: 53.840427
   minFireDelay: 0.6
+  active: 1
   references:
     version: 2
     RefIds:

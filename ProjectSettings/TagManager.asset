@@ -14,8 +14,8 @@ TagManager:
   - AIPlayer
   - BossEnemy
   - PlayerBullets
+  - BossBullets
   - PlayerCollectable
-  - 
   - 
   - 
   - 

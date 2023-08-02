@@ -14,7 +14,7 @@ namespace Assets.draco18s.bulletboss
 
 		public enum GameState
 		{
-			MainMenu, Paused, Manage, InGame, GameOver
+			MainMenu, Paused, Manage, InGame, GameOver, ActiveTraining
 		}
 
 		public GameState state;
@@ -28,7 +28,7 @@ namespace Assets.draco18s.bulletboss
 
 		public void BeginGame()
 		{
-			state = GameState.InGame;
+			state = GameState.ActiveTraining;
 		}
 	}
 }

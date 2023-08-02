@@ -10,9 +10,7 @@ namespace Assets.draco18s
 {
 	public interface IDamageDealer : IDamageTaker
 	{
-		void AddScore(float amt, Collider2D col);
-		public float GetCurrentHealth();
-		public float GetMaxHealth();
-		float ApplyGraze(float damage, Collider2D col);
+		float ApplyGraze(float damage, Collider2D bulletCol);
+		void DamagedEnemy(float damage, Collider2D enemyCol);
 	}
 }

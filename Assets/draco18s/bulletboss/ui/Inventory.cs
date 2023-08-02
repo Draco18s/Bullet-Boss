@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -22,8 +23,9 @@ namespace Assets.draco18s.bulletboss.ui
 		[SerializeField] private Transform container;
 
 		[UsedImplicitly]
-		void Start()
+		IEnumerator Start()
 		{
+			yield return new WaitForEndOfFrame();
 			instance = this;
 			canvas = GetComponent<Canvas>();
 			foreach (UpgradeScriptable v in ResourcesManager.instance.GetAssetsMatching<UpgradeScriptable>(s => s.data.rarityTier == NamedRarity.Starting))

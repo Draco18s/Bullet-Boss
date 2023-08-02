@@ -39,25 +39,6 @@ namespace Assets.draco18s.bulletboss.ui
 
 		public bool Attach(InventoryItem item)
 		{
-			if (slotType == UpgradeType.FighterEntry)
-			{
-				if (item == null)
-				{
-					Clear(attachedBarrel);
-					return true;
-				}
-				attachedBarrel = item;
-				spawnedObject = Instantiate(item.upgradeTypeData.relevantPrefab, transform.position.ReplaceZ(-1), Quaternion.identity, transform.parent);
-				HostileFighter fighter = spawnedObject.GetComponent<HostileFighter>();
-
-				if (fighter == null) return false;
-
-				fighter.SetSpawn(this);
-				item.transform.SetParent(transform);
-				item.gameObject.SetActive(false);
-
-				return true;
-			}
 			if (item == null)
 			{
 				Clear(attachedBarrel);
@@ -75,6 +56,15 @@ namespace Assets.draco18s.bulletboss.ui
 			if (gun != null)
 			{
 				gun.SetMounting(this);
+				attachedBarrel = item;
+				Inventory.instance.Remove(attachedBarrel);
+				attachedBarrel.transform.SetParent(transform);
+				attachedBarrel.gameObject.SetActive(false);
+			}
+			HostileFighter fighter = spawnedObject.GetComponent<HostileFighter>();
+			if (fighter != null)
+			{
+				fighter.SetSpawn(this);
 				attachedBarrel = item;
 				Inventory.instance.Remove(attachedBarrel);
 				attachedBarrel.transform.SetParent(transform);
@@ -122,7 +112,8 @@ namespace Assets.draco18s.bulletboss.ui
 		[UsedImplicitly]
 		void FixedUpdate()
 		{
-			if (GameStateManager.instance.state != GameStateManager.GameState.InGame || spawnedObject == null || slotType != UpgradeType.FighterEntry) return;
+			if (spawnedObject == null || slotType != UpgradeType.FighterEntry) return;
+			if (GameStateManager.instance.state != GameStateManager.GameState.InGame && GameStateManager.instance.state != GameStateManager.GameState.ActiveTraining) return;
 			float dt = Time.fixedDeltaTime;
 			SpawnTimer += dt;
 			cooldownTimer += dt;
@@ -130,8 +121,17 @@ namespace Assets.draco18s.bulletboss.ui
 			{
 				SpawnTimer -= SpawnTime;
 				SpawnCount++;
+				if (GameStateManager.instance.state == GameStateManager.GameState.ActiveTraining)
+				{
+					SpawnCount--;
+					GameObject go = Instantiate(spawnedObject, GameTransform.instance.transform);
+					HostileFighter fighter = go.GetComponent<HostileFighter>();
+					fighter.Spawn(this);
+					cooldownTimer = 0f;
+				}
 			}
 
+			if (timerGraphic == null) return;
 			if (SpawnCount > 0)
 			{
 				timerGraphic.fillAmount = cooldownTimer / 1.5f;
@@ -142,15 +142,25 @@ namespace Assets.draco18s.bulletboss.ui
 				timerGraphic.fillAmount = SpawnTimer / SpawnTime;
 				timerGraphic.color = Color.red;
 			}
+
+			if (timerGraphic.fillAmount > 0.999f)
+			{
+				timerGraphic.color = Color.green;
+			}
 		}
 
-		public float GetStat(StatAttribute stat, Func<float, float, float> combine)
+		public float GetStat(StatAttribute stat, Func<float> baseValue, Func<float, float, float> combine)
 		{
-			float r = 1;
+			float r = baseValue();
 			if (hardpointModifiers.ContainsKey(stat))
 			{
 				hardpointModifiers.TryGetValue(stat, out float modifier);
 				r = combine(r, modifier);
+			}
+
+			if (this.slotType == UpgradeType.FighterEntry && attachedBarrel.upgradeTypeData.attributeModifiers.TryGetValue(stat, out float mod))
+			{
+				r = combine(r, mod);
 			}
 
 			if(attachedShell != null && attachedShell.upgradeTypeData.attributeModifiers.TryGetValue(stat, out var attributeModifier))

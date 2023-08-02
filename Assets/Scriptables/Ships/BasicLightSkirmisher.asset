@@ -41,15 +41,15 @@ MonoBehaviour:
           v: 0
         AimScreenDown:
           v: 0
-      image: {fileID: 0}
+      image: {fileID: -1404899498, guid: 6b88c01682600cb428fea6c4cb065843, type: 3}
       dataValues:
         keys: 0000000001000000020000000300000004000000
         values:
         - 0
-        - 0
-        - 0
-        - 0
-        - 0
+        - 2
+        - 3
+        - 1
+        - 72
       timeline:
         duration: 0
         data:
@@ -58,13 +58,14 @@ MonoBehaviour:
       childPattern:
         rid: -2
     relevantPrefab: {fileID: 6306653702003728470, guid: 7a0e481e0a6f12c469d4014b6d596007, type: 3}
+    secondaryPrefab: {fileID: 5986200609076484592, guid: ef8f1cae4506d0744be3b7183e2cec3a, type: 3}
     patternModifiers:
       MirrorSpreadShots:
         v: 0
       HomingShots:
         v: 0
       AimAtPlayer:
-        v: 0
+        v: -1
       AimScreenDown:
         v: 1
   references:

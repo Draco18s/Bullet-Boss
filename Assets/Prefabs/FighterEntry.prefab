@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1279199192814735640}
   - component: {fileID: 2763898174171467133}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4237710972048377517}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: FighterEntry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181,7 +181,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5763670493221256126}
   m_LocalRotation: {x: -0, y: -0, z: 0.38268343, w: 0.92387956}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -263,7 +263,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8717221412827478214}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -273,7 +273,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.055, y: -0.055}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &530089912387898706
@@ -298,18 +298,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 87c4427a94eb70d409109abf11058869, type: 3}
+  m_Sprite: {fileID: -1559489401, guid: 6b88c01682600cb428fea6c4cb065843, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: 0.85
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 2
   m_UseSpriteMesh: 0
@@ -325,9 +325,21 @@ PrefabInstance:
       propertyPath: m_slotType
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 778798223601149576, guid: 677b6b65f13b10b49bdb498500b84b0e, type: 3}
+      propertyPath: timerGraphic
+      value: 
+      objectReference: {fileID: 4322312876159121002}
+    - target: {fileID: 778798223601149578, guid: 677b6b65f13b10b49bdb498500b84b0e, type: 3}
+      propertyPath: m_Size.x
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 778798223601149578, guid: 677b6b65f13b10b49bdb498500b84b0e, type: 3}
+      propertyPath: m_Size.y
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 778798223601149578, guid: 677b6b65f13b10b49bdb498500b84b0e, type: 3}
       propertyPath: m_Offset.x
-      value: 0.6
+      value: 0.44
       objectReference: {fileID: 0}
     - target: {fileID: 778798223601149579, guid: 677b6b65f13b10b49bdb498500b84b0e, type: 3}
       propertyPath: m_Enabled

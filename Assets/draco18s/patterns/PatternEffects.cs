@@ -37,10 +37,10 @@ namespace Assets.draco18s
 		public PatternEffects Copy()
 		{
 			PatternEffects ret = new PatternEffects();
-			ret.MirrorSpreadShots = MirrorSpreadShots;
-			ret.HomingShots = HomingShots;
-			ret.AimAtPlayer = AimAtPlayer;
-			ret.AimScreenDown = AimScreenDown;
+			ret.MirrorSpreadShots = MirrorSpreadShots.Clone();
+			ret.HomingShots = HomingShots.Clone();
+			ret.AimAtPlayer = AimAtPlayer.Clone();
+			ret.AimScreenDown = AimScreenDown.Clone();
 			return ret;
 		}
 	}

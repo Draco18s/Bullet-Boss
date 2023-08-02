@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using Assets.draco18s.bulletboss;
 using Assets.draco18s.bulletboss.ui;
@@ -29,7 +30,7 @@ namespace Assets.draco18s.bulletboss
 			{
 				if (value == GunType.SingleShot || value == GunType.Shotgun)
 				{
-					minFireDelay = actualCooldown * (value == GunType.SingleShot ? 0.3f : 1) * GetStat(StatAttribute.FiringRate, (a, b) => a * b);
+					minFireDelay = actualCooldown * (value == GunType.SingleShot ? 0.3f : 1) * GetStat(StatAttribute.FiringRate, () => 1, (a, b) => a * b);
 				}
 				else if (value == GunType.Spread)
 				{
@@ -49,7 +50,7 @@ namespace Assets.draco18s.bulletboss
 		}
 
 		[SerializeField]
-		public float MaxCapacity => GetStat(StatAttribute.Capacity, (a, b) => a * b);
+		public float MaxCapacity => GetStat(StatAttribute.Capacity, () => 1, (a, b) => a * b);
 		[SerializeField]
 		public float CooldownTime { get; set; } = 0;
 		public float timeAlive;
@@ -63,6 +64,7 @@ namespace Assets.draco18s.bulletboss
 		protected int heatOrClip;
 		protected float reloadDelay;
 		protected float bonusCooldown;
+		public bool active = true;
 
 		private static Dictionary<PatternDataKey, float> PopulateDict()
 		{
@@ -80,8 +82,9 @@ namespace Assets.draco18s.bulletboss
 		}
 
 		[UsedImplicitly]
-		void Start()
+		IEnumerator Start()
 		{
+			yield return new WaitForEndOfFrame();
 			timeAlive = 0;
 			if (pattern.Lifetime == 0)
 			{
@@ -141,30 +144,38 @@ namespace Assets.draco18s.bulletboss
 		[UsedImplicitly]
 		void FixedUpdate()
 		{
+			if (!active) return;
 			float dt = Time.fixedDeltaTime;
 			timeAlive += Time.fixedDeltaTime;
 			foreach (PatternDataKey d in GetAllowedValues())
 			{
 				currentValues[d] = pattern.dataValues[d] * pattern.timeline.Evaluate(d, timeAlive * (pattern.Lifetime / 10));
 			}
-
+			
 			if (pattern.effects.AimAtPlayer)
 			{
 				float bestAngle = 180;
+				Vector3 bestVec = Vector3.zero;
 				foreach (Collider2D c in Physics2D.OverlapCircleAll(transform.position, 10, LayerMask.GetMask(new[] { "AIPlayer" })))
 				{
 					Transform playerTransform = c.transform;
 
-					Vector3 relativePos = playerTransform.position - transform.position;
+					Vector3 relativePos = playerTransform.position.ReplaceZ(0) - transform.position.ReplaceZ(0);
 					Vector3 forward = transform.right;
 					var angle = Vector3.SignedAngle(relativePos.ReplaceZ(0), forward, transform.forward);
 
 					if (Math.Abs(angle) < Math.Abs(bestAngle))
 					{
 						bestAngle = angle;
+						bestVec = playerTransform.position.ReplaceZ(0);
 					}
 				}
-				transform.Rotate(Vector3.forward, Math.Max(Math.Abs(currentValues[PatternDataKey.Rotation]), 0.25f) * pattern.dataValues[PatternDataKey.Rotation] * dt * Mathf.Sign(-bestAngle) * 0.2f, Space.Self);
+				
+				Vector3 objectPos = transform.position;
+				bestVec.x = objectPos.x - bestVec.x;
+				bestVec.y = objectPos.y - bestVec.y;
+
+				transform.rotation = Quaternion.Euler(new Vector3(0, 0, Mathf.Atan2(bestVec.y, bestVec.x) * Mathf.Rad2Deg - 90));
 			}
 			else if (pattern.effects.AimScreenDown)
 			{
@@ -172,9 +183,9 @@ namespace Assets.draco18s.bulletboss
 			}
 			else
 			{
-				transform.Rotate(Vector3.forward, currentValues[PatternDataKey.Rotation] * dt * GetStat(StatAttribute.GunSpeed, (a, b) => a * b), Space.Self);
+				transform.Rotate(Vector3.forward, currentValues[PatternDataKey.Rotation] * dt * GetStat(StatAttribute.GunSpeed, () => 1, (a, b) => a * b), Space.Self);
 				
-				float ang = GetStat(StatAttribute.AngleRestriction, (a, b) => a + b) / 2;
+				float ang = GetStat(StatAttribute.AngleRestriction, () => 0, (a, b) => a + b) / 2;
 				float f = transform.localEulerAngles.z - pattern.StartAngle;
 				if (f > 180) f -= 360;
 				transform.localEulerAngles = transform.localEulerAngles.ReplaceZ(Mathf.Clamp(f, -ang, ang) + pattern.StartAngle);
@@ -183,18 +194,18 @@ namespace Assets.draco18s.bulletboss
 			if (ReloadType == GunType.None) return;
 			if (ReloadType == GunType.SingleShot)
 			{
-				GetStat(StatAttribute.FiringRate, (a, b) => a * b);
+				GetStat(StatAttribute.FiringRate, () => 1, (a, b) => a * b);
 				minFireDelay = actualCooldown * 0.6f;
 				actualClip = 1;
 			}
 			else if (ReloadType == GunType.Shotgun)
 			{
-				minFireDelay = actualCooldown;
+				minFireDelay = actualCooldown * 1.5f;
 				actualClip = 8;
 			}
 			else if (ReloadType == GunType.Spread)
 			{
-				minFireDelay = actualCooldown;
+				minFireDelay = actualCooldown * 1.5f;
 				actualClip = 5;
 			}
 			else if (ReloadType == GunType.Overheat)
@@ -209,7 +220,7 @@ namespace Assets.draco18s.bulletboss
 			}
 			heatOrClip = Math.Min(Mathf.RoundToInt(MaxCapacity * actualClip), heatOrClip);
 
-			fireDelay -= dt * GetStat(StatAttribute.FiringRate, (a, b) => a*b);
+			fireDelay -= dt * GetStat(StatAttribute.FiringRate, () => 1, (a, b) => a * b);
 
 			if (ReloadType == GunType.ClipSize)
 			{
@@ -217,7 +228,7 @@ namespace Assets.draco18s.bulletboss
 				{
 					if (reloadDelay <= 0)
 						reloadDelay = actualCooldown;
-					reloadDelay -= dt * GetStat(StatAttribute.Reload, (a, b) => a * b);
+					reloadDelay -= dt * GetStat(StatAttribute.Reload, () => 1, (a, b) => a * b);
 					if (reloadDelay <= 0)
 						heatOrClip = Mathf.RoundToInt(MaxCapacity * actualClip);
 					return;
@@ -238,7 +249,7 @@ namespace Assets.draco18s.bulletboss
 				{
 					if (reloadDelay <= 0)
 						reloadDelay = actualCooldown * 2;
-					reloadDelay -= dt * GetStat(StatAttribute.Reload, (a, b) => a * b);
+					reloadDelay -= dt * GetStat(StatAttribute.Reload, () => 1, (a, b) => a * b);
 					if (reloadDelay <= 0)
 						heatOrClip = Mathf.RoundToInt(MaxCapacity * actualClip);
 					return;
@@ -250,7 +261,7 @@ namespace Assets.draco18s.bulletboss
 				{
 					if (reloadDelay <= 0)
 						reloadDelay = actualCooldown * 2;
-					reloadDelay -= dt * GetStat(StatAttribute.Reload, (a, b) => a * b);
+					reloadDelay -= dt * GetStat(StatAttribute.Reload, () => 1, (a, b) => a * b);
 					if (reloadDelay <= 0)
 						heatOrClip = Mathf.RoundToInt(MaxCapacity * actualClip);
 					return;
@@ -287,13 +298,13 @@ namespace Assets.draco18s.bulletboss
 			}
 		}
 
-		private float GetStat(StatAttribute stat, Func<float,float,float> combine)
+		private float GetStat(StatAttribute stat, Func<float> baseValue, Func<float,float,float> combine)
 		{
-			float r = 1;
+			float r = baseValue();
 			if(gunBaseModifiers.TryGetValue(stat, out var modifier))
 				r = combine(r, modifier);
 			if(mountingPoint != null)
-				r = combine(r, mountingPoint.GetStat(stat, combine));
+				r = combine(r, mountingPoint.GetStat(stat, baseValue, combine));
 			return r;
 		}
 
@@ -318,14 +329,14 @@ namespace Assets.draco18s.bulletboss
 			if (bulletClone == null) return;
 			GameObject go = Instantiate(bulletClone, muz.position, muz.transform.rotation, GameTransform.instance.transform);
 			go.SetActive(true);
-			go.layer = gameObject.layer;
+			go.layer = gameObject.layer + 2;
 			Bullet b = go.GetComponent<Bullet>();
 			SetBulletDetails(b);
 
 			if (ReloadType == GunType.SingleShot) return;
 			if (ReloadType == GunType.Shotgun)
 			{
-				float spreadAngle = 30;
+				float spreadAngle = 35;
 				float randAngle = Random.value * spreadAngle - (spreadAngle/2);
 				go.transform.Rotate(Vector3.forward, randAngle);
 				SetBulletDetails(b);
@@ -391,10 +402,10 @@ namespace Assets.draco18s.bulletboss
 		{
 			if(mountingPoint == null && pattern.childPattern != null)
 				bul.SetPattern(pattern.childPattern);
-			bul.SetDamage(GetStat(StatAttribute.Damage, (a, b) => a + b));
-			bul.SetLifetime(GetStat(StatAttribute.Lifetime, (a, b) => a * b));
+			bul.SetDamage(GetStat(StatAttribute.Damage, () => 0, (a, b) => a + b));
+			bul.SetLifetime(GetStat(StatAttribute.Lifetime, () => 1, (a, b) => a * b));
 
-			bul.SetStat(PatternDataKey.Speed, GetStat(StatAttribute.BulletSpeed, (a, b) => a * b));
+			bul.SetStat(PatternDataKey.Speed, GetStat(StatAttribute.BulletSpeed, () => 1, (a, b) => a * b));
 			if (mountingPoint != null)
 			{
 				bul.pattern.effects = bul.pattern.effects.CombineIntoNew(mountingPoint.GetPatternModifiers());

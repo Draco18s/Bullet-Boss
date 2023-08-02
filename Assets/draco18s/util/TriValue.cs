@@ -49,9 +49,9 @@ namespace Assets.draco18s.util
 
 		public static implicit operator TriValue(int a)
 		{
-			if (a == -1) return False;
-			if (a == 1) return True;
-			if (a == 0) return Default;
+			if (a == -1) return False.Clone();
+			if (a == 1) return True.Clone();
+			if (a == 0) return Default.Clone();
 			return new TriValue(a);
 		}
 
@@ -80,21 +80,21 @@ namespace Assets.draco18s.util
 
 		public static TriValue operator |(TriValue a, TriValue b)
 		{
-			if (a == Default) return b;
+			if (a == Default) return b.Clone();
 
-			if (b == Default) return a;
+			if (b == Default) return a.Clone();
 
-			if (a == True && b == True) return True;
-			if (a == False && b == False) return False;
+			if (a == True && b == True) return True.Clone();
+			if (a == False && b == False) return False.Clone();
 
-			return Default;
+			return Default.Clone();
 		}
 
 		public static TriValue operator &(TriValue a, TriValue b)
 		{
-			if (a == True && b == True) return True;
-			if (a == False) return False;
-			if (b == False) return False;
+			if (a == True && b == True) return True.Clone();
+			if (a == False) return False.Clone();
+			if (b == False) return False.Clone();
 
 			return Default;
 		}

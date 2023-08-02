@@ -16,7 +16,7 @@ namespace Assets.draco18s.bulletboss
 
 		public PatternData Pattern => pattern;
 		
-		public float CurrentTime => timeAlive % (pattern.Lifetime* lifetime);
+		public float CurrentTime => timeAlive % (pattern.Lifetime * lifetime);
 		[SerializeField]
 		
 		public float timeAlive;
@@ -25,10 +25,9 @@ namespace Assets.draco18s.bulletboss
 		protected float lifetime;
 
 		public IDamageDealer playerOwner;
-		public Vector2 previousPosition1;
-		public Vector2 previousPosition2;
-		public Vector2 previousPosition3;
-		public bool hitSomething = false;
+		public Vector3 previousPosition1;
+		public Vector3 previousPosition2;
+		public Vector3 previousPosition3;
 
 		private static Dictionary<PatternDataKey, float> PopulateDict()
 		{
@@ -94,23 +93,19 @@ namespace Assets.draco18s.bulletboss
 		[UsedImplicitly]
 		void FixedUpdate()
 		{
-			previousPosition1 = previousPosition2;
-			previousPosition2 = previousPosition3;
-			previousPosition3 = transform.localPosition;
+			previousPosition3 = previousPosition2;
+			previousPosition2 = previousPosition1;
+			previousPosition1 = transform.localPosition;
 			float dt = Time.fixedDeltaTime;
 			timeAlive += dt;
 			if (timeAlive < 0) return;
 			if (timeAlive < 0.15f)
 			{
 				GetComponent<SpriteRenderer>().enabled = timeAlive > 0;
+				if(transform.localPosition.y < -3.4f) Destroy(gameObject);
 			}
 			if (timeAlive >= pattern.Lifetime || Mathf.Abs(transform.localPosition.x) > 10f || Mathf.Abs(transform.localPosition.y) > 10)
 			{
-				timeAlive = -1000;
-				if (!hitSomething && playerOwner != null)
-				{
-					//playerOwner.AddScore(-10f, GetComponent<Collider2D>());
-				}
 				Destroy(gameObject);
 				return;
 			}
@@ -148,10 +143,15 @@ namespace Assets.draco18s.bulletboss
 		[UsedImplicitly]
 		private void OnTriggerEnter2D(Collider2D col)
 		{
-			if (col.gameObject.layer == this.gameObject.layer) return;
-			float d = col.gameObject.GetComponent<IDamageTaker>().ApplyDamage(damage, GetComponent<Collider2D>());
-			playerOwner?.AddScore(d, col);
-			hitSomething = true;
+			if (col.gameObject.layer == this.gameObject.layer || col.gameObject.layer+2 == this.gameObject.layer) return;
+			if (transform.localScale.x > 0.02f)
+			{
+				IDamageTaker taker = col.gameObject.GetComponent<IDamageTaker>();
+				if (taker == null) return;
+				float d = taker.ApplyDamage(damage, GetComponent<Collider2D>());
+				playerOwner?.DamagedEnemy(d, col);
+			}
+			Destroy(gameObject);
 		}
 
 		public Timeline GetTimeline()

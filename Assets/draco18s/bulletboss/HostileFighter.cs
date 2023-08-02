@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Assets.draco18s.bulletboss.ui;
+using Assets.draco18s.training;
 using Assets.draco18s.util;
 using JetBrains.Annotations;
 using UnityEngine;
@@ -21,7 +22,7 @@ namespace Assets.draco18s.bulletboss
 
 		public float CurHp;
 		public float MaxHp;
-		private float speed = 1;
+		private float speed = 0.5f;
 		private float expValue = 1;
 
 		public void SetSpawn(HardPoint mount)
@@ -31,6 +32,10 @@ namespace Assets.draco18s.bulletboss
 			active = false;
 			gameObject.layer = LayerMask.NameToLayer("Default");
 			image.color = new Color(1, 1, 1, 0.5f);
+			foreach (GunBarrel c in GetComponentsInChildren<GunBarrel>())
+			{
+				c.active = false;
+			}
 		}
 
 		public void Spawn(HardPoint mount)
@@ -38,8 +43,9 @@ namespace Assets.draco18s.bulletboss
 			spawnPoint = mount;
 			transform.rotation = mount.transform.rotation;
 			transform.position = (mount.transform.position - transform.right*1).ReplaceZ(-1);
-			CurHp = MaxHp = mount.GetStat(StatAttribute.FighterHealth, (a, b) => a + b);
-			speed *= mount.GetStat(StatAttribute.GunSpeed, (a, b) => a + b);
+			gameObject.layer = LayerMask.NameToLayer("BossEnemy");
+			CurHp = MaxHp = mount.GetStat(StatAttribute.FighterHealth, () => 0, (a, b) => a + b);
+			speed *= mount.GetStat(StatAttribute.GunSpeed, () => 1, (a, b) => a * b);
 			(PatternData d, InventoryItem i) = mount.GetFighterGunPattern();
 			//UpgradeScriptable gun = ResourcesManager.instance.GetAssetsMatching<UpgradeScriptable>(s => s.data.type == UpgradeType.SmallGun && s.data.rarityTier == NamedRarity.Starting).First();
 			//UpgradeScriptable shell = ResourcesManager.instance.GetAssetsMatching<UpgradeScriptable>(s => s.data.type == UpgradeType.Bullet && s.data.rarityTier == NamedRarity.Starting).First();
@@ -51,11 +57,17 @@ namespace Assets.draco18s.bulletboss
 			GunBarrel bar = go.GetComponent<GunBarrel>();
 			bar.SetPattern(d);
 			bar.SetShell(i.upgradeTypeData.secondaryPrefab, i.upgradeTypeData.relevantPattern);
-			bar.pattern.effects.MergeWith(i.upgradeTypeData.patternModifiers);
+			//Debug.Log($"{bar.pattern.effects.AimScreenDown} || {bar.pattern.effects.AimAtPlayer}");
+			bar.pattern.effects = i.upgradeTypeData.patternModifiers.Copy();
+			//Debug.Log($"{bar.pattern.effects.AimScreenDown} || {bar.pattern.effects.AimAtPlayer}");
 			bar.Init();
 			image.color = Color.white;
 			active = true;
 			expValue = 1 + MaxHp + Math.Max((int)i.upgradeTypeData.rarityTier - 2, 0) * 10;
+			foreach (GunBarrel c in GetComponentsInChildren<GunBarrel>())
+			{
+				c.active = true;
+			}
 		}
 
 		[UsedImplicitly]
@@ -70,25 +82,37 @@ namespace Assets.draco18s.bulletboss
 				return;
 			}
 			float dt = Time.fixedDeltaTime;
-			transform.Translate(new Vector3(1, 0, 0) * dt, Space.Self);
-			if (Mathf.Abs(transform.localPosition.x) > 10f || Mathf.Abs(transform.localPosition.y) > 10)
+			transform.Translate(new Vector3(1, 0, 0) * dt * speed, Space.Self);
+			if (Mathf.Abs(transform.localPosition.x) > 8.5f || transform.localPosition.y < -5.5f || transform.localPosition.y > 7)
 			{
 				Destroy(gameObject);
 			}
 		}
 
+		public float GetCurrentHealth()
+		{
+			return CurHp;
+		}
+
+		public float GetMaxHealth()
+		{
+			return MaxHp;
+		}
+
 		private void GenerateDrops(float value)
 		{
-			List<PlayerBuffScriptable> gems = ResourcesManager.instance.GetAssetsMatching<PlayerBuffScriptable>(s => s.BonusType == PlayerBuffScriptable.BuffType.Score && s.ScoreValue <= value);
+			float val = value;
+			List<PlayerBuffScriptable> gems = ResourcesManager.instance.GetAssetsMatching<PlayerBuffScriptable>(s => s.BonusType == PlayerBuffScriptable.BuffType.Score && s.ScoreValue <= val);
 			gems.Sort((g,h) => h.ScoreValue.CompareTo(g.ScoreValue));
-			while (value > 0 || gems.Count == 0)
+			
+			while (value > 0 && gems.Count > 0)
 			{
-				if (gems[0].ScoreValue >= value)
+				if (gems[0].ScoreValue <= value)
 				{
 					Drop(gems[0].RelevantPrefab, value / gems[0].ScoreValue);
-					value -= gems[0].ScoreValue * (value / gems[0].ScoreValue);
+					value -= Mathf.Max(gems[0].ScoreValue * (value / gems[0].ScoreValue), 1);
 				}
-				else
+				else if (gems[0].ScoreValue > 1)
 				{
 					gems.RemoveAt(0);
 				}
@@ -97,13 +121,17 @@ namespace Assets.draco18s.bulletboss
 
 		private void Drop(GameObject gem, float num)
 		{
-			Instantiate(gem, transform.localPosition + (Vector3)Random.insideUnitCircle, Quaternion.identity, transform.parent);
+			for (; num-- > 0;)
+			{
+				if(Random.value > ShipAcademy.instance.GemDropRate) continue;
+				Instantiate(gem, transform.position + (Vector3)Random.insideUnitCircle * 0.25f, Quaternion.identity, transform.parent);
+			}
 		}
 
 		public float ApplyDamage(float damage, Collider2D col)
 		{
 			CurHp -= damage;
-			OnTakeDamage.Invoke();
+			OnTakeDamage?.Invoke();
 			return damage;
 		}
 	}

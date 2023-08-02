@@ -44,7 +44,7 @@ namespace Assets.draco18s
 			timeline.CopyFrom(other.timeline);
 			image = other.image;
 			isEditable = other.isEditable;
-			effects = other.effects;
+			effects = other.effects.Copy();
 			if (includeChildPatterns)
 				childPattern = other.childPattern;
 		}
