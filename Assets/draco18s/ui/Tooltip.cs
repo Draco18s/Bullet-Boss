@@ -1,3 +1,5 @@
+using System;
+using Assets.draco18s.util;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -50,7 +52,7 @@ namespace Assets.draco18s.ui {
 				((RectTransform)textArea.transform).SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, textArea.preferredWidth);
 				((RectTransform)textArea.transform).SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, textArea.preferredHeight);
 				((RectTransform)instance.transform).SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, (textArea.preferredWidth / 2) + 22);
-				((RectTransform)instance.transform).SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, (textArea.preferredHeight / 2) + 16);
+				((RectTransform)instance.transform).SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, (textArea.preferredHeight / 2) - 10);
 				fits = true;
 			}
 			/*if(t.preferredHeight < 232) {
@@ -68,8 +70,8 @@ namespace Assets.draco18s.ui {
 					((RectTransform)textArea.transform).SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, w);
 					ph = h;
 					h = textArea.preferredHeight;
-				} while(h * ratio > w && h != ph);
-				if(h == ph) {
+				} while(h * ratio > w && Math.Abs(h - ph) > 0.1f);
+				if(Math.Abs(h - ph) < 0.1f) {
 					w = textArea.preferredWidth + 22;
 					//w -= 32 * Mathf.CeilToInt(r);
 					((RectTransform)textArea.transform).SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, w);
@@ -78,8 +80,8 @@ namespace Assets.draco18s.ui {
 				((RectTransform)textArea.transform).SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, w);
 				((RectTransform)textArea.transform).SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, h);
 				h = textArea.preferredHeight;
-				((RectTransform)instance.transform).SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, (w / 2) + 8);
-				((RectTransform)instance.transform).SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, (h / 2) + 15f);
+				((RectTransform)instance.transform).SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, (w / 2) + 16);
+				((RectTransform)instance.transform).SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, (h / 2) - 10);
 			}
 			float wid = ((RectTransform)instance.transform).rect.width;
 			float hig = ((RectTransform)instance.transform).rect.height;
@@ -87,10 +89,10 @@ namespace Assets.draco18s.ui {
 				if(allowMoveDown) {
 					//shift the tooltip down. No check for off-screen
 					if(instance.transform.position.y - hig * 1.5f < 35) {
-						instance.transform.position = new Vector3(Screen.width - 5 - wid, instance.transform.position.y + ((RectTransform)instance.transform).rect.height, 0);
+						instance.transform.position = new Vector3(Screen.width - 5 - wid, instance.transform.position.y + ((RectTransform)instance.transform).rect.height - 10, 0);
 					}
 					else {
-						instance.transform.position = new Vector3(Screen.width - 5 - wid, instance.transform.position.y - ((RectTransform)instance.transform).rect.height, 0);
+						instance.transform.position = new Vector3(Screen.width - 5 - wid, instance.transform.position.y - ((RectTransform)instance.transform).rect.height - 10, 0);
 					}
 				}
 				else {
@@ -98,10 +100,15 @@ namespace Assets.draco18s.ui {
 					instance.transform.position = new Vector3(Screen.width - 5, instance.transform.position.y, 0);
 				}
 			}
-			else {
-				instance.transform.position += new Vector3(0, 0, 0);
-			}
+			//else {
+			//	instance.transform.position += new Vector3(0, 0, 0);
+			//}
 			instance.transform.localScale = new Vector3(scale, scale, scale);
+			if (((RectTransform)instance.transform).anchoredPosition.y >= Screen.height / 2f - textArea.preferredHeight/2)
+			{
+				//Debug.Log(((RectTransform)instance.transform).anchoredPosition);
+				((RectTransform)instance.transform).anchoredPosition = instance.transform.localPosition.ReplaceY(Screen.height / 2f - textArea.preferredHeight/2);
+			}
 		}
 	}
 }

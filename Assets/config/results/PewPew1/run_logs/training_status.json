@@ -2,58 +2,58 @@
     "PewPew": {
         "checkpoints": [
             {
-                "steps": 636641,
-                "file_path": "results\\PewPew1\\PewPew\\PewPew-636641.onnx",
-                "reward": -0.8654400904266294,
-                "creation_time": 1690758393.1747491,
+                "steps": 18499968,
+                "file_path": "results\\PewPew5\\PewPew\\PewPew-18499968.onnx",
+                "reward": -0.23479648431142172,
+                "creation_time": 1690989525.5838706,
                 "auxillary_file_paths": [
-                    "results\\PewPew1\\PewPew\\PewPew-636641.pt"
+                    "results\\PewPew5\\PewPew\\PewPew-18499968.pt"
                 ]
             },
             {
-                "steps": 999984,
-                "file_path": "results\\PewPew1\\PewPew\\PewPew-999984.onnx",
-                "reward": -0.825131706418388,
-                "creation_time": 1690762488.5749555,
+                "steps": 18999951,
+                "file_path": "results\\PewPew5\\PewPew\\PewPew-18999951.onnx",
+                "reward": -0.15629149334771292,
+                "creation_time": 1690993753.3028517,
                 "auxillary_file_paths": [
-                    "results\\PewPew1\\PewPew\\PewPew-999984.pt"
+                    "results\\PewPew5\\PewPew\\PewPew-18999951.pt"
                 ]
             },
             {
-                "steps": 1499998,
-                "file_path": "results\\PewPew1\\PewPew\\PewPew-1499998.onnx",
-                "reward": -0.7960336971933423,
-                "creation_time": 1690767756.6245599,
+                "steps": 19499882,
+                "file_path": "results\\PewPew5\\PewPew\\PewPew-19499882.onnx",
+                "reward": -0.09535830493631034,
+                "creation_time": 1690997851.70848,
                 "auxillary_file_paths": [
-                    "results\\PewPew1\\PewPew\\PewPew-1499998.pt"
+                    "results\\PewPew5\\PewPew\\PewPew-19499882.pt"
                 ]
             },
             {
-                "steps": 1999965,
-                "file_path": "results\\PewPew1\\PewPew\\PewPew-1999965.onnx",
-                "reward": -0.8221061751659592,
-                "creation_time": 1690772728.9624662,
+                "steps": 19999980,
+                "file_path": "results\\PewPew5\\PewPew\\PewPew-19999980.onnx",
+                "reward": -0.0037948952780829538,
+                "creation_time": 1691002318.3774145,
                 "auxillary_file_paths": [
-                    "results\\PewPew1\\PewPew\\PewPew-1999965.pt"
+                    "results\\PewPew5\\PewPew\\PewPew-19999980.pt"
                 ]
             },
             {
-                "steps": 2346138,
-                "file_path": "results\\PewPew1\\PewPew\\PewPew-2346138.onnx",
-                "reward": -0.7935321962681867,
-                "creation_time": 1690776254.4435985,
+                "steps": 20000047,
+                "file_path": "results\\PewPew5\\PewPew\\PewPew-20000047.onnx",
+                "reward": -0.011296633171708616,
+                "creation_time": 1691002318.4223223,
                 "auxillary_file_paths": [
-                    "results\\PewPew1\\PewPew\\PewPew-2346138.pt"
+                    "results\\PewPew5\\PewPew\\PewPew-20000047.pt"
                 ]
             }
         ],
         "final_checkpoint": {
-            "steps": 2346138,
-            "file_path": "results\\PewPew1\\PewPew.onnx",
-            "reward": -0.7935321962681867,
-            "creation_time": 1690776254.4435985,
+            "steps": 20000047,
+            "file_path": "results\\PewPew5\\PewPew.onnx",
+            "reward": -0.011296633171708616,
+            "creation_time": 1691002318.4223223,
             "auxillary_file_paths": [
-                "results\\PewPew1\\PewPew\\PewPew-2346138.pt"
+                "results\\PewPew5\\PewPew\\PewPew-20000047.pt"
             ]
         }
     },

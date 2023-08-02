@@ -57,6 +57,10 @@ MonoBehaviour:
         v: 0
       HomingShots:
         v: 0
+      AimAtPlayer:
+        v: 0
+      AimScreenDown:
+        v: 0
     image: {fileID: 0}
     dataValues:
       keys: 0000000001000000020000000300000004000000
@@ -81,9 +85,10 @@ MonoBehaviour:
     values:
     - 1
     - 100
-    - 10
+    - 3
   timeAlive: 0
   minFireDelay: 0.25
+  active: 1
   references:
     version: 2
     RefIds:
@@ -101,6 +106,10 @@ MonoBehaviour:
           MirrorSpreadShots:
             v: 0
           HomingShots:
+            v: 0
+          AimAtPlayer:
+            v: 0
+          AimScreenDown:
             v: 0
         image: {fileID: 0}
         dataValues:
@@ -375,6 +384,10 @@ MonoBehaviour:
         v: 0
       HomingShots:
         v: 0
+      AimAtPlayer:
+        v: 0
+      AimScreenDown:
+        v: 0
     image: {fileID: 0}
     dataValues:
       keys: 0000000001000000020000000300000004000000
@@ -392,10 +405,9 @@ MonoBehaviour:
     childPattern:
       rid: -2
   timeAlive: 0
-  previousPosition1: {x: 0, y: 0}
-  previousPosition2: {x: 0, y: 0}
-  previousPosition3: {x: 0, y: 0}
-  hitSomething: 0
+  previousPosition1: {x: 0, y: 0, z: 0}
+  previousPosition2: {x: 0, y: 0, z: 0}
+  previousPosition3: {x: 0, y: 0, z: 0}
   references:
     version: 2
     RefIds:

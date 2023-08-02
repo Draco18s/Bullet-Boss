@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Assets.draco18s.ui;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -27,6 +28,12 @@ namespace Assets.draco18s.bulletboss.ui
 
 			Image img = GetComponent<Image>();
 		    img.sprite = upgradeTypeData.image;
+			img.AddHover(p =>
+			{
+				if (isDragging) return;
+				string txt = upgradeTypeData.GenerateTooltip();
+				Tooltip.ShowTooltip(p, txt);
+			});
 	    }
 
 		public virtual void OnPointerDown(PointerEventData eventData)

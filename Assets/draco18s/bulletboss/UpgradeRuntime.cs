@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Assets.draco18s.bulletboss.ui;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Assets.draco18s.bulletboss
@@ -44,6 +46,16 @@ namespace Assets.draco18s.bulletboss
 			relevantPattern.CopyFrom(original.relevantPattern);
 			relevantPrefab = original.relevantPrefab;
 			secondaryPrefab = original.secondaryPrefab;
+		}
+
+		public string GenerateTooltip()
+		{
+			StringBuilder sb = new StringBuilder();
+			sb.Append("<color=\"").Append(Inventory.GetColor(rarityTier).ToHexString()).Append("\">");
+			sb.AppendLine(upgradeName);
+			sb.Append("</color>");
+			sb.AppendLine(description);
+			return sb.ToString();
 		}
 	}
 }

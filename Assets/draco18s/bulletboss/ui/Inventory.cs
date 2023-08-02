@@ -72,5 +72,33 @@ namespace Assets.draco18s.bulletboss.ui
 			item.transform.SetParent(container);
 			item.gameObject.SetActive(true);
 		}
+
+		private static readonly Color purple = new Color(54 / 255f, 16 / 255f, 255 / 255f, 1);
+		private static readonly Color orange = new Color(255 / 255f, 88 / 255f, 16 / 255f, 1);
+		private static readonly Color yellow = new Color(255 / 255f, 192 / 255f, 8 / 255f, 1);
+		private static readonly Color seagrn = new Color(8 / 255f, 255 / 255f, 147 / 255f, 1);
+		public static Color GetColor(NamedRarity rarity)
+		{
+			switch (rarity)
+			{
+				case NamedRarity.Starting:
+				case NamedRarity.Common:
+				case NamedRarity.Legendary:
+					return Color.white;
+				case NamedRarity.Uncommon:
+					return Color.green;
+				case NamedRarity.Rare:
+					return Color.blue;
+				case NamedRarity.Epic:
+					return purple;
+				case NamedRarity.Artifact:
+					return orange;
+				case NamedRarity.UltraRare:
+					return seagrn;
+				case NamedRarity.Unique:
+					return yellow;
+			}
+			return Color.gray;
+		}
 	}
 }
