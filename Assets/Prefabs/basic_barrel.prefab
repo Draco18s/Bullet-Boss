@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5703866066629195707}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: muzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3230579637689335647}
   - component: {fileID: 7111977278805833343}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,7 +126,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1527532377066400238}
   - component: {fileID: 603481581836426374}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: basic_barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -199,6 +199,7 @@ MonoBehaviour:
     values: []
   timeAlive: 0
   minFireDelay: 0.25
+  active: 1
   references:
     version: 2
     RefIds:

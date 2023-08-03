@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 222027409113269695}
   - component: {fileID: 2196016191086162135}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: hidden_barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136,7 +136,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6417099150143118314}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: muzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -251,7 +251,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 891563538187149803}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: muzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

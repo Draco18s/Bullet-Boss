@@ -15,6 +15,7 @@ namespace Assets.draco18s.bulletboss.ui
 		private readonly List<InventoryItem> inventory = new List<InventoryItem>();
 		private Canvas canvas;
 		[SerializeField] private Transform container;
+		private int killCounter = 0;
 
 		[UsedImplicitly]
 		IEnumerator Start()
@@ -65,6 +66,11 @@ namespace Assets.draco18s.bulletboss.ui
 			inventory.Add(item);
 			item.transform.SetParent(container);
 			item.gameObject.SetActive(true);
+		}
+
+		public void AddKill()
+		{
+			killCounter++;
 		}
 
 		private static readonly Color purple = new Color(54 / 255f, 16 / 255f, 255 / 255f, 1);

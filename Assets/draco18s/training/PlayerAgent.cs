@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using Assets.draco18s.bulletboss;
+using Assets.draco18s.bulletboss.ui;
 using Assets.draco18s.util;
 using JetBrains.Annotations;
 using Mono.Cecil;
@@ -33,11 +34,14 @@ namespace Assets.draco18s.training
 		public Transform muzzle;
 		public GameObject bulletClone;
 
+		private Coroutine entryAnim;
+
 		public override void OnEpisodeBegin()
 		{
 			GetComponentInChildren<TrainingDodgeDetection>().SetColliders();
 			if (GameStateManager.instance.state != GameStateManager.GameState.ActiveTraining) return;
-			transform.localPosition = new Vector3(Random.value * 10 - 5, Random.value * -2 - 1.5f, 0);
+			transform.localPosition = new Vector3(Random.value * 10 - 5, -5, transform.localPosition.z);
+			entryAnim = StartCoroutine(AnimateEntry(new Vector3(transform.localPosition.x, -3.5f, 0)));
 			Collider2D[] stuff = Physics2D.OverlapCircleAll(transform.position, 3, LayerMask.GetMask(new[] { "BossBullets", "BossEnemy", "PlayerCollectable" }));
 			foreach (Collider2D col in stuff)
 			{
@@ -45,6 +49,18 @@ namespace Assets.draco18s.training
 			}
 			ShipAcademy.instance.ConfigureEnvironment();
 		}
+
+		private IEnumerator AnimateEntry(Vector3 final)
+		{
+			while (transform.localPosition.y < -3.5f)
+			{
+				yield return null;
+				transform.Translate(Vector3.up * speed * 1.5f * Time.fixedDeltaTime, Space.Self);
+			}
+
+			entryAnim = null;
+		}
+
 		public override void CollectObservations(VectorSensor sensor)
 		{
 			sensor.AddObservation((Vector2)transform.localPosition / 10f);
@@ -169,10 +185,17 @@ namespace Assets.draco18s.training
 
 			if (GameStateManager.instance.state == GameStateManager.GameState.InGame)
 			{
-				if (invulnTime > 0) return 0;
+				if (invulnTime > 0 || entryAnim != null) return 0;
 				CurHp -= damage;
 				invulnTime = 2;
 				OnTakeDamage.Invoke(damage);
+				if (CurHp <= 0)
+				{
+					Inventory.instance.AddKill();
+					CurHp = MaxHp;
+					invulnTime = 0.5f;
+					EndEpisode();
+				}
 			}
 			return damage;
 		}
@@ -203,6 +226,7 @@ namespace Assets.draco18s.training
 
 		private void UpdateForGamePlay(float dt)
 		{
+			if (entryAnim != null) return;
 			invulnTime -= dt;
 			transform.Translate(MoveInput * dt * speed, Space.Self);
 			if (Mathf.Abs(transform.localPosition.x) > 6.5f)

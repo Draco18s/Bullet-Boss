@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6075728094346356269}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: muzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6831886868885139201}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: muzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4409828942086580197}
   - component: {fileID: 8310652840062578373}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -159,7 +159,7 @@ GameObject:
   m_Component:
   - component: {fileID: 348304960358248788}
   - component: {fileID: 1853354751526323260}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: triple_shot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -200,6 +200,16 @@ MonoBehaviour:
     StartAngle: 0
     TimeOffset: 0
     isEditable: 0
+    effects:
+      MirrorSpreadShots:
+        v: 0
+      HomingShots:
+        v: 0
+      AimAtPlayer:
+        v: 0
+      AimScreenDown:
+        v: 0
+    image: {fileID: 0}
     dataValues:
       keys: 0000000001000000020000000300000004000000
       values:
@@ -225,6 +235,7 @@ MonoBehaviour:
     - 0.75
   timeAlive: 0
   minFireDelay: 0.25
+  active: 1
   references:
     version: 2
     RefIds:
@@ -238,6 +249,16 @@ MonoBehaviour:
         StartAngle: 0
         TimeOffset: 0
         isEditable: 0
+        effects:
+          MirrorSpreadShots:
+            v: 0
+          HomingShots:
+            v: 0
+          AimAtPlayer:
+            v: 0
+          AimScreenDown:
+            v: 0
+        image: {fileID: 0}
         dataValues:
           keys: 0000000001000000020000000300000004000000
           values:
@@ -262,7 +283,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6268958116904029409}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: muzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
