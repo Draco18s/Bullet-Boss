@@ -3,19 +3,24 @@ using Assets.draco18s.ui;
 using Assets.draco18s.util;
 using UnityEngine;
 using UnityEngine.Events;
+using Assets.draco18s.training;
 
 namespace Assets.draco18s.bulletboss
 {
-	public class BossHealth : MonoBehaviour
+	public class BossHealthBar : MonoBehaviour
 	{
 		public GameObject barPrefab;
 		public float[] HealthSegments = {50,50,50};
-		public UnityAction DamageThreshold;
+		public UnityEvent DamageThreshold = new UnityEvent();
 
 		[UsedImplicitly]
 		void Start()
 		{
 			Recalculate();
+			FindFirstObjectByType<BossHealth>().OnTakeDamage.AddListener((amt) =>
+			{
+				ApplyDamage(amt);
+			});
 		}
 
 		public void Recalculate()

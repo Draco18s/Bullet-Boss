@@ -21,7 +21,7 @@ namespace Assets.draco18s.bulletboss
 		
 		public float timeAlive;
 
-		protected float damage;
+		protected float damage = 1;
 		protected float lifetime;
 
 		public IDamageDealer playerOwner;
@@ -52,6 +52,7 @@ namespace Assets.draco18s.bulletboss
 
 		public void SetDamage(float dmg)
 		{
+			if (dmg < 1) dmg = 1;
 			damage = dmg;
 		}
 

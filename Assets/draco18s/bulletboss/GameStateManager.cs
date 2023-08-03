@@ -28,7 +28,17 @@ namespace Assets.draco18s.bulletboss
 
 		public void BeginGame()
 		{
-			state = GameState.ActiveTraining;
+			state = GameState.InGame;
+		}
+
+		public void HealthThreshold()
+		{
+			state = GameState.Manage;
+		}
+
+		public void EndGame()
+		{
+			state = GameState.GameOver;
 		}
 	}
 }

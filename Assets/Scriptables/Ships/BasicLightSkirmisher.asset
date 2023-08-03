@@ -24,7 +24,7 @@ MonoBehaviour:
     attributeModifiers:
       keys: 0500000009000000
       values:
-      - 1.25
+      - 1.333
       - 1
     relevantPattern:
       ReloadType: 0

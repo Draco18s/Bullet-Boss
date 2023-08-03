@@ -6,7 +6,7 @@ namespace Assets.draco18s
 {
 	public interface IDamageTaker
 	{
-		UnityEvent OnTakeDamage { get; }
+		UnityEvent<float> OnTakeDamage { get; }
 		public float GetCurrentHealth();
 		public float GetMaxHealth();
 		float ApplyDamage(float damage, Collider2D bulletCol);

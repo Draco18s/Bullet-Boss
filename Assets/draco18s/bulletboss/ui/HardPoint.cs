@@ -1,12 +1,10 @@
-﻿using Assets.draco18s.training;
-using Assets.draco18s.util;
+﻿using Assets.draco18s.util;
 using JetBrains.Annotations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
 
 namespace Assets.draco18s.bulletboss.ui
 {

@@ -20166,6 +20166,9 @@ MonoBehaviour:
   - 50
   - 50
   - 50
+  DamageThreshold:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &773468676
 GameObject:
   m_ObjectHideFlags: 0
@@ -23010,6 +23013,11 @@ Transform:
   m_Father: {fileID: 1659677564}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -150}
+--- !u!1 &884267089 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1518833181630772394, guid: 81724de5b872d604a9ded4fec031d87b, type: 3}
+  m_PrefabInstance: {fileID: 1430214850}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &888061553
 GameObject:
   m_ObjectHideFlags: 0
@@ -32642,7 +32650,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cf66110454ed8047b095a97c5848252, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerShip: {fileID: 0}
+  playerShip: {fileID: 884267089}
   heartPrefab: {fileID: 8957539131550590557, guid: ef7051ec4c138f14c8c624c9351e60ad, type: 3}
   dimHeartPrefab: {fileID: 644672650746327598, guid: 02a32a808db6e554f827dd8f1fe4e03e, type: 3}
 --- !u!1 &1261913634
@@ -35853,7 +35861,7 @@ PrefabInstance:
     - target: {fileID: 1066276561944075840, guid: 81724de5b872d604a9ded4fec031d87b, type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5022602860645237092, guid: 0b6efb20c69db004b876575d22b65444, type: 3}
     - target: {fileID: 1066276561944075840, guid: 81724de5b872d604a9ded4fec031d87b, type: 3}
       propertyPath: m_BehaviorType
       value: 0
@@ -35920,7 +35928,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1518833181630772394, guid: 81724de5b872d604a9ded4fec031d87b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8018901576301481295, guid: 81724de5b872d604a9ded4fec031d87b, type: 3}
       propertyPath: muzzle
@@ -44900,7 +44908,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1116785122}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.7866287
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

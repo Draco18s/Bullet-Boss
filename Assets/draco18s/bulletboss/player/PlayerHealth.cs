@@ -14,13 +14,15 @@ namespace Assets.draco18s.bulletboss
 		public GameObject dimHeartPrefab;
 		private IDamageDealer ship;
 
-		void Start()
+		IEnumerator Start()
 		{
-			//ship = playerShip.GetComponent<IDamageDealer>();
-			//ship.OnTakeDamage.AddListener(Recalculate);
+			yield return new WaitForEndOfFrame();
+			ship = playerShip.GetComponent<IDamageDealer>();
+			ship.OnTakeDamage.AddListener(Recalculate);
+			Recalculate(0);
 		}
 
-		public void Recalculate()
+		public void Recalculate(float t)
 		{
 			transform.Clear();
 			for (int i = 0; i < ship.GetMaxHealth(); i++)

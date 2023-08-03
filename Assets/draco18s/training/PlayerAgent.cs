@@ -18,11 +18,25 @@ namespace Assets.draco18s.training
 {
 	public class PlayerAgent : Agent, IDamageDealer
 	{
-		public UnityEvent OnTakeDamage { get; }
+		public UnityEvent<float> OnTakeDamage { get; } = new UnityEvent<float>();
 		public Vector2 MoveInput;
 		private float speed = 2;
+		private float CurHp = 5;
+		private float MaxHp = 5;
+		private float invulnTime = 0;
+		private float Pickups = 0;
+		private float CurCharge = 0;
+		private float MaxCharge = 100;
+
+		private float cooldown = 0;
+		private float attackRate = 0.2f;
+		public Transform muzzle;
+		public GameObject bulletClone;
+
 		public override void OnEpisodeBegin()
 		{
+			GetComponentInChildren<TrainingDodgeDetection>().SetColliders();
+			if (GameStateManager.instance.state != GameStateManager.GameState.ActiveTraining) return;
 			transform.localPosition = new Vector3(Random.value * 10 - 5, Random.value * -2 - 1.5f, 0);
 			Collider2D[] stuff = Physics2D.OverlapCircleAll(transform.position, 3, LayerMask.GetMask(new[] { "BossBullets", "BossEnemy", "PlayerCollectable" }));
 			foreach (Collider2D col in stuff)
@@ -137,26 +151,38 @@ namespace Assets.draco18s.training
 		}
 		public float GetCurrentHealth()
 		{
-			return 1;
+			return GameStateManager.instance.state == GameStateManager.GameState.ActiveTraining ? 1 : CurHp;
 		}
 
 		public float GetMaxHealth()
 		{
-			return 1;
+			return GameStateManager.instance.state == GameStateManager.GameState.ActiveTraining ? 1 : MaxHp;
 		}
 
 		public float ApplyDamage(float damage, Collider2D bulletCol)
 		{
-			SetReward(-1);
-			EndEpisode();
+			if (GameStateManager.instance.state == GameStateManager.GameState.ActiveTraining)
+			{
+				SetReward(-1);
+				EndEpisode();
+			}
+
+			if (GameStateManager.instance.state == GameStateManager.GameState.InGame)
+			{
+				if (invulnTime > 0) return 0;
+				CurHp -= damage;
+				invulnTime = 2;
+				OnTakeDamage.Invoke(damage);
+			}
 			return damage;
 		}
 		
 		[UsedImplicitly]
 		void FixedUpdate()
 		{
-			if (GameStateManager.instance.state != GameStateManager.GameState.ActiveTraining) return;
 			float dt = Time.fixedDeltaTime;
+			if (GameStateManager.instance.state == GameStateManager.GameState.InGame) UpdateForGamePlay(dt);
+			if (GameStateManager.instance.state != GameStateManager.GameState.ActiveTraining) return;
 			float d = Vector2.Distance(transform.localPosition, new Vector2(0, -3.5f));
 			AddReward(0.001f + 0.001f * (6.5f - d)/6.5f);
 			transform.Translate(MoveInput * dt * speed, Space.Self);
@@ -174,14 +200,28 @@ namespace Assets.draco18s.training
 			cooldown -= dt;
 			Fire();
 		}
-		
-		private float cooldown = 0;
-		private float attackRate = 0.2f;
-		public Transform muzzle;
-		public GameObject bulletClone;
 
-		void Start()
+		private void UpdateForGamePlay(float dt)
 		{
+			invulnTime -= dt;
+			transform.Translate(MoveInput * dt * speed, Space.Self);
+			if (Mathf.Abs(transform.localPosition.x) > 6.5f)
+			{
+				transform.localPosition = new Vector3(6.5f * Math.Sign(transform.localPosition.x), transform.localPosition.y, transform.localPosition.z);
+			}
+			if (transform.localPosition.y > -1 || transform.localPosition.y < -3.5f)
+			{
+				float ny = (transform.localPosition.y > -1 ? -1 : -3.5f);
+				transform.localPosition = new Vector3(transform.localPosition.x, ny, transform.localPosition.z);
+			}
+			cooldown -= dt;
+			Fire();
+		}
+
+		[UsedImplicitly]
+		IEnumerator Start()
+		{
+			yield return new WaitForEndOfFrame();
 			bulletClone = Instantiate(GameTransform.instance.basicBulletPrefab);
 			bulletClone.SetActive(false);
 			bulletClone.layer = gameObject.layer + 2;
@@ -220,13 +260,21 @@ namespace Assets.draco18s.training
 
 		public float ApplyGraze(float damage, Collider2D bulletCol)
 		{
-			//NOT USED
+			if (GameStateManager.instance.state == GameStateManager.GameState.InGame)
+			{
+				CurCharge = Mathf.Clamp(CurCharge + Time.fixedDeltaTime, 0, MaxCharge);
+			}
 			return damage;
 		}
 
 		public void DamagedEnemy(float damage, Collider2D enemyCol)
 		{
 			AddReward(0.001f);
+		}
+
+		public void AddScore(float points)
+		{
+			Pickups += points;
 		}
 	}
 }

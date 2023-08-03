@@ -10,13 +10,13 @@ namespace Assets.draco18s.ui
 {
 	public class CustomScrollbar : Scrollbar
 	{
-		[SerializeField]
-		private int CustomNumberOfSteps = 0;
+		//[SerializeField]
+		//private int CustomNumberOfSteps = 0;
 
-		protected override void OnValidate()
+		/*protected override void OnValidate()
 		{
 			base.OnValidate();
 			numberOfSteps = CustomNumberOfSteps;
-		}
+		}*/
 	}
 }
