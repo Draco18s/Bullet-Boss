@@ -195,6 +195,8 @@ namespace Assets.draco18s.training
 					CurHp = MaxHp;
 					invulnTime = 0.5f;
 					EndEpisode();
+					OnEpisodeBegin();
+					OnTakeDamage.Invoke(0);
 				}
 			}
 			return damage;

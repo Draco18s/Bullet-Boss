@@ -28,7 +28,7 @@ MonoBehaviour:
       ReloadType: 0
       Lifetime: 10
       StartAngle: 0
-      TimeOffset: 0
+      TimeOffset: 2
       isEditable: 1
       effects:
         MirrorSpreadShots:
@@ -96,7 +96,7 @@ MonoBehaviour:
             m_PostInfinity: 2
             m_RotationOrder: 4
       childPattern:
-        rid: -2
+        rid: 8242055781381308433
     relevantPrefab: {fileID: 5986200609076484592, guid: 9126ab5b103efaf49a2a5263e2bd89df, type: 3}
     secondaryPrefab: {fileID: 0}
     patternModifiers:
@@ -113,3 +113,148 @@ MonoBehaviour:
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
+    - rid: 8242055781381308433
+      type: {class: PatternData, ns: Assets.draco18s, asm: Assembly-CSharp}
+      data:
+        ReloadType: 1
+        Lifetime: 10
+        StartAngle: 0
+        TimeOffset: 2
+        isEditable: 0
+        effects:
+          MirrorSpreadShots:
+            v: 0
+          HomingShots:
+            v: 0
+          AimAtPlayer:
+            v: 0
+          AimScreenDown:
+            v: 0
+        image: {fileID: 0}
+        dataValues:
+          keys: 0000000001000000020000000300000004000000
+          values:
+          - 0
+          - 3
+          - 2
+          - 1
+          - 72
+        timeline:
+          duration: 0
+          data:
+            keys: 0300000004000000
+            values:
+            - serializedVersion: 2
+              m_Curve:
+              - serializedVersion: 3
+                time: 0
+                value: 1
+                inSlope: 0
+                outSlope: 0
+                tangentMode: 136
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
+              - serializedVersion: 3
+                time: 1
+                value: 1
+                inSlope: 0
+                outSlope: 0
+                tangentMode: 136
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
+              m_PreInfinity: 2
+              m_PostInfinity: 2
+              m_RotationOrder: 4
+            - serializedVersion: 2
+              m_Curve:
+              - serializedVersion: 3
+                time: 0
+                value: 0
+                inSlope: 0
+                outSlope: 0
+                tangentMode: 136
+                weightedMode: 0
+                inWeight: 0
+                outWeight: 0
+              m_PreInfinity: 2
+              m_PostInfinity: 2
+              m_RotationOrder: 4
+        childPattern:
+          rid: 8242055781381308434
+    - rid: 8242055781381308434
+      type: {class: PatternData, ns: Assets.draco18s, asm: Assembly-CSharp}
+      data:
+        ReloadType: 0
+        Lifetime: 4
+        StartAngle: 0
+        TimeOffset: 3
+        isEditable: 0
+        effects:
+          MirrorSpreadShots:
+            v: 0
+          HomingShots:
+            v: 0
+          AimAtPlayer:
+            v: 0
+          AimScreenDown:
+            v: 0
+        image: {fileID: -1878167980, guid: 6b88c01682600cb428fea6c4cb065843, type: 3}
+        dataValues:
+          keys: 0000000001000000020000000300000004000000
+          values:
+          - 0
+          - 3
+          - 4
+          - 0
+          - 72
+        timeline:
+          duration: 0
+          data:
+            keys: 020000000100000004000000
+            values:
+            - serializedVersion: 2
+              m_Curve:
+              - serializedVersion: 3
+                time: 0
+                value: 0
+                inSlope: 0
+                outSlope: 0
+                tangentMode: 136
+                weightedMode: 0
+                inWeight: 0
+                outWeight: 0
+              m_PreInfinity: 2
+              m_PostInfinity: 2
+              m_RotationOrder: 4
+            - serializedVersion: 2
+              m_Curve:
+              - serializedVersion: 3
+                time: 0
+                value: 1
+                inSlope: 0
+                outSlope: 0
+                tangentMode: 136
+                weightedMode: 0
+                inWeight: 0
+                outWeight: 0
+              m_PreInfinity: 2
+              m_PostInfinity: 2
+              m_RotationOrder: 4
+            - serializedVersion: 2
+              m_Curve:
+              - serializedVersion: 3
+                time: 0
+                value: 0
+                inSlope: 0
+                outSlope: 0
+                tangentMode: 136
+                weightedMode: 0
+                inWeight: 0
+                outWeight: 0
+              m_PreInfinity: 2
+              m_PostInfinity: 2
+              m_RotationOrder: 4
+        childPattern:
+          rid: -2

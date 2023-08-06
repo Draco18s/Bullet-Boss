@@ -81,9 +81,9 @@ MonoBehaviour:
   gunBaseModifiers:
     keys: 020000000100000003000000
     values:
-    - 1
-    - 100
     - 10
+    - 5
+    - 5
   timeAlive: 0
   minFireDelay: 0.25
   active: 1

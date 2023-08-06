@@ -130,7 +130,7 @@ MonoBehaviour:
             v: 0
           AimScreenDown:
             v: 0
-        image: {fileID: 456510937, guid: 6b88c01682600cb428fea6c4cb065843, type: 3}
+        image: {fileID: 0}
         dataValues:
           keys: 0000000001000000020000000300000004000000
           values:
@@ -178,7 +178,7 @@ MonoBehaviour:
       type: {class: PatternData, ns: Assets.draco18s, asm: Assembly-CSharp}
       data:
         ReloadType: 0
-        Lifetime: 1
+        Lifetime: 1.1
         StartAngle: 0
         TimeOffset: 0
         isEditable: 0
@@ -191,7 +191,7 @@ MonoBehaviour:
             v: 0
           AimScreenDown:
             v: 0
-        image: {fileID: 1128709544, guid: 6b88c01682600cb428fea6c4cb065843, type: 3}
+        image: {fileID: 765289114, guid: 6b88c01682600cb428fea6c4cb065843, type: 3}
         dataValues:
           keys: 0000000001000000020000000300000004000000
           values:
@@ -228,8 +228,26 @@ MonoBehaviour:
                 outSlope: 0
                 tangentMode: 136
                 weightedMode: 0
-                inWeight: 0
-                outWeight: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
+              - serializedVersion: 3
+                time: 9
+                value: 1
+                inSlope: 0
+                outSlope: 0
+                tangentMode: 136
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
+              - serializedVersion: 3
+                time: 10
+                value: 0
+                inSlope: 0
+                outSlope: 0
+                tangentMode: 136
+                weightedMode: 0
+                inWeight: 0.33333334
+                outWeight: 0.33333334
               m_PreInfinity: 2
               m_PostInfinity: 2
               m_RotationOrder: 4

@@ -103,9 +103,9 @@ namespace Assets.draco18s.bulletboss
 			if (timeAlive < 0.15f)
 			{
 				GetComponent<SpriteRenderer>().enabled = timeAlive > 0;
-				if(transform.localPosition.y < -3.4f) Destroy(gameObject);
+				if(transform.localPosition.y < -4f) Destroy(gameObject);
 			}
-			if (timeAlive >= pattern.Lifetime || Mathf.Abs(transform.localPosition.x) > 10f || Mathf.Abs(transform.localPosition.y) > 10)
+			if (timeAlive >= pattern.Lifetime || Mathf.Abs(transform.localPosition.x) > 7.5f || transform.localPosition.y < -7.5f || transform.localPosition.y > 4.75f)
 			{
 				Destroy(gameObject);
 				return;
@@ -145,6 +145,7 @@ namespace Assets.draco18s.bulletboss
 		private void OnTriggerEnter2D(Collider2D col)
 		{
 			if (col.gameObject.layer == this.gameObject.layer || col.gameObject.layer+2 == this.gameObject.layer) return;
+			if(col.gameObject.layer == 0) return;
 			if (transform.localScale.x > 0.02f)
 			{
 				IDamageTaker taker = col.gameObject.GetComponent<IDamageTaker>();

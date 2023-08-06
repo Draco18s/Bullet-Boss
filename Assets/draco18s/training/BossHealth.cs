@@ -21,7 +21,6 @@ namespace Assets.draco18s.training
 
 		public float ApplyDamage(float damage, Collider2D col)
 		{
-			Debug.Log(damage);
 			OnTakeDamage.Invoke(damage);
 			PlayerCollectable.GenerateDrops(1, col.transform.position);
 			return damage;
