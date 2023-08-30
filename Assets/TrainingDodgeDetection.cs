@@ -11,12 +11,14 @@ namespace Assets.draco18s.training
 		public PlayerAgent agent;
 		private int bulletLayer;
 		private List<Collider2D> trackedObjects;
+		private List<Collider2D> ignoredObjects;
 
 		[UsedImplicitly]
 		void Start()
 		{
 			bulletLayer = LayerMask.NameToLayer("BossBullets");
 			trackedObjects = new List<Collider2D>();
+			ignoredObjects = new List<Collider2D>();
 		}
 
 		public void SetColliders()
@@ -29,6 +31,7 @@ namespace Assets.draco18s.training
 		private void OnTriggerEnter2D(Collider2D col)
 		{
 			if (col.gameObject.layer != bulletLayer) return;
+			if (ignoredObjects.Contains(col)) return;
 			trackedObjects.Add(col);
 		}
 
@@ -49,12 +52,12 @@ namespace Assets.draco18s.training
 
 		private IEnumerator CheckFor(Collider2D col)
 		{
+			if (col != null)
+				ignoredObjects.Add(col);
 			yield return new WaitForFixedUpdate();
 			yield return new WaitForFixedUpdate();
 			if (col != null)
-			{
 				agent.AddReward(0.05f);
-			}
 		}
 	}
 }

@@ -55,6 +55,7 @@ namespace Assets.draco18s.bulletboss
 			go.transform.localPosition = Vector3.zero;
 			go.transform.localScale = Vector3.one * 0.2f;
 			GunBarrel bar = go.GetComponent<GunBarrel>();
+			d.timeline.CopyFrom(i.upgradeTypeData.relevantPattern.timeline);
 			bar.SetPattern(d);
 			bar.SetShell(i.upgradeTypeData.secondaryPrefab, i.upgradeTypeData.relevantPattern);
 			//Debug.Log($"{bar.pattern.effects.AimScreenDown} || {bar.pattern.effects.AimAtPlayer}");

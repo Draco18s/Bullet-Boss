@@ -45,8 +45,8 @@ namespace Assets.draco18s.bulletboss
 			if (other.gameObject.layer == LayerMask.NameToLayer("AIPlayer"))
 			{
 				PlayerAgent ag = other.GetComponentInParent<PlayerAgent>();
-				ag.AddReward(0.01f);
-				ag.AddScore(value);
+				ag.AddReward(0.15f);
+				ag.AddScore(value); //this is "game score" not AI training
 				Destroy(gameObject);
 			}
 		}

@@ -1,0 +1,65 @@
+{
+    "PewPew": {
+        "checkpoints": [
+            {
+                "steps": 3499961,
+                "file_path": "results\\PewPew3\\PewPew\\PewPew-3499961.onnx",
+                "reward": 0.5634809979578344,
+                "creation_time": 1692000911.2891972,
+                "auxillary_file_paths": [
+                    "results\\PewPew3\\PewPew\\PewPew-3499961.pt"
+                ]
+            },
+            {
+                "steps": 3999898,
+                "file_path": "results\\PewPew3\\PewPew\\PewPew-3999898.onnx",
+                "reward": 1.2786928866590772,
+                "creation_time": 1692004639.5423565,
+                "auxillary_file_paths": [
+                    "results\\PewPew3\\PewPew\\PewPew-3999898.pt"
+                ]
+            },
+            {
+                "steps": 4499900,
+                "file_path": "results\\PewPew3\\PewPew\\PewPew-4499900.onnx",
+                "reward": 0.8327009020745755,
+                "creation_time": 1692008290.7787108,
+                "auxillary_file_paths": [
+                    "results\\PewPew3\\PewPew\\PewPew-4499900.pt"
+                ]
+            },
+            {
+                "steps": 4999809,
+                "file_path": "results\\PewPew3\\PewPew\\PewPew-4999809.onnx",
+                "reward": 1.183709662939821,
+                "creation_time": 1692011957.4174192,
+                "auxillary_file_paths": [
+                    "results\\PewPew3\\PewPew\\PewPew-4999809.pt"
+                ]
+            },
+            {
+                "steps": 5000449,
+                "file_path": "results\\PewPew3\\PewPew\\PewPew-5000449.onnx",
+                "reward": 1.183709662939821,
+                "creation_time": 1692011957.4732697,
+                "auxillary_file_paths": [
+                    "results\\PewPew3\\PewPew\\PewPew-5000449.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 5000449,
+            "file_path": "results\\PewPew3\\PewPew.onnx",
+            "reward": 1.183709662939821,
+            "creation_time": 1692011957.4732697,
+            "auxillary_file_paths": [
+                "results\\PewPew3\\PewPew\\PewPew-5000449.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.7.1+cu110"
+    }
+}

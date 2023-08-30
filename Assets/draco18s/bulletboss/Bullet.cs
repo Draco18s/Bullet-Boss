@@ -29,6 +29,8 @@ namespace Assets.draco18s.bulletboss
 		public Vector3 previousPosition2;
 		public Vector3 previousPosition3;
 
+		public SpriteRenderer spriteRenderer { get; protected set; }
+
 		private static Dictionary<PatternDataKey, float> PopulateDict()
 		{
 			Dictionary<PatternDataKey, float> d = new Dictionary<PatternDataKey, float>();
@@ -48,6 +50,8 @@ namespace Assets.draco18s.bulletboss
 				pattern.Lifetime = 10;
 			}
 			Init();
+			spriteRenderer = GetComponent<SpriteRenderer>();
+			spriteRenderer.color = new Color(1, 1, 1, 0.5f);
 		}
 
 		public void SetDamage(float dmg)
@@ -103,13 +107,14 @@ namespace Assets.draco18s.bulletboss
 			if (timeAlive < 0.15f)
 			{
 				GetComponent<SpriteRenderer>().enabled = timeAlive > 0;
-				if(transform.localPosition.y < -4f) Destroy(gameObject);
+				if(transform.localPosition.y < -4.5f) Destroy(gameObject);
 			}
 			if (timeAlive >= pattern.Lifetime || Mathf.Abs(transform.localPosition.x) > 7.5f || transform.localPosition.y < -7.5f || transform.localPosition.y > 4.75f)
 			{
 				Destroy(gameObject);
 				return;
 			}
+
 			foreach (PatternDataKey d in GetAllowedValues())
 			{
 				currentValues[d] = pattern.dataValues[d] * pattern.timeline.Evaluate(d, timeAlive / pattern.Lifetime * 10);
@@ -120,7 +125,7 @@ namespace Assets.draco18s.bulletboss
 			if (pattern.effects.HomingShots)
 			{
 				float bestAngle = 180;
-				foreach (Collider2D c in Physics2D.OverlapCircleAll(transform.position, 10, LayerMask.GetMask(new[] { "AIPlayer" })))
+				foreach (Collider2D c in Physics2D.OverlapCircleAll(transform.position, 20, LayerMask.GetMask(new[] { "AIPlayer" })))
 				{
 					Transform playerTransform = c.transform;
 
@@ -133,6 +138,7 @@ namespace Assets.draco18s.bulletboss
 						bestAngle = angle;
 					}
 				}
+				//Debug.Log(Math.Max(Math.Abs(currentValues[PatternDataKey.Rotation]), 0.25f) * pattern.dataValues[PatternDataKey.Rotation] * dt * Mathf.Sign(-bestAngle) * 0.2f);
 				transform.Rotate(Vector3.forward, Math.Max(Math.Abs(currentValues[PatternDataKey.Rotation]), 0.25f) * pattern.dataValues[PatternDataKey.Rotation] * dt * Mathf.Sign(-bestAngle) * 0.2f, Space.Self);
 			}
 			else
@@ -152,8 +158,9 @@ namespace Assets.draco18s.bulletboss
 				if (taker == null) return;
 				float d = taker.ApplyDamage(damage, GetComponent<Collider2D>());
 				playerOwner?.DamagedEnemy(d, col);
+				if(d > 0) Destroy(gameObject);
 			}
-			Destroy(gameObject);
+			//Destroy(gameObject);
 		}
 
 		public Timeline GetTimeline()

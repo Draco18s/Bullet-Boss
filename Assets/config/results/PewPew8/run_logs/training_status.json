@@ -1,0 +1,65 @@
+{
+    "PewPew": {
+        "checkpoints": [
+            {
+                "steps": 3499784,
+                "file_path": "results\\PewPew8\\PewPew\\PewPew-3499784.onnx",
+                "reward": 4.635165750980377,
+                "creation_time": 1692444002.8702297,
+                "auxillary_file_paths": [
+                    "results\\PewPew8\\PewPew\\PewPew-3499784.pt"
+                ]
+            },
+            {
+                "steps": 3999707,
+                "file_path": "results\\PewPew8\\PewPew\\PewPew-3999707.onnx",
+                "reward": 5.437590017914772,
+                "creation_time": 1692448389.885479,
+                "auxillary_file_paths": [
+                    "results\\PewPew8\\PewPew\\PewPew-3999707.pt"
+                ]
+            },
+            {
+                "steps": 4499551,
+                "file_path": "results\\PewPew8\\PewPew\\PewPew-4499551.onnx",
+                "reward": 7.081845641136169,
+                "creation_time": 1692452870.7010462,
+                "auxillary_file_paths": [
+                    "results\\PewPew8\\PewPew\\PewPew-4499551.pt"
+                ]
+            },
+            {
+                "steps": 4999474,
+                "file_path": "results\\PewPew8\\PewPew\\PewPew-4999474.onnx",
+                "reward": null,
+                "creation_time": 1692457451.3251479,
+                "auxillary_file_paths": [
+                    "results\\PewPew8\\PewPew\\PewPew-4999474.pt"
+                ]
+            },
+            {
+                "steps": 5000034,
+                "file_path": "results\\PewPew8\\PewPew\\PewPew-5000034.onnx",
+                "reward": 6.886312484741211,
+                "creation_time": 1692457451.3919773,
+                "auxillary_file_paths": [
+                    "results\\PewPew8\\PewPew\\PewPew-5000034.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 5000034,
+            "file_path": "results\\PewPew8\\PewPew.onnx",
+            "reward": 6.886312484741211,
+            "creation_time": 1692457451.3919773,
+            "auxillary_file_paths": [
+                "results\\PewPew8\\PewPew\\PewPew-5000034.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.7.1+cu110"
+    }
+}

@@ -57,6 +57,7 @@ namespace Assets.draco18s.bulletboss.ui
 				attachedBarrel = item;
 				Inventory.instance.Remove(attachedBarrel);
 				attachedBarrel.transform.SetParent(transform);
+				gun.transform.localRotation = transform.localRotation;
 				attachedBarrel.gameObject.SetActive(false);
 			}
 			HostileFighter fighter = spawnedObject.GetComponent<HostileFighter>();
@@ -111,7 +112,9 @@ namespace Assets.draco18s.bulletboss.ui
 		void FixedUpdate()
 		{
 			if (spawnedObject == null || slotType != UpgradeType.FighterEntry) return;
-			if (GameStateManager.instance.state != GameStateManager.GameState.InGame && GameStateManager.instance.state != GameStateManager.GameState.ActiveTraining) return;
+			if (GameStateManager.instance.state != GameStateManager.GameState.InGame
+			    && GameStateManager.instance.state != GameStateManager.GameState.ActiveTraining
+			    && GameStateManager.instance.state != GameStateManager.GameState.RecordDemo) return;
 			float dt = Time.fixedDeltaTime;
 			SpawnTimer += dt;
 			cooldownTimer += dt;
@@ -119,7 +122,8 @@ namespace Assets.draco18s.bulletboss.ui
 			{
 				SpawnTimer -= SpawnTime;
 				SpawnCount++;
-				if (GameStateManager.instance.state == GameStateManager.GameState.ActiveTraining)
+				if (GameStateManager.instance.state == GameStateManager.GameState.ActiveTraining
+					|| GameStateManager.instance.state == GameStateManager.GameState.RecordDemo)
 				{
 					SpawnCount--;
 					GameObject go = Instantiate(spawnedObject, GameTransform.instance.transform);

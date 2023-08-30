@@ -156,7 +156,7 @@ namespace Assets.draco18s.bulletboss
 			{
 				float bestAngle = 180;
 				Vector3 bestVec = Vector3.zero;
-				foreach (Collider2D c in Physics2D.OverlapCircleAll(transform.position, 10, LayerMask.GetMask(new[] { "AIPlayer" })))
+				foreach (Collider2D c in Physics2D.OverlapCircleAll(transform.position, 20, LayerMask.GetMask(new[] { "AIPlayer" })))
 				{
 					Transform playerTransform = c.transform;
 
@@ -329,7 +329,6 @@ namespace Assets.draco18s.bulletboss
 			if (bulletClone == null) return;
 			GameObject go = Instantiate(bulletClone, muz.position, muz.transform.rotation, GameTransform.instance.transform);
 			go.SetActive(true);
-			go.layer = gameObject.layer + 2;
 			Bullet b = go.GetComponent<Bullet>();
 			SetBulletDetails(b);
 
@@ -402,6 +401,7 @@ namespace Assets.draco18s.bulletboss
 		{
 			if(mountingPoint == null && pattern.childPattern != null)
 				bul.SetPattern(pattern.childPattern);
+			bul.gameObject.layer = gameObject.layer + 2;
 			bul.SetDamage(GetStat(StatAttribute.Damage, () => 0, (a, b) => a + b));
 			bul.SetLifetime(GetStat(StatAttribute.Lifetime, () => 1, (a, b) => a * b));
 

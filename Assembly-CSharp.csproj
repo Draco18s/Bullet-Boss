@@ -81,6 +81,7 @@
     <Compile Include="Assets\draco18s\ui\PercentageBar.cs" />
     <Compile Include="Assets\UGUIMeshLab\UIMeshLine.cs" />
     <Compile Include="Assets\draco18s\bulletboss\StatAttribute.cs" />
+    <Compile Include="Assets\draco18s\util\FastFourier.cs" />
     <Compile Include="Assets\draco18s\bulletboss\ui\UpgradeCard.cs" />
     <Compile Include="Assets\draco18s\bulletboss\GameStateManager.cs" />
     <Compile Include="Assets\draco18s\patterns\PatternEffects.cs" />
@@ -89,6 +90,7 @@
     <Compile Include="Assets\draco18s\training\ShipAcademy.cs" />
     <Compile Include="Assets\draco18s\bulletboss\UpgradeRuntime.cs" />
     <Compile Include="Assets\draco18s\util\SerializableDictionary.cs" />
+    <Compile Include="Assets\TrainingBoss.cs" />
     <Compile Include="Assets\draco18s\patterns\PatternData.cs" />
     <Compile Include="Assets\draco18s\util\TypeExtensions.cs" />
     <Compile Include="Assets\UGUIMeshLab\DataContainer.cs" />

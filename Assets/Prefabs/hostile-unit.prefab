@@ -157,6 +157,86 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6306653702003728471}
     m_Modifications:
+    - target: {fileID: 603481581836426374, guid: 9055253f30e2e1340a675e824562f2d9, type: 3}
+      propertyPath: pattern.timeline.data.keys.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 603481581836426374, guid: 9055253f30e2e1340a675e824562f2d9, type: 3}
+      propertyPath: pattern.timeline.data.values.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 603481581836426374, guid: 9055253f30e2e1340a675e824562f2d9, type: 3}
+      propertyPath: pattern.timeline.data.keys.Array.data[0]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 603481581836426374, guid: 9055253f30e2e1340a675e824562f2d9, type: 3}
+      propertyPath: pattern.timeline.data.keys.Array.data[1]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 603481581836426374, guid: 9055253f30e2e1340a675e824562f2d9, type: 3}
+      propertyPath: pattern.timeline.data.values.Array.data[0].m_PreInfinity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 603481581836426374, guid: 9055253f30e2e1340a675e824562f2d9, type: 3}
+      propertyPath: pattern.timeline.data.values.Array.data[1].m_PreInfinity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 603481581836426374, guid: 9055253f30e2e1340a675e824562f2d9, type: 3}
+      propertyPath: pattern.timeline.data.values.Array.data[0].m_PostInfinity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 603481581836426374, guid: 9055253f30e2e1340a675e824562f2d9, type: 3}
+      propertyPath: pattern.timeline.data.values.Array.data[1].m_PostInfinity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 603481581836426374, guid: 9055253f30e2e1340a675e824562f2d9, type: 3}
+      propertyPath: pattern.timeline.data.values.Array.data[0].m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 603481581836426374, guid: 9055253f30e2e1340a675e824562f2d9, type: 3}
+      propertyPath: pattern.timeline.data.values.Array.data[1].m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 603481581836426374, guid: 9055253f30e2e1340a675e824562f2d9, type: 3}
+      propertyPath: pattern.timeline.data.values.Array.data[0].m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 603481581836426374, guid: 9055253f30e2e1340a675e824562f2d9, type: 3}
+      propertyPath: pattern.timeline.data.values.Array.data[1].m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 603481581836426374, guid: 9055253f30e2e1340a675e824562f2d9, type: 3}
+      propertyPath: pattern.timeline.data.values.Array.data[0].m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 603481581836426374, guid: 9055253f30e2e1340a675e824562f2d9, type: 3}
+      propertyPath: pattern.timeline.data.values.Array.data[0].m_Curve.Array.data[1].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 603481581836426374, guid: 9055253f30e2e1340a675e824562f2d9, type: 3}
+      propertyPath: pattern.timeline.data.values.Array.data[1].m_Curve.Array.data[1].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 603481581836426374, guid: 9055253f30e2e1340a675e824562f2d9, type: 3}
+      propertyPath: pattern.timeline.data.values.Array.data[1].m_Curve.Array.data[0].outWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 603481581836426374, guid: 9055253f30e2e1340a675e824562f2d9, type: 3}
+      propertyPath: pattern.timeline.data.values.Array.data[0].m_Curve.Array.data[0].tangentMode
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 603481581836426374, guid: 9055253f30e2e1340a675e824562f2d9, type: 3}
+      propertyPath: pattern.timeline.data.values.Array.data[0].m_Curve.Array.data[1].tangentMode
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 603481581836426374, guid: 9055253f30e2e1340a675e824562f2d9, type: 3}
+      propertyPath: pattern.timeline.data.values.Array.data[1].m_Curve.Array.data[0].tangentMode
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 603481581836426374, guid: 9055253f30e2e1340a675e824562f2d9, type: 3}
+      propertyPath: pattern.timeline.data.values.Array.data[1].m_Curve.Array.data[1].tangentMode
+      value: 34
+      objectReference: {fileID: 0}
     - target: {fileID: 1527532377066400238, guid: 9055253f30e2e1340a675e824562f2d9, type: 3}
       propertyPath: m_RootOrder
       value: 0

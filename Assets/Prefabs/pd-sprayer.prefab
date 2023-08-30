@@ -167,10 +167,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pattern:
-    ReloadType: 1
+    ReloadType: 0
     Lifetime: 10
     StartAngle: 0
     TimeOffset: 0
+    isEditable: 0
+    effects:
+      MirrorSpreadShots:
+        v: 0
+      HomingShots:
+        v: 0
+      AimAtPlayer:
+        v: 0
+      AimScreenDown:
+        v: 0
+    image: {fileID: 0}
     dataValues:
       keys: 0000000001000000020000000300000004000000
       values:
@@ -182,36 +193,8 @@ MonoBehaviour:
     timeline:
       duration: 0
       data:
-        keys: 0300000004000000
-        values:
-        - serializedVersion: 2
-          m_Curve:
-          - serializedVersion: 3
-            time: 0
-            value: 1
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
-        - serializedVersion: 2
-          m_Curve:
-          - serializedVersion: 3
-            time: 0
-            value: 1.75
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
+        keys: 
+        values: []
     childPattern:
       rid: 1000
   muzzles:
@@ -229,6 +212,7 @@ MonoBehaviour:
     - 2
   timeAlive: 0
   minFireDelay: 0.6
+  active: 1
   references:
     version: 2
     RefIds:
@@ -241,6 +225,17 @@ MonoBehaviour:
         Lifetime: 10
         StartAngle: 0
         TimeOffset: 0
+        isEditable: 0
+        effects:
+          MirrorSpreadShots:
+            v: 0
+          HomingShots:
+            v: 0
+          AimAtPlayer:
+            v: 0
+          AimScreenDown:
+            v: 0
+        image: {fileID: 0}
         dataValues:
           keys: 0000000001000000020000000300000004000000
           values:

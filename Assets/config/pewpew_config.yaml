@@ -13,11 +13,23 @@ behaviors:
     network_settings:
       normalize: false
       hidden_units: 256
-      num_layers: 2
+      num_layers: 3
     reward_signals:
       extrinsic:
         gamma: 0.99
         strength: 1.0
+      gail:
+        gamma: 0.99
+        strength: 0.01
+        network_settings:
+          normalize: true
+          hidden_units: 128
+          num_layers: 2
+          vis_encode_type: simple
+        learning_rate: 0.0003
+        use_actions: false
+        use_vail: false
+        demo_path: C:\Users\draco\Documents\Unity Projects\Bullethell\Assets\Demos\PewPew_1.demo
     max_steps: 5000000
     time_horizon: 640
     summary_freq: 50000

@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ef877f22a8be024787ac225f5cd6a6f, type: 3}
+  m_Name: BulletWall
+  m_EditorClassIdentifier: 
+  data:
+    type: 1
+    image: {fileID: 21300000, guid: ac47ed8ccc79cf04dae198b9cc5b3a6f, type: 3}
+    upgradeID: BulletWall
+    upgradeName: Bullet Wall
+    description: Fires five closely spaced shots in parallel
+    rarityTier: 0
+    relativeRarityInTier: 75
+    attributeModifiers:
+      keys: 06000000
+      values:
+      - 0.5
+    relevantPattern:
+      ReloadType: 1
+      Lifetime: 10
+      StartAngle: 0
+      TimeOffset: 0
+      isEditable: 0
+      effects:
+        MirrorSpreadShots:
+          v: 0
+        HomingShots:
+          v: 0
+        AimAtPlayer:
+          v: 0
+        AimScreenDown:
+          v: 0
+      image: {fileID: 0}
+      dataValues:
+        keys: 0000000001000000020000000300000004000000
+        values:
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+      timeline:
+        duration: 0
+        data:
+          keys: 
+          values: []
+      childPattern:
+        rid: -2
+    relevantPrefab: {fileID: 2206095113025173180, guid: a02a564f4a8bacd4991002a70f9ecf5e, type: 3}
+    secondaryPrefab: {fileID: 0}
+    patternModifiers:
+      MirrorSpreadShots:
+        v: 0
+      HomingShots:
+        v: 0
+      AimAtPlayer:
+        v: 0
+      AimScreenDown:
+        v: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
