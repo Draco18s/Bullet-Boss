@@ -119,6 +119,7 @@ namespace Assets.draco18s.ui {
 		}
 		void StopHover() {
 			lastPos = Vector3.zero;
+			if (Tooltip.instance == null) return;
 			Tooltip.instance.gameObject.SetActive(false);
 		}
 

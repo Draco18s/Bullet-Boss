@@ -10,7 +10,6 @@ namespace Assets.draco18s.util
 	[Serializable]
 	public class SerializableDictionary<TKey, TValue> : Dictionary<TKey, TValue>, ISerializationCallbackReceiver
 	{
-
 		[SerializeField] private List<TKey> keys = new List<TKey>();
 
 		[SerializeField] private List<TValue> values = new List<TValue>();
@@ -36,14 +35,26 @@ namespace Assets.draco18s.util
 			//	throw new System.Exception(string.Format("there are {0} keys and {1} values after deserialization. Make sure that both key and value types are serializable."));
 			while (keys.Count != values.Count)
 			{
-				if(keys.Count > values.Count)
+				if (keys.Count > values.Count)
 					values.Add(default);
 				if (keys.Count < values.Count)
 					keys.Add(default);
 			}
 
 			for (int i = 0; i < keys.Count; i++)
-				this.Add(keys[i], values[i]);
+			{
+				if (this.ContainsKey(keys[i]))
+				{
+					if (typeof(TKey) == typeof(string))
+					{
+						this.Add((TKey)(object)"", default);
+					}
+					else
+						this.Add(default, default);
+				}
+				else
+					this.Add(keys[i], values[i]);
+			}
 		}
 
 		public void CopyFrom(SerializableDictionary<TKey, TValue> other)
@@ -61,7 +72,7 @@ namespace Assets.draco18s.util
 
 		public void Callback()
 		{
-			this.Add(default,default);
+			this.Add(default, default);
 		}
 	}
 }

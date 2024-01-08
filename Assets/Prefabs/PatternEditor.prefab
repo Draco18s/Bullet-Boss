@@ -5384,6 +5384,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ac1cd904aab6c94384d53ea79fe64dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anchor: {fileID: 0}
+  bossGroup: {fileID: 0}
   target: {fileID: 0}
   gunThings: {fileID: 5098620880381126274}
   bulletThings: {fileID: 5098620879157834725}
@@ -9160,7 +9162,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
-  CustomNumberOfSteps: 11
 --- !u!114 &5098620880835610656
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -6,12 +6,6 @@ namespace Assets.draco18s
 {
 	public class GameTransform : MonoBehaviour
 	{
-		public static GameTransform instance;
-		public GameObject basicBulletPrefab;
-
-		void Start()
-		{
-			instance = this;
-		}
+		public static GameTransform instance => FindAnyObjectByType<GameTransform>();
 	}
 }

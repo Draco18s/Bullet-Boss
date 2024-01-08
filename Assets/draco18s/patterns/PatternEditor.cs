@@ -8,12 +8,17 @@ using UnityEngine.UI;
 using Assets.draco18s.ui;
 using MathS = System.MathF; //fuck off System.MathF
 using Assets.draco18s.bulletboss.ui;
+using System.Data;
+using Assets.draco18s.bulletboss;
 
 namespace Assets.draco18s
 {
 	public class PatternEditor : MonoBehaviour
 	{
 		public static PatternEditor instance;
+		[SerializeField] private Transform anchor;
+		[SerializeField] private Transform bossGroup;
+
 		public GameObject target;
 		public GameObject gunThings;
 		public GameObject bulletThings;
@@ -54,7 +59,7 @@ namespace Assets.draco18s
 			instance = this;
 			lineRectTransform = (RectTransform)line.transform;
 			canvas = GetComponent<Canvas>();
-			reloadDropdown.AddOptions(new List<string>(){ "None","SingleShot","Overheat","ClipSize","Shotgun","Spread" });
+			reloadDropdown.AddOptions(new List<string>(){ "None","SingleShot","Burst","Continuous" });
 			reloadDropdown.onValueChanged.AddListener(UpdateGunType);
 			loopDropdown.AddOptions(loopNames.ToList());
 			loopDropdown.onValueChanged.AddListener(UpdateLoopType);
@@ -86,23 +91,23 @@ namespace Assets.draco18s
 
 		public void AccessSubsystem()
 		{
-			PatternData hasPattern = targetPattern.childPattern;
-			
-			if (targetPattern == targetPatternObj.Pattern && (hasPattern == null || !hasPattern.isEditable))
-			{
-				hasPattern = targetPatternObj.GetSubsystem();
-			}
-			if (hasPattern == null || !hasPattern.isEditable) return;
+			IHasPattern subsystem = targetPatternObj.GetSubsystem();
+			if (subsystem == null || !subsystem.Pattern.isEditable) return;
 
-			subButton.interactable = hasPattern.childPattern is { isEditable: true };
+			ChangeTarget(subsystem);
 			supButton.interactable = true;
-			isEditingGun = !isEditingGun;
-			ChangeTarget(hasPattern);
+
+			if (target.GetComponent<HostileFighter>() != null)
+			{
+				bossGroup.gameObject.SetActive(false);
+				//anchor
+			}
 		}
 
 		public void AccessRootSystem()
 		{
 			ChangeTarget(target);
+			bossGroup.gameObject.SetActive(true);
 		}
 
 		public void ChangeTarget(GameObject gg)
@@ -116,41 +121,47 @@ namespace Assets.draco18s
 				return;
 			}
 			IHasPattern hasTime = gg.GetComponent<IHasPattern>();
-			if(hasTime ==  null) return;
+			if(hasTime ==  null)
+			{
+				target = null;
+				targetPattern = null;
+				targetPatternObj = null;
+				canvas.enabled = false;
+				Inventory.instance.OpenInventory();
+				return;
+			}
 
 			isEditingGun = true;
 			target = gg;
 			targetPatternObj = hasTime;
-			ChangeTarget(hasTime.Pattern);
+			ChangeTarget(hasTime);
 			supButton.interactable = false;
 			canvas.enabled = true;
 		}
 
-		public void ChangeTarget(PatternData tl)
+		public void ChangeTarget(IHasPattern hasPattern)
 		{
-			targetPattern = tl;
-			targetTimelineData = tl.timeline;
-			List<PatternDataKey> list = GetAllowedValues(isEditingGun);
+			targetPattern = hasPattern.Pattern;
+			targetTimelineData = hasPattern.Pattern.timeline;
+			List<PatternDataKey> list = hasPattern.GetAllowedValues();
 			attributeDropdown.ClearOptions();
 			attributeDropdown.AddOptions(list.Select(x => x.ToString()).ToList());
 			attributeDropdown.SetValueWithoutNotify(0);
-			reloadDropdown.SetValueWithoutNotify((int)tl.ReloadType);
+			reloadDropdown.SetValueWithoutNotify((int)hasPattern.Pattern.ReloadType);
 
 			if (targetPattern == targetPatternObj.Pattern && (targetPattern.childPattern == null || !targetPattern.childPattern.isEditable))
 			{
-				subButton.interactable = targetPatternObj.GetSubsystem() is { isEditable: true };
+				subButton.interactable = hasPattern.GetSubsystem() != null && hasPattern.GetSubsystem().Pattern.isEditable;
 			}
 			else
 			{
 				subButton.interactable = targetPattern.childPattern is { isEditable: true };
 			}
-			//capField.SetValueWithoutNotify(tl.Pattern.MaxCapacity * 10);
-			//bool isGun = tl is GunBarrel && tl.ReloadType != GunType.None;
-			//bool isBullet = tl is Bullet;
+			
+			lifetimeField.SetValueWithoutNotify(hasPattern.Pattern.Lifetime);
+			angleField.SetValueWithoutNotify(hasPattern.Pattern.StartAngle / 5f);
+			timeOffsetField.SetValueWithoutNotify(hasPattern.Pattern.TimeOffset);
 
-			lifetimeField.SetValueWithoutNotify(tl.Lifetime);
-			angleField.SetValueWithoutNotify(tl.StartAngle / 5f);
-			timeOffsetField.SetValueWithoutNotify(tl.TimeOffset);
 			reloadDropdown.interactable = isEditingGun;
 			gunThings.SetActive(isEditingGun);
 			bulletThings.SetActive(!isEditingGun);
@@ -293,6 +304,7 @@ namespace Assets.draco18s
 					reloadField.interactable = true;
 					break;
 			}
+			target.GetComponent<IHasPattern>().SetTime(0);
 		}
 
 		private float scalar = 1;
@@ -303,7 +315,7 @@ namespace Assets.draco18s
 			Enum.TryParse(val, out PatternDataKey datType);
 			AnimationCurve curv = targetTimelineData.data[datType];
 			float v = curv.Evaluate(currentKeyframe);
-			Vector3 minMax = GetAllowedRange(datType, isEditingGun);
+			Vector3 minMax = targetPatternObj.GetAllowedRange(datType);
 			scalar = minMax.z;
 			slider.minValue = minMax.x * scalar;
 			slider.maxValue = minMax.y * scalar;
@@ -421,39 +433,6 @@ namespace Assets.draco18s
 		public void ResetAnim()
 		{
 			targetPatternObj.SetTime(0);
-		}
-
-		List<PatternDataKey> GetAllowedValues(bool forGun)
-		{
-			if(forGun)
-				return new List<PatternDataKey>() { PatternDataKey.FireShot, PatternDataKey.Rotation };
-			else
-				return new List<PatternDataKey>() {
-					PatternDataKey.Rotation,
-					PatternDataKey.Size,
-					PatternDataKey.Speed,
-				};
-		}
-		Vector3 GetAllowedRange(PatternDataKey dataKey, bool forGun)
-		{
-			if(forGun)
-				switch (dataKey)
-				{
-					case PatternDataKey.FireShot:
-						return new Vector3(0, 1, 1);
-					case PatternDataKey.Rotation:
-						return new Vector3(-2, 2, 4);
-				}
-			else
-				switch (dataKey)
-				{
-					case PatternDataKey.Speed:
-					case PatternDataKey.Size:
-						return new Vector3(0, 10, 4);
-					case PatternDataKey.Rotation:
-						return new Vector3(-2, 2, 10);
-				}
-			return Vector3.zero;
 		}
 	}
 }

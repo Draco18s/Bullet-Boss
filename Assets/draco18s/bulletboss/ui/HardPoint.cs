@@ -112,9 +112,7 @@ namespace Assets.draco18s.bulletboss.ui
 		void FixedUpdate()
 		{
 			if (spawnedObject == null || slotType != UpgradeType.FighterEntry) return;
-			if (GameStateManager.instance.state != GameStateManager.GameState.InGame
-			    && GameStateManager.instance.state != GameStateManager.GameState.ActiveTraining
-			    && GameStateManager.instance.state != GameStateManager.GameState.RecordDemo) return;
+			if (GameStateManager.instance.state != GameStateManager.GameState.InGame) return;
 			float dt = Time.fixedDeltaTime;
 			SpawnTimer += dt;
 			cooldownTimer += dt;
@@ -122,15 +120,6 @@ namespace Assets.draco18s.bulletboss.ui
 			{
 				SpawnTimer -= SpawnTime;
 				SpawnCount++;
-				if (GameStateManager.instance.state == GameStateManager.GameState.ActiveTraining
-					|| GameStateManager.instance.state == GameStateManager.GameState.RecordDemo)
-				{
-					SpawnCount--;
-					GameObject go = Instantiate(spawnedObject, GameTransform.instance.transform);
-					HostileFighter fighter = go.GetComponent<HostileFighter>();
-					fighter.Spawn(this);
-					cooldownTimer = 0f;
-				}
 			}
 
 			if (timerGraphic == null) return;
@@ -166,7 +155,9 @@ namespace Assets.draco18s.bulletboss.ui
 			}
 
 			if(attachedShell != null && attachedShell.upgradeTypeData.attributeModifiers.TryGetValue(stat, out var attributeModifier))
+			{
 				r = combine(r, attributeModifier);
+			}
 
 			foreach (InventoryItem item in attachedUpgrades)
 			{

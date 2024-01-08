@@ -83,7 +83,7 @@ SpriteRenderer:
   m_Size: {x: 1.26, y: 1.21}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &534277545162526225
@@ -103,10 +103,20 @@ MonoBehaviour:
     Lifetime: 10
     StartAngle: 0
     TimeOffset: 0
+    isEditable: 0
+    effects:
+      MirrorSpreadShots:
+        v: 0
+      HomingShots:
+        v: 0
+      AimAtPlayer:
+        v: 0
+      AimScreenDown:
+        v: 0
+    image: {fileID: 0}
     dataValues:
-      keys: 0000000001000000020000000300000004000000
+      keys: 01000000020000000300000004000000
       values:
-      - 0
       - 0
       - 0
       - 0
@@ -116,11 +126,17 @@ MonoBehaviour:
       data:
         keys: 
         values: []
+    childPattern:
+      rid: -2
   timeAlive: 0
-  previousPosition1: {x: 0, y: 0}
-  previousPosition2: {x: 0, y: 0}
-  previousPosition3: {x: 0, y: 0}
-  hitSomething: 0
+  previousPosition1: {x: 0, y: 0, z: 0}
+  previousPosition2: {x: 0, y: 0, z: 0}
+  previousPosition3: {x: 0, y: 0, z: 0}
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
 --- !u!58 &-7902743953893591484
 CircleCollider2D:
   m_ObjectHideFlags: 0

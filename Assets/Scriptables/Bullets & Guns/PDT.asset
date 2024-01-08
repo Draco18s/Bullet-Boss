@@ -40,9 +40,8 @@ MonoBehaviour:
           v: 0
       image: {fileID: 0}
       dataValues:
-        keys: 0000000001000000020000000300000004000000
+        keys: 01000000020000000300000004000000
         values:
-        - 0
         - 0
         - 0
         - 0

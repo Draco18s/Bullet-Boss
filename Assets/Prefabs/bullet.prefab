@@ -200,9 +200,8 @@ MonoBehaviour:
         v: 0
     image: {fileID: 0}
     dataValues:
-      keys: 0000000001000000020000000300000004000000
+      keys: 01000000020000000300000004000000
       values:
-      - 0
       - 3
       - 3
       - 1
@@ -215,10 +214,9 @@ MonoBehaviour:
     childPattern:
       rid: -2
   timeAlive: 0
-  previousPosition1: {x: 0, y: 0}
-  previousPosition2: {x: 0, y: 0}
-  previousPosition3: {x: 0, y: 0}
-  hitSomething: 0
+  previousPosition1: {x: 0, y: 0, z: 0}
+  previousPosition2: {x: 0, y: 0, z: 0}
+  previousPosition3: {x: 0, y: 0, z: 0}
   references:
     version: 2
     RefIds:

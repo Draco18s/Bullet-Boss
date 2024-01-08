@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel.Design;
 using Assets.draco18s.util;
 using JetBrains.Annotations;
 using UnityEngine;
@@ -107,7 +106,7 @@ namespace Assets.draco18s.bulletboss
 			if (timeAlive < 0.15f)
 			{
 				GetComponent<SpriteRenderer>().enabled = timeAlive > 0;
-				if(transform.localPosition.y < -4.5f) Destroy(gameObject);
+				if(transform.localPosition.y < -5.5f) Destroy(gameObject);
 			}
 			if (timeAlive >= pattern.Lifetime || Mathf.Abs(transform.localPosition.x) > 7.5f || transform.localPosition.y < -7.5f || transform.localPosition.y > 4.75f)
 			{
@@ -125,7 +124,7 @@ namespace Assets.draco18s.bulletboss
 			if (pattern.effects.HomingShots)
 			{
 				float bestAngle = 180;
-				foreach (Collider2D c in Physics2D.OverlapCircleAll(transform.position, 20, LayerMask.GetMask(new[] { "AIPlayer" })))
+				foreach (Collider2D c in Physics2D.OverlapCircleAll(transform.position, 20, 1 << gameObject.layer-2))
 				{
 					Transform playerTransform = c.transform;
 
@@ -138,8 +137,7 @@ namespace Assets.draco18s.bulletboss
 						bestAngle = angle;
 					}
 				}
-				//Debug.Log(Math.Max(Math.Abs(currentValues[PatternDataKey.Rotation]), 0.25f) * pattern.dataValues[PatternDataKey.Rotation] * dt * Mathf.Sign(-bestAngle) * 0.2f);
-				transform.Rotate(Vector3.forward, Math.Max(Math.Abs(currentValues[PatternDataKey.Rotation]), 0.25f) * pattern.dataValues[PatternDataKey.Rotation] * dt * Mathf.Sign(-bestAngle) * 0.2f, Space.Self);
+				transform.Rotate(Vector3.forward, currentValues[PatternDataKey.Rotation] * dt * Mathf.Sign(-bestAngle) / 8f, Space.Self);
 			}
 			else
 			{
@@ -150,8 +148,7 @@ namespace Assets.draco18s.bulletboss
 		[UsedImplicitly]
 		private void OnTriggerEnter2D(Collider2D col)
 		{
-			if (col.gameObject.layer == this.gameObject.layer || col.gameObject.layer+2 == this.gameObject.layer) return;
-			if(col.gameObject.layer == 0) return;
+			if (col.gameObject.layer == gameObject.layer || col.gameObject.layer+2 == gameObject.layer || col.gameObject.layer == 0) return;
 			if (transform.localScale.x > 0.02f)
 			{
 				IDamageTaker taker = col.gameObject.GetComponent<IDamageTaker>();
@@ -160,7 +157,6 @@ namespace Assets.draco18s.bulletboss
 				playerOwner?.DamagedEnemy(d, col);
 				if(d > 0) Destroy(gameObject);
 			}
-			//Destroy(gameObject);
 		}
 
 		public Timeline GetTimeline()
@@ -168,9 +164,14 @@ namespace Assets.draco18s.bulletboss
 			return pattern.timeline;
 		}
 
-		public PatternData GetSubsystem()
+		public PatternData GetPatternData()
 		{
-			return pattern.childPattern;
+			return pattern;
+		}
+
+		public IHasPattern GetSubsystem()
+		{
+			return GetComponentInChildren<GunBarrel>();
 		}
 
 		public void SetPattern(PatternData patternIn)
@@ -197,8 +198,9 @@ namespace Assets.draco18s.bulletboss
 			switch (dataKey)
 			{
 				case PatternDataKey.Speed:
-				case PatternDataKey.Size:
 					return new Vector3(0, 10, 4);
+				case PatternDataKey.Size:
+					return new Vector3(0, 2.5f, 4);
 				case PatternDataKey.Rotation:
 					return new Vector3(-2, 2, 10);
 			}

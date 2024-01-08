@@ -3,7 +3,6 @@ using Assets.draco18s.training;
 using Assets.draco18s.util;
 using JetBrains.Annotations;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Assets.draco18s.bulletboss
@@ -44,9 +43,6 @@ namespace Assets.draco18s.bulletboss
 		{
 			if (other.gameObject.layer == LayerMask.NameToLayer("AIPlayer"))
 			{
-				PlayerAgent ag = other.GetComponentInParent<PlayerAgent>();
-				ag.AddReward(0.15f);
-				ag.AddScore(value); //this is "game score" not AI training
 				Destroy(gameObject);
 			}
 		}
@@ -75,8 +71,8 @@ namespace Assets.draco18s.bulletboss
 		{
 			for (; num-- > 0;)
 			{
-				if (Random.value > ShipAcademy.instance.GemDropRate) continue;
-				if (Random.value > ShipAcademy.instance.GemDropRate) continue;
+				//if (Random.value > ShipAcademy.instance.GemDropRate) continue;
+				//if (Random.value > ShipAcademy.instance.GemDropRate) continue;
 				Instantiate(gem, pos + (Vector3)Random.insideUnitCircle * 0.5f, Quaternion.identity, GameTransform.instance.transform);
 			}
 		}

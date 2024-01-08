@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data:
     type: 8
-    image: {fileID: 21300000, guid: 11a9cd0eaba15984d8b34a78a1381721, type: 3}
+    image: {fileID: 21300000, guid: 18363927013c3f940af111c60191b650, type: 3}
     upgradeID: BasicHeavyFighter
     upgradeName: Heavy Fighter
     description: Armored fighter that fires a single shot weapon towards the player

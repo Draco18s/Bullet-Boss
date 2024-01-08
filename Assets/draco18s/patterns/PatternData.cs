@@ -53,5 +53,10 @@ namespace Assets.draco18s
 		{
 			effects = effects.CombineIntoNew(changes);
 		}
+
+		public float GetPatternCost()
+		{
+			return Lifetime + effects.GetCost() + (childPattern?.GetPatternCost() * 0.9f ?? 0);
+		}
 	}
 }

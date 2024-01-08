@@ -14,10 +14,16 @@ namespace Assets.draco18s.bulletboss
 		public UnityEvent DamageThreshold = new UnityEvent();
 
 		[UsedImplicitly]
-		void Start()
+		void OnEnable()
 		{
+			BossHealth health = FindFirstObjectByType<BossHealth>();
+			if(health == null)
+			{
+				gameObject.SetActive(false);
+				return;
+			}
 			Recalculate();
-			FindFirstObjectByType<BossHealth>().OnTakeDamage.AddListener((amt) =>
+			health.OnTakeDamage.AddListener((amt) =>
 			{
 				ApplyDamage(amt);
 			});

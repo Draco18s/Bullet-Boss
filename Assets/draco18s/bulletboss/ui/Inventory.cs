@@ -39,10 +39,15 @@ namespace Assets.draco18s.bulletboss.ui
 		{
 			if(Input.GetButtonDown("OpenInventory"))
 			{
-				canvas.enabled = !canvas.enabled;
-				if (!canvas.enabled)
-					UpgradeSlotGroup.instance.Hide();
+				OpenInventory();
 			}
+		}
+
+		public void OpenInventory()
+		{
+			canvas.enabled = !canvas.enabled;
+			if (!canvas.enabled)
+				UpgradeSlotGroup.instance.Hide();
 		}
 
 		public void Remove(InventoryItem item)

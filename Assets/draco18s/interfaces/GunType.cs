@@ -8,6 +8,6 @@ namespace Assets.draco18s
 {
 	public enum GunType
 	{
-		None,SingleShot,Overheat,ClipSize,Shotgun,Spread
+		None,SingleShot,Burst,Continuous
 	}
 }

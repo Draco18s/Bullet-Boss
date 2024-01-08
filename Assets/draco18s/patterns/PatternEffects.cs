@@ -43,5 +43,10 @@ namespace Assets.draco18s
 			ret.AimScreenDown = AimScreenDown.Clone();
 			return ret;
 		}
+
+		public float GetCost()
+		{
+			return (AimAtPlayer ? 2.5f : 0) + (AimScreenDown ? -1 : 0) + (HomingShots ? 5 : 0);
+		}
 	}
 }
